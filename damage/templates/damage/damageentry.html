@@ -1,0 +1,175 @@
+{% extends 'damage/base.html' %}
+
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+
+{% block title %} {{ general.deya_name }} - BΛΑΒΕΣ {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1> DAMAGE ENTRY  </h1>
+
+
+<title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=damage-1530620022237&callback=initMap"
+    async defer></script>
+  </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <form method="post" >
+
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ field.errors }}
+
+            <div class="row">
+              <div class="col-lg-6">
+                  <h4> ΣΤΟΙΧΕΙΑ ΚΑΤΑΝΑΛΩΤΗ</h4>
+
+                  <div >
+                      <label for="{{ form.firstname.id_for_label }}">Ονομα : </label>
+                      <input id="firstname" type="text" name="firstname"  required/>
+                  </div>
+                  <div>
+                      <label for="{{ form.lastname.id_for_label }}">Επώνυμο : </label>
+                      <input id="lastname" type="text" name="lastname"  required/>
+                  </div>
+                  <div>
+                      <label for="{{ form.address.id_for_label }}">Διεύθυνση : </label>
+                      <input id="address" type="text" name="address"  required/>
+                  </div>
+                  <div>
+                      <label for="{{ form.zipcode.id_for_label }}">ΤΚ : </label>
+                      <input id="zipcode" type="text" name="zipcode"  required/>
+                  </div>
+                  <div>
+                      <label for="{{ form.town.id_for_label }}">Πόλη : </label>
+                      <input id="town" type="text" name="town"  required/>
+                  </div>
+                  <div>
+                      <label for="{{ form.area.id_for_label }}">Περιοχή : </label>
+                      <input id="area" type="text" name="area"  required/>
+                  </div>
+                  <div>
+                      <label for="{{ form.email.id_for_label }}">E-Mail : </label>
+                      <input id="email" type="text" name="email"  required/>
+                  </div>
+                  <div>
+                      <label for="{{ form.thl.id_for_label }}">Τηλέφωνο : </label>
+                      <input id="thl" type="text" name="thl"  required/>
+                  </div>
+                  <div>
+                      <label for="{{ form.mobile.id_for_label }}">Κινητό Τηλ. : </label>
+                      <input id="mobile" type="text" name="mobile"  required/>
+                  </div>
+
+
+
+
+              </div>
+              <div class="col-lg-6">
+
+                  <h4>ΣΤΟΙΧΕΙΑ ΒΛΑΒΗΣ</h4>
+
+                  <div>
+                      <label for="{{ form.damagetype.id_for_label }}">Eίδος Βλάβης :</label>
+                      <div style="width: 300px; ">
+                        {{ form.damagetype }}
+                      </div>
+                  </div>
+                  <div>
+                      <label for="{{ form.damageaddress.id_for_label }}">Διεύθυνση Βλάβης : </label>
+                      <input id="damageaddress" type="text" name="damageaddress"  required/>
+                  </div>
+                 <div>
+                      <label for="{{ form.damagezipcode.id_for_label }}">ΤΚ Βλάβης : </label>
+                      <input id="damagezipcode" type="text" name="damagezipcode"  required/>
+                  </div>
+                  <div>
+                      <label for="{{ form.damagetown.id_for_label }}">Πόλη Βλάβης : </label>
+                      <input id="damagetown" type="text" name="damagetown"  required/>
+                  </div>
+                 <div>
+                      <label for="{{ form.damagearea.id_for_label }}">Περιοχή Βλάβης : </label>
+                      <input id="damagearea" type="text" name="damagearea"  required/>
+                  </div>
+                 <div>
+                      <label for="{{ form.damagecom.id_for_label }}">Παρατηρήσεις Βλάβης : </label>
+                      <input id="damagecom" type="text" name="damagecom"  required/>
+                  </div>
+
+
+
+
+              </div>
+
+            </div>
+
+            <div class="buttonHolder">
+                <input type="submit" name="submit" value="Submit1" class="submit submitButton" id="submit-id-submit" />
+            </div>
+        </form>
+        <br>
+
+    </div>
+{% endblock %}

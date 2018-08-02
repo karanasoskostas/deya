@@ -1,0 +1,31 @@
+{% extends 'damage/base.html' %}
+
+{% block title %} {{ general.deya_name }} {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1> HOME TEST  PAGE  </h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="fieldWrapper">
+                {{ form.subject.errors }}
+                <label for="{{ form.code.id_for_label }}">Κωδικός :</label>
+                <input id="your_name" type="number" name="code" required />
+
+            </div>
+          <div class="fieldWrapper">
+                {{ form.subject.errors }}
+                <label for="{{ form.desc.id_for_label }}">Περιγραφή :</label>
+                {{ form.desc }}
+            </div>
+
+
+            <button type="submit">Submit</button>
+        </form>
+        {{ code }}
+        <br>
+        {{ desc }}
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+django==1.11.13
+django-bootstrap3==10.0.1
+django-bootstrap4==0.0.6
+django-crispy-forms==1.7.2
+django-widget-tweaks==1.4.2
+geographiclib==1.49
+geopy==1.14.0
+pbr==4.0.2
+pytz==2018.4
+six==1.11.0
+stevedore==1.28.0
+virtualenv==15.2.0
+virtualenv-clone==0.3.0
+virtualenvwrapper==4.8.2

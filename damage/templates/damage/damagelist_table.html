@@ -1,0 +1,109 @@
+{% extends 'damage/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block title %} {{ general.deya_name }} - ΛΙΣΤΑ BΛΑΒΩΝ {% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <form  >
+
+            <td class="container">
+
+            <h1 style="font-family: Calibri; align-content: center" align="center"> ΛΙΣΤΑ ΒΛΑΒΩΝ  </h1>
+
+                <form class="form-inline">
+                    <div class="container">
+                    <label for="l1" ">Από Ημερομηνία :</label>
+                    <input type="text"  id="example-text-input" value= {{ fromdate }} readonly
+                           style="border: 0px; font-weight: bold; color: darkblue ">
+                    <label for="l2" >Έως Ημερομηνία :</label>
+                    <input type="text"  id="example-text-input" value= {{ todate }} readonly
+                           style="border: 0px; font-weight: bold; color: darkblue">
+                        </div>
+                </form>
+
+                <table class="table table-striped table-bordered table-hover ">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Ημ/νία Εισαγωγής</th>
+                            <th scope="col">Ονοματεπώνυμο</th>
+                            <th scope="col">Eίδος Βλάβης</th>
+                            <th scope="col">Διεύθυνση Βλάβης</th>
+                            <th scope="col">ΤΚ</th>
+                            <th scope="col">Πόλη</th>
+                            <th scope="col">Περιοχή</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for damage in damage_list %}
+
+                            <tr>
+
+                                <td>
+                                    <a href="{%  url 'damage-by-id' pk=damage.id %}">{{ damage.entry_date | date:'d/m/Y H:i' }} </a>
+                                </td>
+
+                                <td>
+                                        <a href="#">{{ damage.lastname }} {{ damage.firstname }}</a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damagetype.desc }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damageaddress }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damagezipcode }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damagetown }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damagearea }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damagestatus.desc }} </a>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                            
+
+                    
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if damage_list.has_previous %}
+                            <a href="?page={{ damage_list.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ damage_list.number }} of {{ damage_list.paginator.num_pages }}.
+                        </span>
+
+                        {% if damage_list.has_next %}
+                            <a href="?page={{ damage_list.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+
+
+        </form>
+        <br>
+
+    </div>
+{% endblock %}
+

@@ -1,0 +1,62 @@
+{% extends 'damage/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block title %} {{ general.deya_name }} - ΛΙΣΤΑ BΛΑΒΩΝ {% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1> LIST  </h1>
+
+        <form  >
+
+            <div class="container">
+
+            <h1 style="font-family: Calibri; align-content: center" align="center"> ΛΙΣΤΑ ΒΛΑΒΩΝ  </h1>
+
+                {% for damage in damage_list %}
+                    <div class="row" style="border: 1px solid #2aabd2;vertical-align: middle;">
+
+                        <div class="col mx-auto" style="border-color: #2aabd2">
+                            <a href="{%  url 'damage-by-id' pk=damage.id %}">{{ damage.entry_date | date:'d/m/Y H:i' }} </a>
+                        </div>
+
+                        <div class="col mx-auto">
+                                <a href="#">{{ damage.lastname }} </a>
+                        </div>
+
+                        <div class="col mx-auto">
+                            <a href="#">{{ damage.firstname }} </a>
+                        </div>
+
+                       <div class="col mx-auto">
+                            <a href="#">{{ damage.damageaddress }} </a>
+                        </div>
+
+                        <div class="col mx-auto">
+                            <a href="#">{{ damage.damagezipcode }} </a>
+                        </div>
+
+                       <div class="col mx-auto">
+                            <a href="#">{{ damage.damagetown }} </a>
+                        </div>
+
+                       <div class="col mx-auto">
+                            <a href="#">{{ damage.damagearea }} </a>
+                        </div>
+
+                       <div class="col mx-auto">
+                            <a href="#">{{ damage.damagestatus }} </a>
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+            </div>
+
+        </form>
+        <br>
+
+    </div>
+{% endblock %}

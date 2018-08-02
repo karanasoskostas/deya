@@ -1,0 +1,17 @@
+
+{% extends 'damage/base.html' %}
+{% load widget_tweaks %}
+
+<h1>  DAMAGETYPE TEST  </h1>
+{% block body %}
+    <form method="post" >
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {{ form.field_errors }}
+
+        <table border="1">
+            {{ form.as_table }}
+        </table>
+      <button type="submit"  class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

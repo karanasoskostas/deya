@@ -1,0 +1,6 @@
+Collecting protobuf
+  Downloading https://files.pythonhosted.org/packages/75/7a/0dba607e50b97f6a89fa3f96e23bf56922fa59d748238b30507bfe361bbc/protobuf-3.6.0-cp36-cp36m-win_amd64.whl (1.1MB)
+Requirement already satisfied: setuptools in c:\users\kostas\appdata\local\programs\python\python36\lib\site-packages (from protobuf) (39.0.1)
+Requirement already satisfied: six>=1.9 in c:\users\kostas\appdata\local\programs\python\python36\lib\site-packages (from protobuf) (1.11.0)
+Installing collected packages: protobuf
+Successfully installed protobuf-3.6.0

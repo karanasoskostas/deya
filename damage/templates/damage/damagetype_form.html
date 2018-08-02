@@ -1,0 +1,53 @@
+{% extends 'damage/base.html' %}
+{% block title %}  {{ general.deya_name }} Κωδικοποίηση Bλαβών{% endblock %}
+
+
+{% block body %}
+
+    <h1> Κωδικοποίηση Βλαβών - CreateForm</h1>
+
+
+    <div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div>
+                           <label for="code">Κωδικός : </label>
+                            <input id="code" type="text" name="code" value=" {{ code }} "/>
+                        </div>
+
+                        <div>
+                           <label for="desc">Περιγραφή : </label>
+                           <input id="desc" type="text" name="desc" value=" {{ desc }} " />
+                            <br>
+                        </div>
+
+                    </form>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Καταχώρηση</button>
+
+                            </div>
+                        </div>
+
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

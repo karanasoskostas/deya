@@ -15,6 +15,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from datetime import timedelta
 from decimal import Decimal
 from django.conf import settings
+import requests
 from django import http
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
@@ -36,11 +37,11 @@ class HomeTest(TemplateView):
     #send_mail('test email', 'hello world', 'kpkmp34@gmail.com', ['karanasoskostas@yahoo.gr'], fail_silently=False)
 
 
-class DamageEntry(TemplateView):
+class damage_entry_view(TemplateView):
     template_name = "damage/damageadd.html"
 
 
-    def get(self, request):
+    def get(self, request: object) -> object:
         general = General.objects.get(pk=1)
         form = DamageEntryForm()
         args = {'form': form,
@@ -56,7 +57,7 @@ class DamageEntry(TemplateView):
         if form.is_valid():
             post = form.save(commit=False)
 
-            if self.request.user.is_authenticated():
+            if self.request.user.is_authenticated:  # κάποια στιγμή το is_authenticated() χτύπησε !!!!
                 post.user = request.user
 
 
@@ -68,14 +69,14 @@ class DamageEntry(TemplateView):
             post.formatted_address= location.formatted_address
 
 
-            post.entry_date = datetime.datetime.now(tz=timezone.utc)
+            post.entry_date = datetime.now(tz=timezone.utc)
             post.save()
 
             form = DamageEntryForm()
             args = {'form': form,
                     'general': general
                     }
-            return http.HttpResponseRedirect('damage/add/')
+            return redirect(request.META.get('HTTP_REFERER'))
             # οχι reverse γιατί διαβάζει ολο το urls.py απο την αρχη και καθυστερεί σε μεγαλα projects !!!!!
             #return HttpResponseRedirect(reverse('damage-add'), args)
         else:
@@ -85,6 +86,7 @@ class DamageEntry(TemplateView):
              args = {'form': form,
                     'general': general
                     }
+             print(request.build_absolute_uri())
              return render(request, self.template_name, args)
 
 
@@ -124,7 +126,7 @@ def damagetype_add(request):
 class Map(TemplateView):
     template_name = "damage/map.html"
 
-    def get(self, request):
+    def get(self, request: object) -> object:
         return render(request, self.template_name)
 
 
@@ -146,13 +148,11 @@ class DamageTypeTest(TemplateView):
         return render(request, self.template_name, args)
 
 
-class DamageListEntry(generic.UpdateView):
+class DamageUpdateView(generic.UpdateView):
     model = Damage
     template_name = "damage/damageadd.html"
     form_class = DamageEntryForm
     success_url = 'damage/list/'
-
-
     # def form_valid(self, form):
     #     response = super().form_valid(form)
     #     print(form.cleaned_data['lastname'])
@@ -160,7 +160,9 @@ class DamageListEntry(generic.UpdateView):
     #     return response
 
     def form_valid(self, form):
-        redirect_url = super(DamageListEntry, self).form_valid(form)
+        redirect_url = super(DamageUpdateView, self).form_valid(form)
+        next = self.request.POST.get('next')
+        print(next)
 #        print(form.cleaned_data['lastname'])
         lat = form.cleaned_data['lat']
         lng = form.cleaned_data['lng']
@@ -176,31 +178,65 @@ class DamageListEntry(generic.UpdateView):
 
         damage.save()
 
-        return redirect_url
+        return HttpResponseRedirect(next)
+        #return redirect_url
 
 
-class DamageList(TemplateView):
+class DamageListView(TemplateView):
     template_name = "damage/damagelist_table.html"
 
-    def get(self, request):
+    def get(self, request, pfromdate: object = None, ptodate: object = None):
         form = DamageListForm()
-        damage_list = Damage.objects.all()
-        general = General.objects.get(pk=1)
-        request.session['']
+
+        if pfromdate is None:      # παντα is None oxi == None
+            pfromdate = '01_01_2000'
+
+        if ptodate is None:
+            ptodate = '01_01_2100'
+
+        fdate = datetime.strptime(pfromdate, '%d_%m_%Y')  # ερχεται με format dd_mm_yyyy
+        fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)  # min time to datetime
+
+        tdate = datetime.strptime(ptodate, '%d_%m_%Y')  # string to datetime
+        tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
+        # tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)  #  και αυτό παίζει !!!!
+
+        d_list = Damage.objects.filter(entry_date__range=(fdate, tdate))
+        paginator = Paginator(d_list, 10)
+
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
+        try:
+            damage_list = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            damage_list = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            damage_list = paginator.page(paginator.num_pages)
+
+        general = General.objects.all()
+        fromdatetext = fdate.strftime('%d/%m/%Y')
+        todatetext = tdate.strftime('%d/%m/%Y')
+
+
         args = {
             'form': form,
             'damage_list': damage_list,
-            'general': general
+            'general': general,
+            'fromdate': fromdatetext,
+            'todate': todatetext,
+            'page_obj': page_obj
         }
         return render(request, self.template_name, args)
 
 
-class DamageListCriteria(TemplateView):
+class DamageListCriteriaView(TemplateView):
     template_name = "damage/damagelist_criteria.html"
 
     def get(self, request):
         form = DamageListCriteriaForm()
-        general = General.objects.get(pk=1)
+        general = General.objects.all()
         args = {
             'form': form,
             'general': general
@@ -208,50 +244,25 @@ class DamageListCriteria(TemplateView):
         return render(request, self.template_name, args)
 
     def post(self, request):
-        general = General.objects.get(pk=1)
+        general = General.objects.all()
         form = DamageListCriteriaForm(request.POST)
         form.non_field_errors()
 
         if form.is_valid():
             fromdate = request.POST.get('fromdate')
             fdate = datetime.strptime(fromdate, '%d/%m/%Y')
-            fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)
-            print('fdate ', fdate)
+            fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)  # min time to datetime
+
             todate = form.cleaned_data['todate']
-            #tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)
-            tdate = datetime.strptime(todate, '%d/%m/%Y')
-            tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)
-            print('tdate ', tdate)
+            #tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)  #  και αυτό παίζει !!!!
+            tdate = datetime.strptime(todate, '%d/%m/%Y') # string to datetime
+            tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
 
-            d_list = Damage.objects.filter(entry_date__range=(fdate, tdate))
-            paginator = Paginator(d_list, 1)
+            fromdatetext = fdate.strftime('%d_%m_%Y')
+            todatetext = tdate.strftime('%d_%m_%Y')
 
-            page = request.GET.get('page')
-            try:
-                damage_list = paginator.page(page)
-            except PageNotAnInteger:
-                # If page is not an integer, deliver first page.
-                damage_list = paginator.page(1)
-            except EmptyPage:
-                # If page is out of range (e.g. 9999), deliver last page of results.
-                damage_list = paginator.page(paginator.num_pages)
-
-            template = "damage/damagelist_table.html"
-            form = DamageListForm()
-            general = General.objects.get(pk=1)
-
-            fromdatetext = fdate.strftime('%d/%m/%Y')
-            todatetext = tdate.strftime('%d/%m/%Y')
-
-            args = {
-                'form': form,
-                'damage_list': damage_list,
-                'general': general,
-                'fromdate': fromdatetext,
-                'todate': todatetext
-            }
-            return render(request, template, args)
-
+            #return render(request, template, args)
+            return redirect('damage-list-dates', pfromdate=fromdatetext, ptodate=todatetext)
 
         else:
             print('form is not valid')

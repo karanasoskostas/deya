@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'widget_tweaks',
+    'django_cool_paginator',
 ]
 
 MIDDLEWARE = [
@@ -122,8 +123,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 STATIC_URL = '/static/'
 
-
 GOOGLE_API_KEY = "AIzaSyDmdCbjHSXuma43DN3X8ihHuyU-rI3KKZY"
+
+COOL_PAGINATOR_NEXT_NAME = "Eπόμενη"
+COOL_PAGINATOR_PREVIOUS_NAME = "Προηγούμενη"
+
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'kpkmp34@gmail.com'

@@ -164,10 +164,11 @@
             <div class="col">
 
                 <div class="form-row">
-                <button type="submit" class="btn btn-success">
-                    <span class="glyphicon glyphicon-ok"></span> Καταχώρηση Βλάβης
-                 </button>
-                <a href="{% url 'damage-add' %}" class="btn btn-default">Cancel</a>
+                    <input type="hidden" name="next" value="{{ request.path }}"/>
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-ok"></span> Καταχώρηση Βλάβης
+                     </button>
+                <a href="{% url 'damage-add' %}" class="btn btn-outline-danger" >Cancel</a>
              </div>
 
             </div>

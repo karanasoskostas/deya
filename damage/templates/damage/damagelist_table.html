@@ -1,7 +1,7 @@
 {% extends 'damage/base.html' %}
 {% load widget_tweaks %}
 {% load static %}
-
+{% load cool_paginate %}
 
 {% block title %} {{ general.deya_name }} - ΛΙΣΤΑ BΛΑΒΩΝ {% endblock %}
 
@@ -80,25 +80,15 @@
 
                             
 
-                    
                     </tbody>
                 </table>
+                {% cool_paginate page_obj=damage_list  %}
 
-                <div class="pagination">
-                    <span class="step-links">
-                        {% if damage_list.has_previous %}
-                            <a href="?page={{ damage_list.previous_page_number }}">previous</a>
-                        {% endif %}
 
-                        <span class="current">
-                            Page {{ damage_list.number }} of {{ damage_list.paginator.num_pages }}.
-                        </span>
 
-                        {% if damage_list.has_next %}
-                            <a href="?page={{ damage_list.next_page_number }}">next</a>
-                        {% endif %}
-                    </span>
-                </div>
+
+
+
 
 
         </form>

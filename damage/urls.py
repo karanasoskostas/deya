@@ -19,15 +19,16 @@ urlpatterns = [
     url(r'damagetype/add/$', views.DamageTypeCreate.as_view(), name="damagetype-add"),
 
     # /damage/damage/add/
-    url(r'damage/add/$', views.DamageEntry.as_view(), name="damage-add"),
+    url(r'damage/add/$', views.damage_entry_view.as_view(), name="damage-add"),
 
     # /damage/damage/list/
-    url(r'damage/list/$', views.DamageList.as_view(), name="damage-list"),
+    url(r'damage/list_dates/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/$', views.DamageListView.as_view(),
+        name="damage-list-dates"),
 
     # /damage/damage/list/1
-    url(r'damage/list/(?P<pk>[0-9]+)/$', views.DamageListEntry.as_view(), name="damage-by-id"),
+    url(r'damage/list/(?P<pk>[0-9]+)/$', views.DamageUpdateView.as_view(), name="damage-by-id"),
 
     # /damage/damage/list/criteria/
-    url(r'damage/list/criteria/$', views.DamageListCriteria.as_view(), name="damage-list-criteria"),
+    url(r'damage/list/criteria/$', views.DamageListCriteriaView.as_view(), name="damage-list-criteria"),
 
 ]

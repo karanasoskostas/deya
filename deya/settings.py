@@ -125,7 +125,7 @@ STATIC_URL = '/static/'
 
 GOOGLE_API_KEY = "AIzaSyDmdCbjHSXuma43DN3X8ihHuyU-rI3KKZY"
 
-COOL_PAGINATOR_NEXT_NAME = "Eπόμενη"
+COOL_PAGINATOR_NEXT_NAME = "Eπόμενη"            #COOL_PAGINATOR options
 COOL_PAGINATOR_PREVIOUS_NAME = "Προηγούμενη"
 
 

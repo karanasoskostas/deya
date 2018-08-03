@@ -1,14 +1,13 @@
 from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field, ButtonHolder, Fieldset
-from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
-from .models import General
-
-from .models import DamageType, Damage
+from .models import DamageType, Damage , DamageStatus
 
 
 
 class DamageTypeChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return obj.desc
+
+class DamageStatusChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.desc
 
@@ -48,7 +47,7 @@ class DamageEntryForm(forms.ModelForm):
                                                                                 'placeholder': 'Περιγράψτε τη Βλάβη',
                                                                                 'rows': 8
                                                                           }), required=False)
-    lng = forms.CharField(max_length=100, required=False)
+    selected = "selected"
     lat = forms.CharField(max_length=100, required=False)
     formatted_address = forms.CharField(max_length=100, required=False)
 
@@ -95,4 +94,5 @@ class DamageListForm(forms.ModelForm):
 class DamageListCriteriaForm(forms.Form):
     fromdate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
     todate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
-
+    damagestatus = DamageStatusChoiceField(queryset=DamageStatus.objects.all(),
+                                  widget=forms.Select(attrs={'class': 'select2_single form-control', 'blank': 'True'}))

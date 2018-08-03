@@ -1,4 +1,4 @@
-from .models import General, DamageType, Damage
+from .models import General, DamageType, Damage , DamageStatus
 from django.http import HttpResponse
 from django.http import Http404
 from django.template import loader
@@ -237,11 +237,14 @@ class DamageListCriteriaView(TemplateView):
     def get(self, request):
         form = DamageListCriteriaForm()
         general = General.objects.all()
+        damagestatus = DamageStatus.objects.all()
         args = {
             'form': form,
-            'general': general
+            'general': general,
+            'damagestatus': damagestatus
         }
         return render(request, self.template_name, args)
+
 
     def post(self, request):
         general = General.objects.all()

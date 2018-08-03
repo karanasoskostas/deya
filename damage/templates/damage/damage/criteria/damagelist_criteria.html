@@ -28,34 +28,43 @@
                 <div class="form-group row"  >
 
                     <label for = "d1" class="col-sm-2 col-form-label">Από Ημερομηνία </label>
-
-                    <input id="fromdate" width="170"  class="form-control" name="fromdate" />
-                    <script>
-                        $('#fromdate').datepicker({
-                            locale: 'el-el',
-                            format: 'dd/mm/yyyy',
-                            uiLibrary: 'bootstrap4',
-                            value: new moment().format("DD/MM/YYYY")
-                        });
-                    </script>
-
+                    <div class="col-sm-6">
+                        <input id="fromdate" width="170"  class="form-control" name="fromdate" />
+                        <script>
+                            $('#fromdate').datepicker({
+                                locale: 'el-el',
+                                format: 'dd/mm/yyyy',
+                                uiLibrary: 'bootstrap4',
+                                value: new moment().format("DD/MM/YYYY")
+                            });
+                        </script>
+                    </div>
                 </div>
 
 
             <div class="form-group row"  >
 
                 <label for = "d2" class="col-sm-2 col-form-label">Εως Ημερομηνία </label>
-                <input id="todate" width="170" class="form-control"  name="todate"/>
-                <script>
-                    $('#todate').datepicker({
-                        locale: 'el-el',
-                        format: 'dd/mm/yyyy',
-                        uiLibrary: 'bootstrap4',
-                        value: new moment().format("DD/MM/YYYY")
-                    });
-                </script>
-
+                <div class="col-sm-6">
+                    <input id="todate" width="170" class="form-control"  name="todate"/>
+                    <script>
+                        $('#todate').datepicker({
+                            locale: 'el-el',
+                            format: 'dd/mm/yyyy',
+                            uiLibrary: 'bootstrap4',
+                            value: new moment().format("DD/MM/YYYY")
+                        });
+                    </script>
+                </div>
             </div>
+
+            <div class="form-group row"   >
+                <label for = "d2" class="col-sm-2 col-form-label">Κατάσταση Βάβης </label>
+                <div class="col-sm-6">
+                    {% render_field form.damagestatus class="form-control" id="damagestatus"%}
+                </div>
+            </div>
+
 
 
             <div class="form-group row"  >

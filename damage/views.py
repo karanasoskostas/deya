@@ -41,7 +41,7 @@ class damage_entry_view(TemplateView):
     template_name = "damage/damageadd.html"
 
 
-    def get(self, request: object) -> object:
+    def get(self, request):
         general = General.objects.get(pk=1)
         form = DamageEntryForm()
         args = {'form': form,
@@ -126,7 +126,7 @@ def damagetype_add(request):
 class Map(TemplateView):
     template_name = "damage/map.html"
 
-    def get(self, request: object) -> object:
+    def get(self, request):
         return render(request, self.template_name)
 
 
@@ -185,7 +185,7 @@ class DamageUpdateView(generic.UpdateView):
 class DamageListView(TemplateView):
     template_name = "damage/damagelist_table.html"
 
-    def get(self, request, pfromdate: object = None, ptodate: object = None):
+    def get(self, request, pfromdate, ptodate, pdamagestatus):
         form = DamageListForm()
 
         if pfromdate is None:      # παντα is None oxi == None
@@ -201,13 +201,23 @@ class DamageListView(TemplateView):
         tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
         # tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)  #  και αυτό παίζει !!!!
 
-        d_list = Damage.objects.filter(entry_date__range=(fdate, tdate))
-        paginator = Paginator(d_list, 10)
+        if  pdamagestatus == '':
+            fromdamagestatuspk = 0
+            todamagestatuspk = 99999
+            statusdesc='ΟΛΑ'
+        else:
+            fromdamagestatuspk = int(pdamagestatus)
+            todamagestatuspk = fromdamagestatuspk
+            statusdesc = DamageStatus.objects.get(pk=fromdamagestatuspk).desc
+
+        d_list = Damage.objects.filter(entry_date__range=(fdate, tdate), damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk) )
+        paginator = Paginator(d_list, 1)
 
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)
+
         try:
-            damage_list = paginator.page(page)
+             damage_list = paginator.page(page)
         except PageNotAnInteger:
             # If page is not an integer, deliver first page.
             damage_list = paginator.page(1)
@@ -223,10 +233,12 @@ class DamageListView(TemplateView):
         args = {
             'form': form,
             'damage_list': damage_list,
+            'page_obj': page_obj,
             'general': general,
             'fromdate': fromdatetext,
             'todate': todatetext,
-            'page_obj': page_obj
+            'statusdesc': statusdesc
+
         }
         return render(request, self.template_name, args)
 
@@ -237,11 +249,10 @@ class DamageListCriteriaView(TemplateView):
     def get(self, request):
         form = DamageListCriteriaForm()
         general = General.objects.all()
-        damagestatus = DamageStatus.objects.all()
+
         args = {
             'form': form,
-            'general': general,
-            'damagestatus': damagestatus
+            'general': general
         }
         return render(request, self.template_name, args)
 
@@ -264,8 +275,12 @@ class DamageListCriteriaView(TemplateView):
             fromdatetext = fdate.strftime('%d_%m_%Y')
             todatetext = tdate.strftime('%d_%m_%Y')
 
+            damagestatus = request.POST.get('damagestatus')
+
+            print('dstatus ',damagestatus)
+
             #return render(request, template, args)
-            return redirect('damage-list-dates', pfromdate=fromdatetext, ptodate=todatetext)
+            return redirect('damage-list-dates', pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=damagestatus)
 
         else:
             print('form is not valid')

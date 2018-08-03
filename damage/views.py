@@ -232,7 +232,7 @@ class DamageListView(TemplateView):
 
 
 class DamageListCriteriaView(TemplateView):
-    template_name = "damage/damagelist_criteria.html"
+    template_name = "damage/damage/criteria/damagelist_criteria.html"
 
     def get(self, request):
         form = DamageListCriteriaForm()

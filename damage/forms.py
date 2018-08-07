@@ -95,4 +95,5 @@ class DamageListCriteriaForm(forms.Form):
     fromdate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
     todate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
     damagestatus = DamageStatusChoiceField(queryset=DamageStatus.objects.all(),
-                                  widget=forms.Select(attrs={'class': 'select2_single form-control', 'blank': 'True'}), required=False)
+                                  widget=forms.Select(attrs={'class': 'select2_single form-control',
+                                                             'blank': 'True'}),required=False)

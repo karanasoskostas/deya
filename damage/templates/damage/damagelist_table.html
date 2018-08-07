@@ -7,7 +7,7 @@
 
 {% block body %}
 
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <form  >
 
             <td class="container">
@@ -15,7 +15,8 @@
             <h1 style="font-family: Calibri; align-content: center" align="center"> ΛΙΣΤΑ ΒΛΑΒΩΝ  </h1>
 
                 <form class="form-inline">
-                    <div class="container">
+                    <div class="container "  >
+
                         <label for="l1">Από Ημερομηνία :</label>
                         <input type="text"  id="example-text-input" value= {{ fromdate }} readonly
                                style="border: 0px; font-weight: bold; color: darkblue ">
@@ -23,10 +24,12 @@
                         <input type="text"  id="e2" value= {{ todate }} readonly
                                style="border: 0px; font-weight: bold; color: darkblue">
                         <label for="l3" >Status :</label>
-                        <input type="text"  id="e2" value= {{ statusdesc }} readonly
-                               style="border: 0px; font-weight: bold; color: darkblue">
 
-                    </div>
+                        <input type="text"  id="e2"
+                               style="border: 0px; font-weight: bold; color: darkblue; "
+                               value= {{ statusdesc }} >
+                        </div>
+
                 </form>
 
 
@@ -89,7 +92,7 @@
                     </tbody>
 
                 </table>
-                {% if page_obj %}:
+                {% if page_obj %}
                     {% cool_paginate page_obj=page_obj %}
                 {% endif %}
 

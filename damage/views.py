@@ -24,9 +24,49 @@ from damage.utils.genmodels import LocationDetails
 from django.core.mail import send_mail
 
 
-class Test(TemplateView):
-    template_name = "damage/test.html"
 
+
+class Test(TemplateView):
+    template_name = "damage/damage/test/markers.html"
+
+    def get(self, request):
+        general = General.objects.get(pk=1)
+        damage = Damage.objects.all()
+        my_list = list()
+        l = list
+        for d in damage:
+            if d.lat is None:
+                d.lat = str(general.deya_latitude)
+            if d.lng is None:
+                d.lng = str(general.deya_longitude)
+            l= [d.formatted_address, d.lat, d.lng, d.damagetype.desc, d.pk, d.damagestatus.desc, d.entry_date.strftime('%d/%m/%Y %H:%M')]
+            my_list.append(l)
+            #print(d.damagetype.desc)
+
+
+        # mylocations = [
+        #     ['Bondi Beach', -33.890542, 151.274856],
+        #     ['Coogee Beach', -33.923036, 151.259052],
+        #     ['Cronulla Beach', -34.028249, 151.157507],
+        #     ['Manly Beach', -33.80010128657071, 151.28747820854187],
+        #     ['Maroubra Beach', -33.950198, 151.259302]
+        # ]
+
+        #lat = -33.92
+        lat = general.deya_latitude
+        lng = general.deya_longitude
+
+        #print(my_list)
+        #print(mylocations)
+        #print(lat, lng)
+
+        args = {
+                'general': general,
+                'mylocations': my_list,
+                'lat': lat,
+                'lng': lng
+                }
+        return render(request, self.template_name, args)
 
 class Mdb(TemplateView):
     template_name = "damage/mdb.html"
@@ -210,7 +250,8 @@ class DamageListView(TemplateView):
             todamagestatuspk = fromdamagestatuspk
             statusdesc = DamageStatus.objects.get(pk=fromdamagestatuspk).desc
 
-        d_list = Damage.objects.filter(entry_date__range=(fdate, tdate), damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk) )
+        d_list = Damage.objects.filter(entry_date__range=(fdate, tdate),
+                                    damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk)).order_by('entry_date')
         paginator = Paginator(d_list, 1)
 
         page = request.GET.get('page')

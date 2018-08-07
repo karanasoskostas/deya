@@ -126,7 +126,7 @@
         this.options.mapOptions
       );
 
-      // add click event listener on the map
+    // add click event listener on the map
       google.maps.event.addListener(
         this.map,
         'click',

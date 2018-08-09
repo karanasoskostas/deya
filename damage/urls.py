@@ -22,8 +22,8 @@ urlpatterns = [
     url(r'damage/add/$', views.damage_entry_view.as_view(), name="damage-add"),
 
     # /damage/damage/list/15_08_2018/15_08_2018/1   το .* παιζει οταν θελω η παραμετρος να ειναι None
-    url(r'damage/list_dates/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/$', views.DamageListView.as_view(),
-        name="damage-list-dates"),
+    url(r'damage/list_dates/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/$',
+        views.DamageListView.as_view(), name="damage-list-dates"),
 
     # /damage/damage/list/1
     url(r'damage/list/(?P<pk>[0-9]+)/$', views.DamageUpdateView.as_view(), name="damage-by-id"),

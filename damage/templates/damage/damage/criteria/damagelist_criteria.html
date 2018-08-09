@@ -59,17 +59,29 @@
             </div>
 
             <div class="form-group row"   >
-                <label for = "d2" class="col-sm-2 col-form-label">Κατάσταση Βάβης </label>
+                <label for = "d2" class="col-sm-2 col-form-label">Κατάσταση Βλάβης </label>
                 <div class="col-sm-6">
                     {% render_field form.damagestatus class="form-control" id="damagestatus"%}
                 </div>
             </div>
 
 
+            <div class="form-group row"   >
+                <label for = "d2" class="col-sm-2 col-form-label">Ειδος Βλάβης </label>
+                <div class="col-sm-6">
+                    {% render_field form.damagetype class="form-control" id="damagetype"%}
+                </div>
+            </div>
+
+
+
 
             <div class="form-group row"  >
                 <button type="submit" class="btn btn-success">
                     <span class="glyphicon glyphicon-ok"></span> Προβολή Βλαβών
+                </button>
+                <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-map-marker"></span> Προβολή στο Χάρτη
                  </button>
                 <!--<a href="{% url 'damage-add' %}" class="btn btn-default">Cancel</a>-->
                 <button type="button" class = "btn btn-outline-danger" onClick="javascript:history.go(-1);">

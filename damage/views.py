@@ -27,7 +27,7 @@ from django.core.mail import send_mail
 
 
 class Test(TemplateView):
-    template_name = "damage/damage/test/markers.html"
+    template_name = "damage/damage/maps/markers.html"
 
     def get(self, request):
         general = General.objects.get(pk=1)
@@ -225,7 +225,7 @@ class DamageUpdateView(generic.UpdateView):
 class DamageListView(TemplateView):
     template_name = "damage/damagelist_table.html"
 
-    def get(self, request, pfromdate, ptodate, pdamagestatus):
+    def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
         form = DamageListForm()
 
         if pfromdate is None:      # παντα is None oxi == None
@@ -241,17 +241,28 @@ class DamageListView(TemplateView):
         tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
         # tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)  #  και αυτό παίζει !!!!
 
-        if  pdamagestatus == '':
+        if pdamagestatus == '' or pdamagestatus =="None":
             fromdamagestatuspk = 0
             todamagestatuspk = 99999
-            statusdesc='ΟΛΑ'
+            statusdesc = 'ΟΛΑ'
         else:
             fromdamagestatuspk = int(pdamagestatus)
             todamagestatuspk = fromdamagestatuspk
             statusdesc = DamageStatus.objects.get(pk=fromdamagestatuspk).desc
 
+        if pdamagetype == '' or pdamagetype =="None":
+            fromdamagetypepk = 0
+            todamagetypepk = 99999
+            typedesc = 'ΟΛΑ'
+        else:
+            fromdamagetypepk = int(pdamagetype)
+            todamagetypepk = fromdamagestatuspk
+            typedesc = DamageType.objects.get(pk=fromdamagetypepk).desc
+
         d_list = Damage.objects.filter(entry_date__range=(fdate, tdate),
-                                    damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk)).order_by('entry_date')
+                                       damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk),
+                                       damagetype__pk__range=(fromdamagetypepk, todamagetypepk)).order_by('entry_date')
+
         paginator = Paginator(d_list, 1)
 
         page = request.GET.get('page')
@@ -297,7 +308,6 @@ class DamageListCriteriaView(TemplateView):
         }
         return render(request, self.template_name, args)
 
-
     def post(self, request):
         general = General.objects.all()
         form = DamageListCriteriaForm(request.POST)
@@ -317,11 +327,15 @@ class DamageListCriteriaView(TemplateView):
             todatetext = tdate.strftime('%d_%m_%Y')
 
             damagestatus = request.POST.get('damagestatus')
+            #damagestatus = form.damagestatus
+            print('damagestatus ', damagestatus)
+            damagetype = request.POST.get('damagetype')
 
-            print('dstatus ',damagestatus)
+            print('damagetype ',damagetype)
 
             #return render(request, template, args)
-            return redirect('damage-list-dates', pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=damagestatus)
+            return redirect('damage-list-dates', pfromdate=fromdatetext, ptodate=todatetext,
+                            pdamagestatus=damagestatus, pdamagetype=damagetype)
 
         else:
             print('form is not valid')

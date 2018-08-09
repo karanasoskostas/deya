@@ -95,5 +95,40 @@ class DamageListCriteriaForm(forms.Form):
     fromdate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
     todate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
     damagestatus = DamageStatusChoiceField(queryset=DamageStatus.objects.all(),
-                                  widget=forms.Select(attrs={'class': 'select2_single form-control',
-                                                             'blank': 'True'}),required=False)
+                                           widget=forms.Select(attrs={'class': 'select2_single form-control',
+                                                                      'blank': 'True'}), required=False)
+    damagetype = DamageTypeChoiceField(queryset=DamageType.objects.all(),
+                                       widget=forms.Select(attrs={'class': 'select2_single form-control',
+                                                                  'blank': 'True'}), required=False)
+
+    def clean_damagestatus(self):
+        field = self.cleaned_data['damagestatus']
+        print('def clean_damagestatus', field)
+        return field
+
+    def clean_damagetype(self):
+        field = self.cleaned_data['damagetype']
+        print('def clean_damagetype', field)
+        return field
+
+    ###############################################################################
+    #         multiple select drop down
+    #############################################################################
+    # my_list = list()
+    # damagetype_list = DamageType.objects.all()
+    # for d in damagetype_list:
+    #     l = [d.pk, d.desc]
+    #     my_list.append(l)
+    #
+    #     print(my_list)
+    #
+    #
+    # damagetype = forms.MultipleChoiceField(choices=my_list, widget=forms.SelectMultiple(),
+    #                                             required=False)
+    #
+    # def clean_damagetype(self):
+    #     field = ""
+    #     for data in self.cleaned_data['damagetype']:
+    #         field += str(data) + ","
+    #         print('data', str(data))
+    #     return field.lstrip(",")

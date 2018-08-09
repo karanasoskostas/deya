@@ -28,9 +28,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #external apps
     'crispy_forms',
     'widget_tweaks',
-    'django_cool_paginator',
+    'django_cool_paginator'
 ]
 
 MIDDLEWARE = [

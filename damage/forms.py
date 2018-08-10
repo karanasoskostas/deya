@@ -101,15 +101,18 @@ class DamageListCriteriaForm(forms.Form):
                                        widget=forms.Select(attrs={'class': 'select2_single form-control',
                                                                   'blank': 'True'}), required=False)
 
-    def clean_damagestatus(self):
-        field = self.cleaned_data['damagestatus']
-        print('def clean_damagestatus', field)
-        return field
-
-    def clean_damagetype(self):
-        field = self.cleaned_data['damagetype']
-        print('def clean_damagetype', field)
-        return field
+    #########################################################################
+    #  στη clean_damagestatus(self) to field εει τιμη '1 - Kαταχώρηση Βλαβης '
+    ###########################################################################
+    # def clean_damagestatus(self):
+    #     field = self.cleaned_data['damagestatus']
+    #     print('def clean_damagestatus', field)
+    #     return field
+    #
+    # def clean_damagetype(self):
+    #     field = self.cleaned_data['damagetype']
+    #     print('def clean_damagetype', field)
+    #     return field
 
     ###############################################################################
     #         multiple select drop down

@@ -77,16 +77,24 @@
 
 
             <div class="form-group row"  >
-                <button type="submit" class="btn btn-success">
-                    <span class="glyphicon glyphicon-ok"></span> Προβολή Βλαβών
-                </button>
-                <button type="button" class="btn btn-success">
-                    <span class="glyphicon glyphicon-map-marker"></span> Προβολή στο Χάρτη
-                 </button>
+
+                <div class="col">
+                    <button type="submit" class="btn btn-success" name="showlist">
+                        <span class="glyphicon glyphicon-ok"></span> Προβολή Βλαβών
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-success" name="showmap">
+                        <span class="glyphicon glyphicon-map-marker"></span> Προβολή στο Χάρτη
+                     </button>
+                </div>
                 <!--<a href="{% url 'damage-add' %}" class="btn btn-default">Cancel</a>-->
-                <button type="button" class = "btn btn-outline-danger" onClick="javascript:history.go(-1);">
-                    <span class="glyphicon glyphicon-backward"></span> Επιστροφή
-                </button>
+                <div class="col">
+                    <button type="button" class = "btn btn-outline-danger" onClick="javascript:history.go(-1);">
+                        <span class="glyphicon glyphicon-backward"></span> Επιστροφή
+                    </button>
+                </div>
+
             </div>
 
 

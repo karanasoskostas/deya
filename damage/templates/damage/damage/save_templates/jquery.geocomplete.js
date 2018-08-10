@@ -50,7 +50,7 @@
 
     mapOptions: {
       zoom: 14,
-      scrollwheel: true,
+      scrollwheel: false,
       mapTypeId: "roadmap"
     },
 
@@ -126,8 +126,7 @@
         this.options.mapOptions
       );
 
-
-    // add click event listener on the map
+      // add click event listener on the map
       google.maps.event.addListener(
         this.map,
         'click',
@@ -153,7 +152,7 @@
         'zoom_changed',
         $.proxy(this.mapZoomed, this)
       );
-  },
+    },
 
     // Add a marker with the provided `markerOptions` but only
     // if the option was set. Additionally it listens for the `dragend` event
@@ -166,19 +165,11 @@
 
       this.marker = new google.maps.Marker(options);
 
-      // var infowindow = new google.maps.InfoWindow({
-	   //  })
-      //   infowindow.setContent('1234');
-      //
-      //   infowindow.open(this.map ,this.marker);
-
       google.maps.event.addListener(
         this.marker,
         'dragend',
         $.proxy(this.markerDragged, this)
       );
-
-
     },
 
     // Associate the input with the autocompleter and create a geocoder
@@ -317,7 +308,6 @@
         if (this.map){ this.map.setCenter(latLng); }
         if (this.marker){ this.marker.setPosition(latLng); }
       }
-
     },
 
     destroy: function(){

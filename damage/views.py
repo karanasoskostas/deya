@@ -23,50 +23,8 @@ from damage.utils.utils import *
 from damage.utils.genmodels import LocationDetails
 from django.core.mail import send_mail
 
-
-
-
-class Test(TemplateView):
-    template_name = "damage/damage/maps/markers.html"
-
-    def get(self, request):
-        general = General.objects.get(pk=1)
-        damage = Damage.objects.all()
-        my_list = list()
-        l = list
-        for d in damage:
-            if d.lat is None:
-                d.lat = str(general.deya_latitude)
-            if d.lng is None:
-                d.lng = str(general.deya_longitude)
-            l= [d.formatted_address, d.lat, d.lng, d.damagetype.desc, d.pk, d.damagestatus.desc, d.entry_date.strftime('%d/%m/%Y %H:%M')]
-            my_list.append(l)
-            #print(d.damagetype.desc)
-
-
-        # mylocations = [
-        #     ['Bondi Beach', -33.890542, 151.274856],
-        #     ['Coogee Beach', -33.923036, 151.259052],
-        #     ['Cronulla Beach', -34.028249, 151.157507],
-        #     ['Manly Beach', -33.80010128657071, 151.28747820854187],
-        #     ['Maroubra Beach', -33.950198, 151.259302]
-        # ]
-
-        #lat = -33.92
-        lat = general.deya_latitude
-        lng = general.deya_longitude
-
-        #print(my_list)
-        #print(mylocations)
-        #print(lat, lng)
-
-        args = {
-                'general': general,
-                'mylocations': my_list,
-                'lat': lat,
-                'lng': lng
-                }
-        return render(request, self.template_name, args)
+class TestView(TemplateView):
+    template_name = "damage/damage/test/testmenu.html"
 
 class Mdb(TemplateView):
     template_name = "damage/mdb.html"
@@ -222,6 +180,145 @@ class DamageUpdateView(generic.UpdateView):
         #return redirect_url
 
 
+
+class DamageListCriteriaView(TemplateView):
+    template_name = "damage/damage/criteria/damagelist_criteria.html"
+
+    def get(self, request):
+        form = DamageListCriteriaForm()
+        general = General.objects.all()
+
+        args = {
+            'form': form,
+            'general': general
+        }
+        return render(request, self.template_name, args)
+
+    def post(self, request):
+        general = General.objects.all()
+        form = DamageListCriteriaForm(request.POST)
+        form.non_field_errors()
+
+        if form.is_valid():
+
+            fromdate = request.POST.get('fromdate')
+            fdate = datetime.strptime(fromdate, '%d/%m/%Y')
+            fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)  # min time to datetime
+
+            todate = form.cleaned_data['todate']
+            #tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)  #  και αυτό παίζει !!!!
+            tdate = datetime.strptime(todate, '%d/%m/%Y') # string to datetime
+            tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
+
+            fromdatetext = fdate.strftime('%d_%m_%Y')
+            todatetext = tdate.strftime('%d_%m_%Y')
+
+            damagestatus = request.POST.get('damagestatus')
+            #damagestatus = form.damagestatus
+            #print('damagestatus ', damagestatus)
+            damagetype = request.POST.get('damagetype')
+
+            #print('damagetype ',damagetype)
+
+            #return render(request, template, args)
+            if 'showlist' in request.POST:           # ανάλογα με ποιο button εχει πατήσει
+                viewurl = 'damage-list-dates'
+            else:
+                viewurl = 'damage-list-markers'
+
+            return redirect(viewurl, pfromdate=fromdatetext, ptodate=todatetext,
+                            pdamagestatus=damagestatus, pdamagetype=damagetype)
+
+        else:
+            print('form is not valid')
+            print(form.errors)
+            # form = DamageEntryForm()
+            args = {'form': form,
+                    'general': general
+                    }
+            return render(request, self.template_name, args)
+
+
+class DamageMarkersView(TemplateView):
+    template_name = "damage/damage/maps/markers.html"
+
+    def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
+        general = General.objects.get(pk=1)
+
+        if pfromdate is None:      # παντα is None oxi == None
+            pfromdate = '01_01_2000'
+
+        if ptodate is None:
+            ptodate = '01_01_2100'
+
+        fdate = datetime.strptime(pfromdate, '%d_%m_%Y')  # ερχεται με format dd_mm_yyyy
+        fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)  # min time to datetime
+
+        tdate = datetime.strptime(ptodate, '%d_%m_%Y')  # string to datetime
+        tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
+        # tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)  #  και αυτό παίζει !!!!
+
+        if pdamagestatus == '' or pdamagestatus =="None":
+            fromdamagestatuspk = 0
+            todamagestatuspk = 99999
+            statusdesc = 'ΟΛΑ'
+        else:
+            fromdamagestatuspk = int(pdamagestatus)
+            todamagestatuspk = fromdamagestatuspk
+            statusdesc = DamageStatus.objects.get(pk=fromdamagestatuspk).desc
+
+        if pdamagetype == '' or pdamagetype =="None":
+            fromdamagetypepk = 0
+            todamagetypepk = 99999
+            typedesc = 'ΟΛΑ'
+        else:
+            fromdamagetypepk = int(pdamagetype)
+            todamagetypepk = fromdamagetypepk
+            typedesc = DamageType.objects.get(pk=fromdamagetypepk).desc
+
+        damage = Damage.objects.filter(entry_date__range=(fdate, tdate),
+                                       damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk),
+                                       damagetype__pk__range=(fromdamagetypepk, todamagetypepk)).order_by('entry_date')
+
+        my_list = list()
+        l = list
+
+        for d in damage:
+            if d.lat is None:
+                d.lat = str(general.deya_latitude)
+            if d.lng is None:
+                d.lng = str(general.deya_longitude)
+            l= [d.formatted_address, d.lat, d.lng, d.damagetype.desc, d.pk, d.damagestatus.desc, d.entry_date.strftime('%d/%m/%Y %H:%M')]
+            my_list.append(l)
+            #print(d.damagetype.desc)
+
+
+        # mylocations = [
+        #     ['Bondi Beach', -33.890542, 151.274856],
+        #     ['Coogee Beach', -33.923036, 151.259052],
+        #     ['Cronulla Beach', -34.028249, 151.157507],
+        #     ['Manly Beach', -33.80010128657071, 151.28747820854187],
+        #     ['Maroubra Beach', -33.950198, 151.259302]
+        # ]
+
+        #lat = -33.92
+        lat = general.deya_latitude
+        lng = general.deya_longitude
+
+        #print(my_list)
+        #print(mylocations)
+        #print(lat, lng)
+
+        args = {
+                'general': general,
+                'mylocations': my_list,
+                'lat': lat,
+                'lng': lng
+                }
+        return render(request, self.template_name, args)
+
+
+
 class DamageListView(TemplateView):
     template_name = "damage/damagelist_table.html"
 
@@ -293,55 +390,3 @@ class DamageListView(TemplateView):
 
         }
         return render(request, self.template_name, args)
-
-
-class DamageListCriteriaView(TemplateView):
-    template_name = "damage/damage/criteria/damagelist_criteria.html"
-
-    def get(self, request):
-        form = DamageListCriteriaForm()
-        general = General.objects.all()
-
-        args = {
-            'form': form,
-            'general': general
-        }
-        return render(request, self.template_name, args)
-
-    def post(self, request):
-        general = General.objects.all()
-        form = DamageListCriteriaForm(request.POST)
-        form.non_field_errors()
-
-        if form.is_valid():
-            fromdate = request.POST.get('fromdate')
-            fdate = datetime.strptime(fromdate, '%d/%m/%Y')
-            fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)  # min time to datetime
-
-            todate = form.cleaned_data['todate']
-            #tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)  #  και αυτό παίζει !!!!
-            tdate = datetime.strptime(todate, '%d/%m/%Y') # string to datetime
-            tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
-
-            fromdatetext = fdate.strftime('%d_%m_%Y')
-            todatetext = tdate.strftime('%d_%m_%Y')
-
-            damagestatus = request.POST.get('damagestatus')
-            #damagestatus = form.damagestatus
-            print('damagestatus ', damagestatus)
-            damagetype = request.POST.get('damagetype')
-
-            print('damagetype ',damagetype)
-
-            #return render(request, template, args)
-            return redirect('damage-list-dates', pfromdate=fromdatetext, ptodate=todatetext,
-                            pdamagestatus=damagestatus, pdamagetype=damagetype)
-
-        else:
-            print('form is not valid')
-            print(form.errors)
-            # form = DamageEntryForm()
-            args = {'form': form,
-                    'general': general
-                    }
-            return render(request, self.template_name, args)

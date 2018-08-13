@@ -20,11 +20,12 @@ from django import http
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from damage.utils.utils import *
+from damage.appfunctions.appfunctions import *
 from damage.utils.genmodels import LocationDetails
 from django.core.mail import send_mail
 
 class TestView(TemplateView):
-    template_name = "damage/damage/test/testmenu.html"
+    template_name = "damage/test/test_list.html"
 
 class Mdb(TemplateView):
     template_name = "damage/mdb.html"
@@ -70,6 +71,10 @@ class damage_entry_view(TemplateView):
             post.entry_date = datetime.now(tz=timezone.utc)
             post.save()
 
+            damage_mail(post.id)
+
+
+
             form = DamageEntryForm()
             args = {'form': form,
                     'general': general
@@ -88,22 +93,44 @@ class damage_entry_view(TemplateView):
              return render(request, self.template_name, args)
 
 
-def index(request):
-    # all_albums = Album.objects.all()
-    # template = loader.get_template('music/index.html')
-    # context = {'all_albums': all_albums}
+class  IndexView(TemplateView):
 
-    #html = ''
-    #for album in all_albums:
-    #    url = '/music/' + str(album.id)
-    #    html = html + '<a href="' + url + '">' + album.album_title + '</a><br>'
     general = General.objects.get(pk=1)
-    template = loader.get_template('damage/index.html')
-    context = {
-                'general': general
-              }
-    return HttpResponse(template.render(context, request))
+    template_name = 'damage/index.html'
 
+    def get(self, request):
+        context = {
+                    'general': self.general
+                  }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        if 'add' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
+            viewurl = 'damage-add'
+        elif 'list' in request.POST:
+            viewurl = 'damage-list-criteria'
+
+        print(viewurl)
+        return redirect(viewurl)
+
+
+class FrontPageView(TemplateView):
+    general = General.objects.get(pk=1)
+    template_name = 'damage/frontpage/frontpage.html'
+
+    def get(self, request):
+        context = {
+                    'general': self.general
+                  }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        if 'guest' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
+            viewurl = 'index'
+        else:
+            viewurl = 'damage-add'
+
+        return redirect(viewurl)
 
 class DamageTypeCreate(CreateView):
     model = DamageType
@@ -182,7 +209,7 @@ class DamageUpdateView(generic.UpdateView):
 
 
 class DamageListCriteriaView(TemplateView):
-    template_name = "damage/damage/criteria/damagelist_criteria.html"
+    template_name = "damage/criteria/damagelist_criteria.html"
 
     def get(self, request):
         form = DamageListCriteriaForm()
@@ -240,7 +267,7 @@ class DamageListCriteriaView(TemplateView):
 
 
 class DamageMarkersView(TemplateView):
-    template_name = "damage/damage/maps/markers.html"
+    template_name = "damage/maps/markers.html"
 
     def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
         general = General.objects.get(pk=1)
@@ -356,11 +383,12 @@ class DamageListView(TemplateView):
             todamagetypepk = fromdamagestatuspk
             typedesc = DamageType.objects.get(pk=fromdamagetypepk).desc
 
+        order_by = request.GET.get('order_by', 'entry_date')
         d_list = Damage.objects.filter(entry_date__range=(fdate, tdate),
                                        damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk),
-                                       damagetype__pk__range=(fromdamagetypepk, todamagetypepk)).order_by('entry_date')
+                                       damagetype__pk__range=(fromdamagetypepk, todamagetypepk)).order_by(order_by)
 
-        paginator = Paginator(d_list, 1)
+        paginator = Paginator(d_list, 2)
 
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)

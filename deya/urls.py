@@ -7,5 +7,5 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
     url(r'^damage/', include('damage.urls')),
-    url(r'^', views.index, name='index'),
+    #url(r'^', views.FrontPageView.as_view(), name='frontpage'),
 ]

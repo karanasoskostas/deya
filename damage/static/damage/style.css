@@ -1,8 +1,15 @@
 body{
+
 }
 .navbar{
     border-radius: 0;
+    font-family: 'Verdana', cursive; font-size: medium;
 }
 .navbar-brand{
     font-family: 'Verdana', cursive; font-size: medium;
 }
+
+label {
+    font-family: 'Verdana', cursive; font-size: medium;
+}
+

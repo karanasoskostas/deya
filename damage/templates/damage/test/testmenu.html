@@ -1,7 +1,6 @@
-
+<!DOCTYPE html>
 <html lang="el">
   <head>
-
     {% load staticfiles %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,17 +17,12 @@
 
   </head>
   <body id="top">
-
-  {% if user.is_authenticated %}
-    {% include 'damage/navmenu.html' %}
-  {% endif %}
-
   <div class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="cover-container">
           <div class="masthead clearfix">
             <div class="inner">
-
+              <h3 class="masthead-brand">Coming Soon</h3>
               <nav class="nav nav-masthead">
                 <!--
                 <a class="nav-link nav-social" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -38,25 +32,15 @@
                 -->
               </nav>
             </div>
+          </div><br>
+          <div class="inner cover"></div>
+            <h1 class="cover-heading">ΒΛΑΒΕΣ ΔΙΚΤΥΟΥ ΥΔΡΕΥΣΗΣ, ΑΠΟΧΕΤΕΥΣΗΣ & ΑΡΔΕΥΣΗΣ</h1>
+            <p class="lead cover-copy">Καλώς ήρθατε στον ιστότοπο Καταχώρησης, Διαχείρισης και Παρακολούθησης Βλαβών Ύδρευσης, Αποχέτευσης και Άρδευσης.</p>
+            <p class="lead"><button type="button" class="btn btn-lg btn-default btn-notify" data-toggle="modal" data-target="#subscribeModal">Notify Me</button></p>
           </div>
-          <form method="post">
-              {% csrf_token %}
-              <div class="inner cover">
-
-                <p class="lead">
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="add"
-                                        data-toggle="modal" data-target="#subscribeModal__">Καταχώρηση Νέας Βλάβης</button>
-                </p>
-                <br/>
-                <p>
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="list"
-                                        data-toggle="modal" data-target="#subscribeModal__">Προβολή Βλαβών σε Εξέλιξη</button>
-                </p>
-              </div>
-          </form>
           <div class="mastfoot">
             <div class="inner">
-              <p>&copy; Developed and Designed by : <a href="https://templateflip.com/" target="_blank">Kostas Karanasos</a>.</p>
+              <p>&copy; Your Company. Design: <a href="https://templateflip.com/" target="_blank">TemplateFlip</a>.</p>
             </div>
           </div>
           <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModalLabel" aria-hidden="true">

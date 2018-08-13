@@ -1,12 +1,11 @@
-
+<!DOCTYPE html>
 <html lang="el">
   <head>
-
     {% load staticfiles %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Coming Soon Bootstrap 4 Template Demo</title>
+    <title>{{ general.deya_name }} - BΛΑΒΕΣ </title>
     <meta name="description" content="ΒΛΑΒΕΣ"/>
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
     <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">-->
@@ -19,16 +18,12 @@
   </head>
   <body id="top">
 
-  {% if user.is_authenticated %}
-    {% include 'damage/navmenu.html' %}
-  {% endif %}
-
   <div class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="cover-container">
           <div class="masthead clearfix">
             <div class="inner">
-
+              <h3 class="masthead-brand">{{ general.deya_name }}</h3>
               <nav class="nav nav-masthead">
                 <!--
                 <a class="nav-link nav-social" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -38,22 +33,21 @@
                 -->
               </nav>
             </div>
-          </div>
-          <form method="post">
-              {% csrf_token %}
+          </div><br>
+            <form method="post">
+                {% csrf_token %}
               <div class="inner cover">
-
+                <h1 class="cover-heading">ΒΛΑΒΕΣ ΔΙΚΤΥΟΥ ΥΔΡΕΥΣΗΣ, ΑΠΟΧΕΤΕΥΣΗΣ & ΑΡΔΕΥΣΗΣ</h1>
+                <p class="lead cover-copy">Καλώς ήρθατε στον ιστότοπο Καταχώρησης, Διαχείρισης και Παρακολούθησης Βλαβών Ύδρευσης, Αποχέτευσης και Άρδευσης.</p>
                 <p class="lead">
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="add"
-                                        data-toggle="modal" data-target="#subscribeModal__">Καταχώρηση Νέας Βλάβης</button>
-                </p>
-                <br/>
-                <p>
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="list"
-                                        data-toggle="modal" data-target="#subscribeModal__">Προβολή Βλαβών σε Εξέλιξη</button>
+                    <button type="submit" class="btn btn-lg btn-default btn-notify" name="guest"
+                                        data-toggle="modal" data-target="#subscribeModal__">Είσοδος ως Επισκέπτης</button>
+                    <button type="submit" class="btn btn-lg btn-default btn-outline-dark" name="user"
+                                        data-toggle="modal" data-target="#subscribeModal__">Χρήστες ΔΕΥΑ</button>
+
                 </p>
               </div>
-          </form>
+            </form>
           <div class="mastfoot">
             <div class="inner">
               <p>&copy; Developed and Designed by : <a href="https://templateflip.com/" target="_blank">Kostas Karanasos</a>.</p>
@@ -61,7 +55,8 @@
           </div>
           <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+              <div class="modal-content" href="{% url "index" %}">
+                  <!--
                 <div class="modal-header">
                   <h5 class="modal-title" id="subscribeModalLabel">Get Notified on Launch:</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -79,6 +74,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default">Subscribe</button>
                 </div>
+                -->
               </div>
             </div>
         </div>

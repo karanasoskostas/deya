@@ -2,7 +2,8 @@ import requests
 from damage.utils.genmodels import LocationDetails
 from damage.models import General
 from django.conf import settings
-
+import threading
+from django.core.mail import EmailMessage
 
 def get_general():
     general = General.objects.get(pk=1)
@@ -90,3 +91,25 @@ def get_cocation(lat, lng):
             location.save()
 
     return location
+
+
+###############################################################################################
+#  Threading για να μην αργει οταν στέλνει email
+###############################################################################################
+class EmailThread(threading.Thread):
+    def __init__(self, subject, html_content, recipient_list, sender):
+        self.subject = subject
+        self.recipient_list = recipient_list
+        self.html_content = html_content
+        self.sender = sender
+        threading.Thread.__init__(self)
+
+    def run(self):
+        msg = EmailMessage(self.subject, self.html_content, self.sender, self.recipient_list)
+        msg.content_subtype = 'html'
+        msg.send()
+
+
+# send_html_mail(....) στελνει το mail
+def send_html_mail(subject, html_content, recipient_list, sender):
+    EmailThread(subject, html_content, recipient_list, sender).start()

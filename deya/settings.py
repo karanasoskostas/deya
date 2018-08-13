@@ -1,5 +1,5 @@
 import os
-
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,7 +31,9 @@ INSTALLED_APPS = [
     #external apps
     'crispy_forms',
     'widget_tweaks',
-    'django_cool_paginator'
+    'django_cool_paginator',
+
+
 ]
 
 MIDDLEWARE = [
@@ -57,6 +59,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -129,9 +132,22 @@ GOOGLE_API_KEY = "AIzaSyDmdCbjHSXuma43DN3X8ihHuyU-rI3KKZY"
 COOL_PAGINATOR_NEXT_NAME = "Eπόμενη"            #COOL_PAGINATOR options
 COOL_PAGINATOR_PREVIOUS_NAME = "Προηγούμενη"
 
+####################################################################################################
+#   MAIL CONFIGURATION
+####################################################################################################
+# GMAIL CONFIGURATION
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'kpkmp34@gmail.com'
+# EMAIL_HOST_PASSWORD = 'VIBER3880046'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'kpkmp34@gmail.com'
-EMAIL_HOST_PASSWORD = 'VIBER3880046'
+# YAHOO CONFIGURATION
+#EMAIL_HOST = 'smtp.mail.yahoo.com'
+#If it first attempts to connect over IPv6 (and blocks for a few minutes) followed by a successful connection on IPv4
+#This ensures that python will connect to gmail over IPv4 from the beginning !!!!
+EMAIL_HOST = socket.gethostbyname('smtp.mail.yahoo.com')
+EMAIL_HOST_USER = 'demodeya@yahoo.com'
+EMAIL_HOST_PASSWORD = 'ipuvvkjkfdpfvpch'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

@@ -20,21 +20,21 @@
 
             <h1 style="font-family: Calibri; align-content: center" align="center"> ΛΙΣΤΑ ΒΛΑΒΩΝ  </h1>
 
-                <form class="form-inline">
-                    <div class="container "  >
+                <form class="form-inline" style="overflow: scroll">
+                    <div class="container"  >
 
                         <label for="l1">Από Ημερομηνία :</label>
                         <input type="text"  id="example-text-input" value= {{ fromdate }} readonly
-                               style="border: 0px; font-weight: bold; color: darkblue ">
+                               style="border: 0px; font-weight: bold; color: darkblue "/>
                         <label for="l2" >Έως Ημερομηνία :</label>
                         <input type="text"  id="e2" value= {{ todate }} readonly
-                               style="border: 0px; font-weight: bold; color: darkblue">
+                               style="border: 0px; font-weight: bold; color: darkblue"/>
                         <label for="l3" >Status :</label>
 
-                        <input type="text"  id="e2"
-                               style="border: 0px; font-weight: bold; color: darkblue; "
-                               value= {{ statusdesc }} >
-                        </div>
+
+                        <label style="border: 0px; font-weight: bold; color: darkblue">{{ statusdesc }}</label>
+
+                    </div>
 
 
                 </form>

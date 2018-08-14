@@ -21,6 +21,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from damage.utils.utils import *
 from damage.appfunctions.appfunctions import *
+from django.db.models.functions import Lower
 from damage.utils.genmodels import LocationDetails
 from django.core.mail import send_mail
 
@@ -384,9 +385,14 @@ class DamageListView(TemplateView):
             typedesc = DamageType.objects.get(pk=fromdamagetypepk).desc
 
         order_by = request.GET.get('order_by', 'entry_date')
+        direction = request.GET.get('direction', 'ASC')
+        if Lower(direction) == Lower('DESC'):
+            order_by = '-{}'.format(order_by)
+
         d_list = Damage.objects.filter(entry_date__range=(fdate, tdate),
                                        damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk),
                                        damagetype__pk__range=(fromdamagetypepk, todamagetypepk)).order_by(order_by)
+
 
         paginator = Paginator(d_list, 2)
 

@@ -1,3 +1,7 @@
+<!-- templates/registration/login.html -->
+{% load widget_tweaks %}
+{% load static %}
+
 
 <html lang="el">
   <head>
@@ -16,18 +20,16 @@
     <!--<link href="styles/frontpage.css" rel="stylesheet">-->
     <link href="{% static 'styles/frontpage.css' %}" rel="stylesheet">
 
+
   </head>
   <body id="top">
-
-  {% if user.is_authenticated %}
-    {% include 'damage/menus/navmenu.html' %}
-  {% endif %}
 
   <div class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="cover-container">
           <div class="masthead clearfix">
             <div class="inner">
+                <h3 class="masthead-brand">{{ general.deya_name }}</h3>
 
               <nav class="nav nav-masthead">
                 {% include 'damage/menus/top-right.html' %}
@@ -36,19 +38,46 @@
           </div>
           <form method="post">
               {% csrf_token %}
-              <div class="inner cover">
+              <div class="inner cover ">
 
-                <p class="lead">
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="add"
-                                        data-toggle="modal" data-target="#subscribeModal__">Καταχώρηση Νέας Βλάβης</button>
-                </p>
-                <br/>
-                <p>
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="list"
-                                        data-toggle="modal" data-target="#subscribeModal__">Προβολή Βλαβών σε Εξέλιξη</button>
-                </p>
+                  <h1 class="cover-heading">ΒΛΑΒΕΣ ΔΙΚΤΥΟΥ ΥΔΡΕΥΣΗΣ, ΑΠΟΧΕΤΕΥΣΗΣ & ΑΡΔΕΥΣΗΣ</h1>
+                  <!--<p class="lead cover-copy">Kαταχωρείστε UserName και Password για να Προχωρήσετε</p>-->
+
+
+                  <div class="form-group row">
+                    <div class="col-4" align="right">
+                        <label for="label" >UserName</label>
+                    </div>
+                    <div class="col-4" >
+                        {% render_field form.username class="form-control" placeholder="" %}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-4" align="right">
+                        <label for = "{{ form.lastname.id_for_label }}" >Password</label>
+                    </div>
+                    <div class="col-4">
+                        {% render_field form.password class="form-control" placeholder="" %}
+                    </div>
+                    </div>
+
+
+                  <p class="lead">
+                    <button type="submit" class="btn btn-lg btn-default btn-notify " name="guest"
+                            data-toggle="modal" data-target="#subscribeModal__"
+                            style="width: 250px !important;">Είσοδος</button>
+
+                    <a href="{% url 'frontpage' %}" role="button" class="btn btn-lg btn-default btn-outline-dark "
+                       style="width: 250px !important;">Επιστροφή</a>
+                  </p>
+
+
               </div>
+
           </form>
+
+
+
           <div class="mastfoot">
             <div class="inner">
               <p>&copy; Developed and Designed by : <a href="https://templateflip.com/" target="_blank">Kostas Karanasos</a>.</p>

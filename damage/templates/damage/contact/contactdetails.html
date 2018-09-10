@@ -1,3 +1,7 @@
+<!-- templates/registration/login.html -->
+{% load widget_tweaks %}
+{% load static %}
+
 
 <html lang="el">
   <head>
@@ -16,12 +20,9 @@
     <!--<link href="styles/frontpage.css" rel="stylesheet">-->
     <link href="{% static 'styles/frontpage.css' %}" rel="stylesheet">
 
+
   </head>
   <body id="top">
-
-  {% if user.is_authenticated %}
-    {% include 'damage/menus/navmenu.html' %}
-  {% endif %}
 
   <div class="site-wrapper">
       <div class="site-wrapper-inner">
@@ -36,19 +37,49 @@
           </div>
           <form method="post">
               {% csrf_token %}
-              <div class="inner cover">
 
-                <p class="lead">
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="add"
-                                        data-toggle="modal" data-target="#subscribeModal__">Καταχώρηση Νέας Βλάβης</button>
-                </p>
-                <br/>
-                <p>
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="list"
-                                        data-toggle="modal" data-target="#subscribeModal__">Προβολή Βλαβών σε Εξέλιξη</button>
-                </p>
-              </div>
+            <div class="form-group col-md-8"  >
+                  <h1 class="lead cover-copy">ΕΠΙΚΟΙΝΩΝΕΙΣΤΕ ΜΕ ΤΗ ΔΕΥΑ</h1>
+                  <!--<p class="lead cover-copy">Kαταχωρείστε UserName και Password για να Προχωρήσετε</p>-->
+
+
+                  <div class="form-group row">
+                        <label for="label" >Ονοματεπώνυμο</label>
+                        {% render_field form.name class="form-control" placeholder="" %}
+                  </div>
+                  <div class="form-group row">
+                        <label for = "{{ form.email.id_for_label }}" >E-Mail</label>
+                        {% render_field form.email class="form-control" placeholder="" %}
+
+                  </div>
+                  <div class="form-group row">
+                        <label for = "{{ form.thl.id_for_label }}" >Τηλέφωνα Επικοινωνίας</label>
+                        {% render_field form.thl class="form-control" placeholder="" %}
+
+                  </div>
+                  <div class="form-group row">
+                        <label for = "{{ form.com.id_for_label }}" >Κείμενο για τη ΔΕΥΑ</label>
+                        {% render_field form.com class="form-control" placeholder="" %}
+
+                  </div>
+                  <br/>
+
+
+                  <p class="lead">
+                    <button type="submit" class="btn btn-lg btn-default btn-notify " name="guest"
+                            data-toggle="modal" data-target="#subscribeModal__"
+                            style="width: 250px !important;">Αποστολή</button>
+
+                    <a  role="button" class="btn btn-lg btn-default btn-outline-dark " onClick="javascript:history.go(-1);"
+                       style="width: 250px !important;">Επιστροφή</a>
+                  </p>
+
+            </div>
+
           </form>
+
+
+
           <div class="mastfoot">
             <div class="inner">
               <p>&copy; Developed and Designed by : <a href="https://templateflip.com/" target="_blank">Kostas Karanasos</a>.</p>

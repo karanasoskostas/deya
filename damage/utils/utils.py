@@ -1,7 +1,6 @@
 import requests
 from damage.utils.genmodels import LocationDetails
 from damage.models import General
-from django.conf import settings
 import threading
 from django.core.mail import EmailMessage
 

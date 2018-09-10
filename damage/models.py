@@ -70,3 +70,18 @@ class General(models.Model):
 
     class Meta:
         db_table = 'general'
+
+
+class ContactDetails(models.Model):
+    entry_date = models.DateTimeField()
+    name = models.CharField(max_length=50, blank=False, default=None)
+    email = models.EmailField(max_length=150, null=True, default=None)
+    thl = models.CharField(max_length=100, null=True, default=None)
+    com = models.CharField(max_length=1000, null=True, default=None)
+    userip = models.CharField(max_length=100, null=True, default=None)
+
+    def __str__(self):
+        return str("{:%d/%m/%Y  %H:%M:%S}".format(self.entry_date)) + '    -    ' + self.name + ' ' + self.email
+
+    class Meta:
+        db_table = 'contactdetails'

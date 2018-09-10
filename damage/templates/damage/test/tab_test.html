@@ -1,0 +1,44 @@
+{% extends 'damage/base.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+
+
+
+{% block title %} {{ general.deya_name }} - BΛΑΒΕΣ {% endblock %}
+
+{% block body %}
+
+
+<link rel="stylesheet" href="{% static 'test/tab_test.css' %}" >
+<div class="container">
+
+    <h1 style="font-family: Calibri; align-content: center" align="center"> KATAΧΩΡΗΣΗ ΒΛΑΒΗΣ  </h1>
+
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane container active" id="home">1</div>
+  <div class="tab-pane container fade" id="menu1">2</div>
+  <div class="tab-pane container fade" id="menu2">3</div>
+</div>
+
+
+</div>
+
+{%  endblock %}
+

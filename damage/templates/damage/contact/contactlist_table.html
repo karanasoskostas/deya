@@ -52,87 +52,60 @@
                             </th>
                             <th scope="col"><a>Ονοματεπώνυμο</a>
                                 <div class="btn-group-vertical">
-                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=lastname&direction=ASC" ></a>
-                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=lastname&direction=DESC" ></a>
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=name&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=name&direction=DESC" ></a>
                                 </div>
                             </th>
 
-                            <th scope="col" ><a> Eίδος Βλάβης </a>
+                            <th scope="col" ><a> E-Mail </a>
                                 <div class="btn-group-vertical">
-                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagetype__desc&direction=ASC" ></a>
-                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagetype__desc&direction=DESC" ></a>
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=email&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=email&direction=DESC" ></a>
                                 </div>
                             </th>
-                            <th scope="col"><a>Διεύθυνση Βλάβης</a>
+                            <th scope="col"><a>Τηλέφωνο</a>
                                 <div class="btn-group-vertical">
-                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damageaddress&direction=ASC" ></a>
-                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damageaddress&direction=DESC" ></a>
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=thl&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=thl&direction=DESC" ></a>
                                 </div>
                             </th>
-                            <th scope="col"><a>ΤΚ</a>
+                            <th scope="col"><a>Μύνημα</a>
                                 <div class="btn-group-vertical">
-                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagezipcode&direction=ASC" ></a>
-                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagezipcode&direction=DESC" ></a>
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=com&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=com&direction=DESC" ></a>
                                 </div>
                             </th>
-                            <th scope="col"><a>Πόλη</a>
-                                <div class="btn-group-vertical">
-                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagetown&direction=ASC" ></a>
-                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagetown&direction=DESC" ></a>
-                                </div>
-                            </th>
-                            <th scope="col"><a>Περιοχή</a>
-                                <div class="btn-group-vertical">
-                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagearea&direction=ASC" ></a>
-                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagearea&direction=DESC" ></a>
-                                </div>
-                            </th>
-                            <th scope="col"><a>Status</a>
-                                <div class="btn-group-vertical">
-                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagestatus__desc&direction=ASC" ></a>
-                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagestatus__desc&direction=DESC" ></a>
-                                </div>
-                            </th>
+
+
 
                         </tr>
                     </thead>
                     <tbody>
 
-                        {% for damage in damage_list %}
+                        {% for contact in contact_list %}
 
                             <tr>
 
                                 <td>
-                                    <a href="{%  url 'damage-by-id' pk=damage.id %}">{{ damage.entry_date | date:'d/m/Y H:i' }} </a>
+                                    <a href="{%  url 'damage-by-id' pk=contact.id %}">{{ contact.entry_date | date:'d/m/Y H:i' }} </a>
                                 </td>
 
                                 <td>
-                                        <a href="#">{{ damage.lastname }} {{ damage.firstname }}</a>
+                                        <a href="#">{{ contact.name }} </a>
                                 </td>
 
                                 <td>
-                                    <a href="#">{{ damage.damagetype.desc }} </a>
+                                    <a href="#">{{ contact.email }} </a>
                                 </td>
 
                                 <td>
-                                    <a href="#">{{ damage.damageaddress }} </a>
+                                    <a href="#">{{ contact.thl }} </a>
                                 </td>
 
                                 <td>
-                                    <a href="#">{{ damage.damagezipcode }} </a>
+                                    <a href="#">{{ contact.com }} </a>
                                 </td>
 
-                                <td>
-                                    <a href="#">{{ damage.damagetown }} </a>
-                                </td>
-
-                                <td>
-                                    <a href="#">{{ damage.damagearea }} </a>
-                                </td>
-
-                                <td>
-                                    <a href="#">{{ damage.damagestatus.desc }} </a>
-                                </td>
                             </tr>
 
                         {% endfor %}

@@ -1,6 +1,7 @@
 import os
 import socket
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(BASE_DIR))
@@ -11,23 +12,31 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(BASE_DIR))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '5-y0wgn3f%d$2oxl&v-+5y3n#&z4*e4eh)lml2k9(s(0rl5r__'
 
+DJANGO_SETTINGS_MODULE='deya.settings'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1  # αλλιως χτυπάει το default authentication system
 
 # Application definition
 
 INSTALLED_APPS = [
     'damage.apps.DamageConfig',
-    #django apps
+    #'damage',
+     #django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+
+
     #external apps
     'crispy_forms',
     'widget_tweaks',
@@ -86,6 +95,11 @@ DATABASES = {
     }
 }
 
+######################################################################################
+#  AUTHORIZATION
+#######################################################################################
+LOGIN_REDIRECT_URL = '/deyausers'
+LOGOUT_REDIRECT_URL = '/frontpage'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -127,8 +141,14 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 STATIC_URL = '/static/'
 
+#################################################################################
+# GOOGLE
+################################################################################
 GOOGLE_API_KEY = "AIzaSyDmdCbjHSXuma43DN3X8ihHuyU-rI3KKZY"
 
+#################################################################################
+# PAGINATION
+#################################################################################
 COOL_PAGINATOR_NEXT_NAME = "Eπόμενη"            #COOL_PAGINATOR options
 COOL_PAGINATOR_PREVIOUS_NAME = "Προηγούμενη"
 
@@ -146,8 +166,10 @@ COOL_PAGINATOR_PREVIOUS_NAME = "Προηγούμενη"
 #EMAIL_HOST = 'smtp.mail.yahoo.com'
 #If it first attempts to connect over IPv6 (and blocks for a few minutes) followed by a successful connection on IPv4
 #This ensures that python will connect to gmail over IPv4 from the beginning !!!!
-EMAIL_HOST = socket.gethostbyname('smtp.mail.yahoo.com')
+#EMAIL_HOST = socket.gethostbyname('smtp.mail.yahoo.com')
 EMAIL_HOST_USER = 'demodeya@yahoo.com'
 EMAIL_HOST_PASSWORD = 'ipuvvkjkfdpfvpch'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+DJANGO_SETTINGS_MODULE = 'deya.settings'

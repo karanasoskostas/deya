@@ -27,10 +27,7 @@
               <h3 class="masthead-brand">{{ general.deya_name }}</h3>
               <nav class="nav nav-masthead">
 
-                <a class="nav-link nav-social" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a class="nav-link nav-social" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a class="nav-link nav-social" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                <a class="nav-link nav-social" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                {% include 'damage/menus/top-right.html' %}
 
               </nav>
             </div>
@@ -42,9 +39,11 @@
                 <p class="lead cover-copy">Καλώς ήρθατε στον ιστότοπο Καταχώρησης, Διαχείρισης και Παρακολούθησης Βλαβών Ύδρευσης, Αποχέτευσης και Άρδευσης.</p>
                 <p class="lead">
                     <button type="submit" class="btn btn-lg btn-default btn-notify" name="guest"
-                                        data-toggle="modal" data-target="#subscribeModal__">Είσοδος ως Επισκέπτης</button>
+                            data-toggle="modal" data-target="#subscribeModal__"
+                            style="width: 300px !important;">Είσοδος ως Επισκέπτης</button>
                     <button type="submit" class="btn btn-lg btn-default btn-outline-dark" name="user"
-                                        data-toggle="modal" data-target="#subscribeModal__">Χρήστες ΔΕΥΑ</button>
+                            data-toggle="modal" data-target="#subscribeModal__"
+                            style="width: 300px !important;">Χρήστες ΔΕΥΑ</button>
 
                 </p>
               </div>

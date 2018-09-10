@@ -1,6 +1,5 @@
 from django import forms
-from .models import DamageType, Damage , DamageStatus
-
+from .models import DamageType, Damage , DamageStatus, ContactDetails
 
 
 class DamageTypeChoiceField(forms.ModelChoiceField):
@@ -135,3 +134,31 @@ class DamageListCriteriaForm(forms.Form):
     #         field += str(data) + ","
     #         print('data', str(data))
     #     return field.lstrip(",")
+
+class ContactDetailsForm(forms.ModelForm):
+    entrydate = forms.CharField(widget=forms.HiddenInput(attrs={'type': 'datetime-local'}), required=False),
+    name = forms.CharField(max_length=100, required=True,
+                                widget = forms.TextInput(
+                                    attrs={
+                                        'style': 'border-color: blue;',
+                                        'placeholder': 'Write your name here'
+                                    }
+                                )
+                           )
+    email = forms.EmailField(max_length=100, required=True)
+    thl = forms.CharField(max_length=100, required=True)
+    com = forms.CharField(max_length=1000, widget=forms.Textarea(attrs={
+        'placeholder': '',
+        'rows': 10
+    }), required=True)
+
+    class Meta:
+        model = ContactDetails
+        fields = ['name', 'email','thl','com']
+
+
+class ContactListForm(forms.ModelForm):
+
+    class Meta:
+        model = ContactDetails
+        fields = ['entry_date', 'name', 'email','thl','com']

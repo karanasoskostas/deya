@@ -1,11 +1,13 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
 # /damage/test/
     url(r'^test/$', views.TestView.as_view(), name="test"),
 
-    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^guest/$', views.IndexView.as_view(), name='index'),
+
+
 
 
     url(r'^damagetype_add/$', views.damagetype_add, name='damagetype_add'),
@@ -35,5 +37,10 @@ urlpatterns = [
     # /damage/damage/list/15_08_2018/15_08_2018/1   το .* παιζει οταν θελω η παραμετρος να ειναι None
     url(r'damage/markers/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/$',
         views.DamageMarkersView.as_view(), name="damage-list-markers"),
+
+    # /damage/contact/
+        url(r'damage/contact/$', views.ContactDetailsListView.as_view(), name="contact-list"),
+
+
 
 ]

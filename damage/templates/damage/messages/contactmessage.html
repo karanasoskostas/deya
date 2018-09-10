@@ -1,54 +1,54 @@
-
+<!DOCTYPE html>
 <html lang="el">
   <head>
-
     {% load staticfiles %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ general.deya_name }} - BΛΑΒΕΣ </title>
+    <title>{{ general.deya_name }} - ΕΠΙΚΟΙΝΩΝΙΑ </title>
     <meta name="description" content="ΒΛΑΒΕΣ"/>
+
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">-->
+
     <link rel="stylesheet" href="{% static 'damage/bootstrap-4.1.1-dist/css/bootstrap.min.css' %}" >
-    <!--<link href="css/font-awesome.min.css" rel="stylesheet">-->
+
     <link rel="stylesheet" href="{% static 'damage/font-awesome-4.7.0/css/font-awesome.min.css' %}" >
-    <!--<link href="styles/frontpage.css" rel="stylesheet">-->
+
     <link href="{% static 'styles/frontpage.css' %}" rel="stylesheet">
 
   </head>
   <body id="top">
-
-  {% if user.is_authenticated %}
-    {% include 'damage/menus/navmenu.html' %}
-  {% endif %}
 
   <div class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="cover-container">
           <div class="masthead clearfix">
             <div class="inner">
-
+              <h3 class="masthead-brand">{{ general.deya_name }}</h3>
               <nav class="nav nav-masthead">
+
                 {% include 'damage/menus/top-right.html' %}
+
               </nav>
             </div>
-          </div>
-          <form method="post">
-              {% csrf_token %}
+          </div><br>
+            <form method="post">
+                {% csrf_token %}
               <div class="inner cover">
-
-                <p class="lead">
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="add"
-                                        data-toggle="modal" data-target="#subscribeModal__">Καταχώρηση Νέας Βλάβης</button>
-                </p>
+                <p class="lead "> {{ general.deya_name }}</p>
+                <p class="lead "> Eυχαριστούμε που επικοινωνοίσατε με τη ΔΕΥΑ</p>
+                <p class="lead "> Το μύνημά σας θα προωθηθεί στο αρμόδο τμήμα</p>
+                <p class="lead "> Αν χρειαστεί θα επικοινωνήσουμε μαζί σας στα στοιχεία επικοινωνίας που μας δώσατε</p>
                 <br/>
-                <p>
-                    <button type="submit" class="btn btn-lg btn-default btn-notify" style="width: 50%" name="list"
-                                        data-toggle="modal" data-target="#subscribeModal__">Προβολή Βλαβών σε Εξέλιξη</button>
+                <br/>
+                <p class="lead">
+
+                    <a href="{% url 'frontpage' %}" role="button" class="btn btn-lg btn-default btn-outline-dark "
+                       style="width: 250px !important;">Συνέχεια</a>
+
                 </p>
               </div>
-          </form>
+            </form>
           <div class="mastfoot">
             <div class="inner">
               <p>&copy; Developed and Designed by : <a href="https://templateflip.com/" target="_blank">Kostas Karanasos</a>.</p>
@@ -56,7 +56,8 @@
           </div>
           <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+              <div class="modal-content" href="{% url "index" %}">
+                  <!--
                 <div class="modal-header">
                   <h5 class="modal-title" id="subscribeModalLabel">Get Notified on Launch:</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -74,6 +75,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default">Subscribe</button>
                 </div>
+                -->
               </div>
             </div>
         </div>

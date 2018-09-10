@@ -6,7 +6,8 @@ from django.shortcuts import get_object_or_404 ,render
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView
-from damage.forms import HomeTestForm, DamageEntryForm, DamageTypeForm, DamageListForm, DamageListCriteriaForm
+from damage.forms import HomeTestForm, DamageEntryForm, DamageTypeForm, DamageListForm, DamageListCriteriaForm, \
+    ContactDetailsForm, ContactListForm
 from django.utils import timezone
 import datetime
 import pytz
@@ -34,8 +35,16 @@ class Mdb(TemplateView):
 
 class HomeTest(TemplateView):
     template_name = "damage/hometest.html"
-    #send_mail('test email', 'hello world', 'kpkmp34@gmail.com', ['karanasoskostas@yahoo.gr'], fail_silently=False)
 
+    def get(self,request):
+
+        current_user = request.user
+        if self.request.user.is_authenticated:
+            print(current_user.id)
+        else:
+            print('not authonticated')
+
+        return render(request, self.template_name)
 
 class damage_entry_view(TemplateView):
     template_name = "damage/damageadd.html"
@@ -94,10 +103,10 @@ class damage_entry_view(TemplateView):
              return render(request, self.template_name, args)
 
 
-class  IndexView(TemplateView):
+class IndexView(TemplateView):
 
     general = General.objects.get(pk=1)
-    template_name = 'damage/index.html'
+    template_name = 'damage/index/index.html'
 
     def get(self, request):
         context = {
@@ -115,6 +124,28 @@ class  IndexView(TemplateView):
         return redirect(viewurl)
 
 
+class IndexDeyaView(TemplateView):
+
+    general = General.objects.get(pk=1)
+    template_name = 'damage/index/index_deya.html'
+
+    def get(self, request):
+        context = {
+                    'general': self.general
+                  }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+         if 'contact' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
+             viewurl = 'contact-list'
+         elif 'list' in request.POST:
+             viewurl = 'damage-list-criteria'
+        #
+        # print(viewurl)
+         return redirect(viewurl)
+
+
+
 class FrontPageView(TemplateView):
     general = General.objects.get(pk=1)
     template_name = 'damage/frontpage/frontpage.html'
@@ -129,7 +160,7 @@ class FrontPageView(TemplateView):
         if 'guest' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
             viewurl = 'index'
         else:
-            viewurl = 'damage-add'
+            viewurl = 'login'
 
         return redirect(viewurl)
 
@@ -214,7 +245,7 @@ class DamageListCriteriaView(TemplateView):
 
     def get(self, request):
         form = DamageListCriteriaForm()
-        general = General.objects.all()
+        general = General.objects.get(pk=1)
 
         args = {
             'form': form,
@@ -223,7 +254,7 @@ class DamageListCriteriaView(TemplateView):
         return render(request, self.template_name, args)
 
     def post(self, request):
-        general = General.objects.all()
+        general = General.objects.get(pk=1)
         form = DamageListCriteriaForm(request.POST)
         form.non_field_errors()
 
@@ -381,7 +412,7 @@ class DamageListView(TemplateView):
             typedesc = 'ΟΛΑ'
         else:
             fromdamagetypepk = int(pdamagetype)
-            todamagetypepk = fromdamagestatuspk
+            todamagetypepk = fromdamagetypepk
             typedesc = DamageType.objects.get(pk=fromdamagetypepk).desc
 
         order_by = request.GET.get('order_by', 'entry_date')
@@ -394,7 +425,7 @@ class DamageListView(TemplateView):
                                        damagetype__pk__range=(fromdamagetypepk, todamagetypepk)).order_by(order_by)
 
 
-        paginator = Paginator(d_list, 2)
+        paginator = Paginator(d_list, 12)
 
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)
@@ -408,7 +439,7 @@ class DamageListView(TemplateView):
             # If page is out of range (e.g. 9999), deliver last page of results.
             damage_list = paginator.page(paginator.num_pages)
 
-        general = General.objects.all()
+        general = General.objects.get(pk=1)
         fromdatetext = fdate.strftime('%d/%m/%Y')
         todatetext = tdate.strftime('%d/%m/%Y')
 
@@ -420,7 +451,95 @@ class DamageListView(TemplateView):
             'general': general,
             'fromdate': fromdatetext,
             'todate': todatetext,
-            'statusdesc': statusdesc
+            'statusdesc': statusdesc,
+            'typedesc': typedesc
+
+        }
+        return render(request, self.template_name, args)
+
+
+class ContactDetailsView(TemplateView):
+    template_name = "damage/contact/contactdetails.html"
+
+    def get(self, request):
+        form = ContactDetailsForm()
+        args = {
+            'form': form
+        }
+        return render(request, self.template_name, args)
+
+    def post(self, request):
+        general = General.objects.get(pk=1)
+        print( general.deya_name)
+
+        form = ContactDetailsForm(request.POST)
+        form.non_field_errors()
+
+        if form.is_valid():
+
+            post = form.save(commit=False)
+            post.userip = get_client_ip(request)  # το IP του χρήστη
+            post.entry_date = datetime.now(tz=timezone.utc)
+            post.save()
+
+            contactdetails_mail(post.id)
+
+            #viewurl = 'frontpage'
+            #return redirect(viewurl)
+            message_template = "damage/messages/contactmessage.html"
+
+            args = {
+                    'general': general,
+                    'deya': general.deya_name
+                   }
+
+            return render(request, message_template, args)
+
+        else:
+            print('form is not valid')
+            print(form.errors)
+            # form = DamageEntryForm()
+            args = {'form': form
+                    }
+            return render(request, self.template_name, args)
+
+
+class ContactDetailsListView(TemplateView):
+    template_name = "damage/contact/contactlist_table.html"
+
+    #def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
+    def get(self, request):
+        form = ContactListForm()
+
+        order_by = request.GET.get('order_by', 'entry_date')
+        direction = request.GET.get('direction', 'ASC')
+        if Lower(direction) == Lower('DESC'):
+            order_by = '-{}'.format(order_by)
+
+        d_list = ContactDetails.objects.all().order_by(order_by)
+
+
+        paginator = Paginator(d_list, 12)
+
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
+
+        try:
+             contact_list = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            contact_list = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            contact_list = paginator.page(paginator.num_pages)
+
+        general = General.objects.get(pk=1)
+
+        args = {
+            'form': form,
+            'contact_list': contact_list,
+            'page_obj': page_obj,
+            'general': general,
 
         }
         return render(request, self.template_name, args)

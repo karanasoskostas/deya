@@ -7,7 +7,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView
 from damage.forms import HomeTestForm, DamageEntryForm, DamageTypeForm, DamageListForm, DamageListCriteriaForm, \
-    ContactDetailsForm, ContactListForm
+    ContactDetailsForm, ContactListForm, ContactListCriteriaForm
 from django.utils import timezone
 import datetime
 import pytz
@@ -26,8 +26,34 @@ from django.db.models.functions import Lower
 from damage.utils.genmodels import LocationDetails
 from django.core.mail import send_mail
 
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
+from io import BytesIO
+
+
 class TestView(TemplateView):
     template_name = "damage/test/test_list.html"
+
+def test_pdf(request):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="mypdf.pdf"'
+
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer)
+
+    # Start writing the PDF here
+    p.drawString(100, 100, 'Hello world.')
+    # End writing
+
+    p.showPage()
+    p.save()
+
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+
+    return response
+
 
 class Mdb(TemplateView):
     template_name = "damage/mdb.html"
@@ -137,7 +163,7 @@ class IndexDeyaView(TemplateView):
 
     def post(self, request):
          if 'contact' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
-             viewurl = 'contact-list'
+             viewurl = 'contact-list-criteria'
          elif 'list' in request.POST:
              viewurl = 'damage-list-criteria'
         #
@@ -508,18 +534,30 @@ class ContactDetailsListView(TemplateView):
     template_name = "damage/contact/contactlist_table.html"
 
     #def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
-    def get(self, request):
+    def get(self, request, pfromdate, ptodate):
         form = ContactListForm()
+
+        if pfromdate is None:  # παντα is None oxi == None
+            pfromdate = '01_01_2000'
+
+        if ptodate is None:
+            ptodate = '01_01_2100'
+
+        fdate = datetime.strptime(pfromdate, '%d_%m_%Y')  # ερχεται με format dd_mm_yyyy
+        fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)  # min time to datetime
+
+        tdate = datetime.strptime(ptodate, '%d_%m_%Y')  # string to datetime
+        tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
 
         order_by = request.GET.get('order_by', 'entry_date')
         direction = request.GET.get('direction', 'ASC')
         if Lower(direction) == Lower('DESC'):
             order_by = '-{}'.format(order_by)
 
-        d_list = ContactDetails.objects.all().order_by(order_by)
+        d_list = ContactDetails.objects.filter(entry_date__range=(fdate, tdate)).order_by(order_by)
 
 
-        paginator = Paginator(d_list, 12)
+        paginator = Paginator(d_list, 5)
 
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)
@@ -534,12 +572,64 @@ class ContactDetailsListView(TemplateView):
             contact_list = paginator.page(paginator.num_pages)
 
         general = General.objects.get(pk=1)
+        fromdatetext = fdate.strftime('%d/%m/%Y')
+        todatetext = tdate.strftime('%d/%m/%Y')
 
         args = {
             'form': form,
             'contact_list': contact_list,
             'page_obj': page_obj,
             'general': general,
+            'fromdate': fromdatetext,
+            'todate': todatetext,
 
         }
         return render(request, self.template_name, args)
+
+
+class ContactListCriteriaView(TemplateView):
+    template_name = "damage/criteria/contactlist_criteria.html"
+
+    def get(self, request):
+        form = ContactListCriteriaForm()
+        general = General.objects.get(pk=1)
+
+        args = {
+            'form': form,
+            'general': general
+        }
+        return render(request, self.template_name, args)
+
+    def post(self, request):
+        general = General.objects.get(pk=1)
+        form = ContactListCriteriaForm(request.POST)
+        form.non_field_errors()
+
+        if form.is_valid():
+
+            fromdate = request.POST.get('fromdate')
+            fdate = datetime.strptime(fromdate, '%d/%m/%Y')
+            fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)  # min time to datetime
+
+            todate = form.cleaned_data['todate']
+            #tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)  #  και αυτό παίζει !!!!
+            tdate = datetime.strptime(todate, '%d/%m/%Y') # string to datetime
+            tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
+
+            fromdatetext = fdate.strftime('%d_%m_%Y')
+            todatetext = tdate.strftime('%d_%m_%Y')
+
+
+            if 'showlist' in request.POST:           # ανάλογα με ποιο button εχει πατήσει
+                viewurl = 'contact-list-dates'
+
+            return redirect(viewurl, pfromdate=fromdatetext, ptodate=todatetext)
+
+        else:
+            print('form is not valid')
+            print(form.errors)
+            # form = DamageEntryForm()
+            args = {'form': form,
+                    'general': general
+                    }
+            return render(request, self.template_name, args)

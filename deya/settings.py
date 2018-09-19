@@ -166,7 +166,8 @@ COOL_PAGINATOR_PREVIOUS_NAME = "Προηγούμενη"
 #EMAIL_HOST = 'smtp.mail.yahoo.com'
 #If it first attempts to connect over IPv6 (and blocks for a few minutes) followed by a successful connection on IPv4
 #This ensures that python will connect to gmail over IPv4 from the beginning !!!!
-#EMAIL_HOST = socket.gethostbyname('smtp.mail.yahoo.com')
+
+EMAIL_HOST = socket.gethostbyname('smtp.mail.yahoo.com')
 EMAIL_HOST_USER = 'demodeya@yahoo.com'
 EMAIL_HOST_PASSWORD = 'ipuvvkjkfdpfvpch'
 EMAIL_PORT = 587

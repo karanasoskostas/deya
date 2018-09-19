@@ -3,7 +3,11 @@ from . import views
 
 urlpatterns = [
 # /damage/test/
+
+
+
     url(r'^test/$', views.TestView.as_view(), name="test"),
+    url(r'^testpdf/$', views.test_pdf, name="testpdf"),
 
     url(r'^guest/$', views.IndexView.as_view(), name='index'),
 
@@ -39,8 +43,11 @@ urlpatterns = [
         views.DamageMarkersView.as_view(), name="damage-list-markers"),
 
     # /damage/contact/
-        url(r'damage/contact/$', views.ContactDetailsListView.as_view(), name="contact-list"),
+        url(r'damage/contact/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/$',
+            views.ContactDetailsListView.as_view(), name="contact-list-dates"),
 
+    # /damage/damage/list/criteria/
+    url(r'contact/list/criteria/$', views.ContactListCriteriaView.as_view(), name="contact-list-criteria"),
 
 
 ]

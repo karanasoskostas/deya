@@ -162,3 +162,8 @@ class ContactListForm(forms.ModelForm):
     class Meta:
         model = ContactDetails
         fields = ['entry_date', 'name', 'email','thl','com']
+
+
+class ContactListCriteriaForm(forms.Form):
+    fromdate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
+    todate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)

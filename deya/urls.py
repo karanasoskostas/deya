@@ -5,6 +5,8 @@ from damage import views
 
 urlpatterns = [
 
+    url(r'^$', views.FrontPageView.as_view(), name='frontpage'),
+
     url(r'^admin/', admin.site.urls),
     url(r'^damage/', include('damage.urls')),
 

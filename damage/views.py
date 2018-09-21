@@ -299,10 +299,13 @@ class DamageListCriteriaView(TemplateView):
             todatetext = tdate.strftime('%d_%m_%Y')
 
             damagestatus = request.POST.get('damagestatus')
+            if damagestatus == '':
+                damagestatus='None'
             #damagestatus = form.damagestatus
             #print('damagestatus ', damagestatus)
             damagetype = request.POST.get('damagetype')
-
+            if damagetype == '':
+                damagetype = 'None'
             #print('damagetype ',damagetype)
 
             #return render(request, template, args)

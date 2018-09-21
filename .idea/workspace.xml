@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d878107-aaee-4f39-96f4-8b30d56aeeb4" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/damage/forms.py" afterPath="$PROJECT_DIR$/damage/forms.py" />
-      <change beforePath="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" afterPath="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" />
-      <change beforePath="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" afterPath="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" />
-      <change beforePath="$PROJECT_DIR$/damage/templates/damage/damage/criteria/damagelist_criteria.html" afterPath="$PROJECT_DIR$/damage/templates/damage/save_templates/damagelist_criteria.html" />
-      <change beforePath="$PROJECT_DIR$/damage/templates/damage/index/index_deya.html" afterPath="$PROJECT_DIR$/damage/templates/damage/index/index_deya.html" />
-      <change beforePath="$PROJECT_DIR$/damage/urls.py" afterPath="$PROJECT_DIR$/damage/urls.py" />
       <change beforePath="$PROJECT_DIR$/damage/views.py" afterPath="$PROJECT_DIR$/damage/views.py" />
-      <change beforePath="$PROJECT_DIR$/deya/settings.py" afterPath="$PROJECT_DIR$/deya/settings.py" />
-      <change beforePath="$PROJECT_DIR$/deya/urls.py" afterPath="$PROJECT_DIR$/deya/urls.py" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
       <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +22,38 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deya/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1936">
+              <caret line="89" column="22" lean-forward="false" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/damage/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="586">
+              <caret line="46" column="76" lean-forward="false" selection-start-line="46" selection-start-column="76" selection-end-line="46" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/damage/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="770">
+              <caret line="307" column="35" lean-forward="false" selection-start-line="307" selection-start-column="35" selection-end-line="307" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -144,10 +167,10 @@
         <option value="$PROJECT_DIR$/damage/templates/damage/index/index_deya.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html" />
         <option value="$PROJECT_DIR$/damage/urls.py" />
-        <option value="$PROJECT_DIR$/damage/views.py" />
         <option value="$PROJECT_DIR$/damage/utils/utils.py" />
         <option value="$PROJECT_DIR$/deya/settings.py" />
         <option value="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" />
+        <option value="$PROJECT_DIR$/damage/views.py" />
       </list>
     </option>
   </component>
@@ -183,8 +206,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -210,10 +231,17 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="damage" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -374,9 +402,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.325" sideWeight="0.5063966" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28695652" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.325" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.325" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30652174" sideWeight="0.49573562" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20255864" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21321961" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -700,20 +728,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html" />
-    <entry file="file://$PROJECT_DIR$/damage/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="46" column="76" lean-forward="false" selection-start-line="46" selection-start-column="76" selection-end-line="46" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="560" column="0" lean-forward="false" selection-start-line="560" selection-start-column="0" selection-end-line="560" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/damage/appfunctions/appfunctions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="902">
@@ -725,13 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2376">
           <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deya/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3696">
-          <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -753,6 +760,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="52" column="61" lean-forward="false" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deya/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1936">
+          <caret line="89" column="22" lean-forward="false" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="46" column="76" lean-forward="false" selection-start-line="46" selection-start-column="76" selection-end-line="46" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="307" column="35" lean-forward="false" selection-start-line="307" selection-start-column="35" selection-end-line="307" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>

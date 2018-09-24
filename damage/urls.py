@@ -4,6 +4,12 @@ from . import views
 urlpatterns = [
 # /damage/test/
 
+    url(r'^api/data/$', views.get_data, name="api-data"),
+
+    url(r'^api/chart/data/$', views.ApiChartDataView.as_view(), name="api-chart-data"),
+
+    url(r'^api/charts/$', views.ChartsView.as_view(), name="api-charts"),
+
 
 
     url(r'^test/$', views.TestView.as_view(), name="test"),

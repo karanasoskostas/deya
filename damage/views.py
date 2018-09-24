@@ -1,11 +1,8 @@
 from .models import General, DamageType, Damage , DamageStatus
-from django.http import HttpResponse
-from django.http import Http404
-from django.template import loader
 from django.shortcuts import get_object_or_404 ,render
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from damage.forms import HomeTestForm, DamageEntryForm, DamageTypeForm, DamageListForm, DamageListCriteriaForm, \
     ContactDetailsForm, ContactListForm, ContactListCriteriaForm
 from django.utils import timezone
@@ -13,22 +10,54 @@ import datetime
 import pytz
 from datetime import datetime, date
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from datetime import timedelta
-from decimal import Decimal
-from django.conf import settings
-import requests
-from django import http
 from django.shortcuts import redirect
-from django.http import HttpResponseRedirect
-from damage.utils.utils import *
+from django.http import HttpResponseRedirect, JsonResponse
 from damage.appfunctions.appfunctions import *
 from django.db.models.functions import Lower
-from damage.utils.genmodels import LocationDetails
-from django.core.mail import send_mail
-
+from django.db.models import Count
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from io import BytesIO
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+
+class ChartsView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'damage/charts/charts.html', {})
+
+
+def get_data(request, *args, **kwargs):
+    data = {
+        'sales': 100,
+        'customers': 10,
+    }
+    return JsonResponse(data)
+
+
+class ApiChartDataView(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        labels = list()
+        default_items = list()
+        damage = Damage.objects.all().values('damagetype').annotate(total=Count('damagetype')).values_list('damagetype__desc', 'total').order_by('damagetype')
+        for d in damage:
+
+            labels.append(d[0])
+            default_items.append(d[1])
+
+
+        #labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        #default_items = [12, 19, 3, 5, 1, 3]
+        data = {
+            'labels': labels,
+            'default': default_items,
+        }
+        return Response(data)
 
 
 class TestView(TemplateView):
@@ -299,13 +328,10 @@ class DamageListCriteriaView(TemplateView):
             todatetext = tdate.strftime('%d_%m_%Y')
 
             damagestatus = request.POST.get('damagestatus')
-            if damagestatus == '':
-                damagestatus='None'
             #damagestatus = form.damagestatus
             #print('damagestatus ', damagestatus)
             damagetype = request.POST.get('damagetype')
-            if damagetype == '':
-                damagetype = 'None'
+
             #print('damagetype ',damagetype)
 
             #return render(request, template, args)

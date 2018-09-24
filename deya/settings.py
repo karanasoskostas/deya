@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
     'django_cool_paginator',
+    'rest_framework',
 
 
 ]

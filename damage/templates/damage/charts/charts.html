@@ -1,0 +1,88 @@
+
+{% extends 'damage/charts/chartbase.html' %}
+
+<script>
+{% block jquery %}
+//var endpoint = '/damage/api/data'
+var endpoint = '/damage/api/chart/data'   // the framework API View
+
+//var defaultData = [12, 19, 3, 5, 2, 3]
+//var labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+
+var defaultData = []
+var labels = []
+
+$.ajax({
+    method: 'GET',
+    url: endpoint,
+    success: function(data){
+        defaultData = data.default
+        labels = data.labels
+        //console.log(defaultData)
+        setChartBar()
+        setChartLine()
+
+
+    },
+    error: function(error_data){
+        console.log('error')
+        console.log(error_data)
+    }
+})
+
+function setChartBar(){
+    var ctx = document.getElementById("myChartBar").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '# of Votes',
+                    data: defaultData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)'
+
+                }]
+            }
+        })
+}
+
+
+function setChartLine(){
+    var ctx = document.getElementById("myChartLine").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '# of Votes',
+                    data: defaultData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)'
+
+                }]
+            }
+        })
+}
+
+{% endblock %}
+</script>
+
+{% block content %}
+
+    <div class="row">
+
+<!--
+            <div class="col-sm-6">
+                <canvas id="myChartBar" width="400" height="300"></canvas>
+            </div>
+            <div class="col-sm-6">
+                <canvas id="myChartLine" width="400" height="300"></canvas>
+            </div>
+-->
+            <div class="col-sm-12">
+                <canvas id="myChartBar" width="400" height="300"></canvas>
+            </div>
+
+    </div>
+
+
+{% endblock content %}

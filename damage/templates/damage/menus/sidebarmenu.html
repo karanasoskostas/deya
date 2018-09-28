@@ -1,0 +1,123 @@
+{% load staticfiles %}
+{% load static %}
+
+
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="{% static 'damage/bootstrap-4.1.1-dist/js/bootstrap.min.js' %}"></script>
+
+
+<link rel="stylesheet" href="{% static 'damage/bootstrap-4.1.1-dist/css/bootstrap.min.css' %}" >
+<link rel="stylesheet" href="{% static 'damage/font-awesome-4.7.0/css/font-awesome.min.css' %}" >
+<link rel="stylesheet" href="{% static 'stisla-admin/dist/modules/ionicons/css/ionicons.min.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/stisla_test.css' %}"/>
+
+
+
+
+
+<body>
+
+
+
+
+
+<div id="app">
+    <div class="main-wrapper">
+
+
+        <div class="main-sidebar">
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand">
+                    <a href="index.html">Διαχείριση Βλαβών</a>
+                </div>
+
+                <div class="sidebar-user">
+                    <div class="sidebar-user-picture">
+                      <img alt="image" src="{% static 'damage\images\b.png' %}">
+                    </div>
+                    <div class="sidebar-user-details">
+                      <div class="user-name">E-Bλάβες</div>
+                        <!--<div class="user-role">Διαχείριση Βλαβών</div>-->
+                    </div>
+                  </div>
+
+                <ul class="sidebar-menu">
+                    <li class="menu-header">Διαχείριση</li>
+                    <li class="active">
+                      <a href="index.html"><i class="fa fa-cog"></i><span>Κεντρικό Μενού</span></a>
+                    </li>
+
+                    <li class="menu-header">Eπιλογές</li>
+
+                    <li>
+                      <a href="#" class="has-dropdown"><i class="fa fa-book"></i><span>Αναφορές</span></a>
+                      <ul class="menu-dropdown">
+                        <li><a href="general.html"><i class="ion ion-ios-circle-outline"></i> Basic</a></li>
+                        <li><a href="components.html"><i class="ion ion-ios-circle-outline"></i> Main Components</a></li>
+                        <li><a href="buttons.html"><i class="ion ion-ios-circle-outline"></i> Buttons</a></li>
+                        <li><a href="toastr.html"><i class="ion ion-ios-circle-outline"></i> Toastr</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#" class="has-dropdown"><i class="fa fa-book"></i><span>Μυνήματα</span></a>
+                      <ul class="menu-dropdown">
+                        <li><a href="{% url 'contact-list-criteria' %}"><i class="ion ion-ios-circle-outline"></i> Προβολή Μηνημάτων</a></li>
+                        <li><a href="components.html"><i class="ion ion-ios-circle-outline"></i> Main Components</a></li>
+                        <li><a href="buttons.html"><i class="ion ion-ios-circle-outline"></i> Buttons</a></li>
+                        <li><a href="toastr.html"><i class="ion ion-ios-circle-outline"></i> Toastr</a></li>
+                      </ul>
+                    </li>
+
+
+
+
+
+
+
+
+
+                </ul>
+
+
+
+
+
+
+            </aside>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+<script src="{% static 'stisla-admin/dist/modules/nicescroll/jquery.nicescroll.min.js' %}"></script>
+<script src="{% static 'stisla-admin/dist/modules/scroll-up-bar/stisla-admin/dist/scroll-up-bar.min.js' %}"></script>
+<script src="{% static 'stisla-admin/dist/js/sa-functions.js' %}"></script>
+<script src="{% static 'stisla-admin/dist/modules/summernote/summernote-lite.js' %}"></script>
+<script src="{% static 'stisla-admin/dist/modules/chart.min.js' %}"></script>
+<script src="{% static 'stisla-admin/dist/modules/summernote/summernote-lite.js' %}"></script>
+<script src="{% static 'stisla-admin/dist/js/scripts.js' %}"></script>
+
+
+
+<div class="main-content">
+
+    {% block body %}
+    {% endblock %}
+
+</div>
+</body>
+
+
+
+

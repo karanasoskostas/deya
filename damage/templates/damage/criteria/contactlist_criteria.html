@@ -1,8 +1,7 @@
-{% extends 'damage/base.html' %}
+{% extends 'damage/menus/sidebarmenu.html' %}
 
 {% load widget_tweaks %}
 {% load static %}
-
 
 
 
@@ -10,19 +9,20 @@
 
 {% block body %}
 
-
-<!--<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script> -->
 <script src="{% static 'damage\gijgo-combined-1.9.6\js\gijgo.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'damage\gijgo-combined-1.9.6\js\messages\messages.el-el.js' %}" type="text/javascript"></script>
-<!--<link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />-->
+
 <link href="{% static 'damage\gijgo-combined-1.9.6\css\gijgo.min.css' %}" rel="stylesheet" type="text/css" />
 <script src="{% static 'js\moment.js' %}" type="text/javascript"></script>
-<script src="{% static 'damage/bootstrap-4.1.1-dist/js/bootstrap.min.js' %}"></script>
-<!--<link href="{% static 'css\general.css' %}" rel="stylesheet" type="text/css" /> -->
 
+<link rel="stylesheet" type="text/css" href="{% static 'damage/style.css' %}"/>
+
+
+<br/>
+<br/>
 <div class="container">
-    <h1 style="font-family: Calibri; align-content: center" align="center" > KΡΙΤΗΡΙΑ ΠΡΟΒΟΛΗΣ ΜΥΝΗΜΑΤΩΝ </h1>
-
+    <h1 class="header-criteria"  > KΡΙΤΗΡΙΑ ΠΡΟΒΟΛΗΣ ΜΥΝΗΜΑΤΩΝ </h1>
+    <br/>
     <form method="post"  enctype="multipart/form-data">
         {% csrf_token %}
 
@@ -46,20 +46,24 @@
             <div class="col-3" align="right">
 
                 <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                          style="color: white; width: 300px">
+                  <button class="btn btn-secondary dropdown-toggle btn-dropdown-dates" type="button" id="dropdownMenuButton"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Επιλογή Περιόδου Ημερομηνιών
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dateselected">
                     <li><a class="dropdown-item"  style="color: #062c33; width: 300px">Σήμερα</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #8a6d3b;">Τελευταία Εβδομάδα</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #721c24;">15-ήμερο</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #002a80;">Μήνας</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #a41515;">3-μηνο</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #333333;">6-Μηνο</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #721c24;">Ετος</a></li>
+                    <li><a class="dropdown-item"  style="color: #8a6d3b;">Τελευταία Εβδομάδα</a></li>
+                    <li><a class="dropdown-item"  style="color: #721c24;">15-ήμερο</a></li>
+                    <li><a class="dropdown-item"  style="color: #002a80;">Μήνας</a></li>
+                    <li><a class="dropdown-item"  style="color: #a41515;">3-μηνο</a></li>
+                    <li><a class="dropdown-item"  style="color: #333333;">6-Μηνο</a></li>
+                    <li><a class="dropdown-item"  style="color: #721c24;">Ετος</a></li>
                   </ul>
+
+
+
+
+
                 </div>
 
             </div>
@@ -86,7 +90,7 @@
             </div>
         </div>
 
-
+        <br/>
 
         <div class="form-group row"  >
 
@@ -106,6 +110,9 @@
         </div>
 
 
+
+
+
          <script type="text/javascript" src="{% static 'js\criteria_dates.js' %}" ></script>
 
 
@@ -117,6 +124,7 @@
     </form>
 
 </div>
+
 
 {% endblock %}
 

@@ -13,3 +13,22 @@ label {
     font-family: 'Verdana', cursive; font-size: medium;
 }
 
+/* HEADERS  */
+.header-criteria {
+    color: #0c5460;
+    font-family: Calibri;
+    font-weight: bold ;
+    letter-spacing: 3px;
+    align-content: center;
+    text-align: center;
+
+    /*text-shadow: 1px 2px dimgray;*/
+
+}
+
+
+.btn-dropdown-dates {
+    width: 300px;
+    color: white;
+}
+

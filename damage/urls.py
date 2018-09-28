@@ -13,6 +13,7 @@ urlpatterns = [
 
 
     url(r'^test/$', views.TestView.as_view(), name="test"),
+    url(r'^test1/$', views.Test1View.as_view(), name="test1"),
     url(r'^testpdf/$', views.test_pdf, name="testpdf"),
 
     url(r'^guest/$', views.IndexView.as_view(), name='index'),

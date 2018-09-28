@@ -11,14 +11,18 @@ var endpoint = '/damage/api/chart/data'   // the framework API View
 
 var defaultData = []
 var labels = []
-
+var backgroundcolors = []
+var bordercolors = []
 $.ajax({
     method: 'GET',
     url: endpoint,
     success: function(data){
         defaultData = data.default
         labels = data.labels
-        //console.log(defaultData)
+        backgroundcolors = data.background
+        bordercolors = data.border
+        console.log(backgroundcolors)
+        console.log(bordercolors)
         setChartBar()
         setChartLine()
 
@@ -37,17 +41,32 @@ function setChartBar(){
             data: {
                 labels: labels,
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Αριθμός Βλαβών',
                     data: defaultData,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)'
+                    backgroundColor: backgroundcolors,
+                    borderColor: bordercolors,
+                    borderWidth: 1
+                }],
 
-                }]
-            }
+
+
+            },
+             options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+
         })
+
 }
 
 
-function setChartLine(){
+ function setChartLine(){
     var ctx = document.getElementById("myChartLine").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -56,7 +75,8 @@ function setChartLine(){
                 datasets: [{
                     label: '# of Votes',
                     data: defaultData,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)'
+                    backgroundColor: backgroundcolors,
+                    borderColor: bordercolors,
 
                 }]
             }

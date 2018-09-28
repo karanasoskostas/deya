@@ -44,24 +44,56 @@ class ApiChartDataView(APIView):
     def get(self, request, format=None):
         labels = list()
         default_items = list()
+        background_colors = list()
+        border_colors = list()
         damage = Damage.objects.all().values('damagetype').annotate(total=Count('damagetype')).values_list('damagetype__desc', 'total').order_by('damagetype')
+        i = 1
         for d in damage:
-
             labels.append(d[0])
             default_items.append(d[1])
-
+            if i == 1:
+                bcolor = 'rgba(255, 99, 132, 0.2)'
+                border = 'rgba(255,99,132,1)'
+                i = i+1
+            elif i == 2:
+                bcolor = 'rgba(54, 162, 235, 0.2)'
+                border = 'rgba(54, 162, 235, 1)'
+                i = i + 1
+            elif i == 3:
+                bcolor = 'rgba(255, 206, 86, 0.2)'
+                border = 'rgba(255, 206, 86, 1)'
+                i = i + 1
+            elif i == 4:
+                bcolor = 'rgba(75, 192, 192, 0.2)'
+                border = 'rgba(75, 192, 192, 1)'
+                i = i + 1
+            elif i == 5:
+                bcolor = 'rgba(153, 102, 255, 0.2)'
+                border = 'rgba(153, 102, 255, 1)'
+                i = i + 1
+            elif i == 6:
+                bcolor = 'rgba(255, 159, 64, 0.2)'
+                border = 'rgba(255, 159, 64, 1)'
+                i = 1
+            background_colors.append(bcolor)
+            border_colors.append(border)
 
         #labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
         #default_items = [12, 19, 3, 5, 1, 3]
         data = {
             'labels': labels,
             'default': default_items,
+            'background': background_colors,
+            'border': border_colors
         }
         return Response(data)
 
 
 class TestView(TemplateView):
-    template_name = "damage/test/test_list.html"
+    template_name = 'stisla-admin/templates/index.html'
+
+class Test1View(TemplateView):
+    template_name = 'damage/test/templates/damage/menus/test.html'
 
 def test_pdf(request):
     response = HttpResponse(content_type='application/pdf')

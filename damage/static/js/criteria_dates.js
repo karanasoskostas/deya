@@ -1,5 +1,4 @@
 $('#dateselected li').on('click', function () {
-
     //alert($(this).text());
     $(this).parent().parent().prev().html($(this).html() + '<span class="caret"></span>');
     selected_index = $(this).closest('li').index();

@@ -8,7 +8,7 @@
 
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>{{ general.deya_name }} &mdash; Dashboard</title>
+    <title>{{ general.deya_name }} &mdash; TEST</title>
 
 
     <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -102,7 +102,7 @@
             <li>
               <a href="#" class="has-dropdown"><i class="fa fa-bold" aria-hidden="true"></i><span>Βλάβες</span></a>
               <ul class="menu-dropdown">
-                <li><a href="{% url 'damage-add' %}"><i class="ion-android-add-circle"></i> Νέα λάβη</a></li>
+                <li><a href="../../stisla-admin/templates/general.html"><i class="ion-android-add-circle"></i> Νέα λάβη</a></li>
                 <li><a href="{% url 'damage-list-criteria' %}"><i class="fa fa-binoculars" aria-hidden="true"></i> Προβολή Βλαβών</a></li>
               </ul>
             </li>
@@ -183,6 +183,7 @@
         <section class="section">
 
             {% block body %}
+
             {% endblock %}
 
 
@@ -204,13 +205,50 @@
   <script src="{% static 'stisla-admin/dist/modules/scroll-up-bar/stisla-admin/dist/scroll-up-bar.min.js' %}"></script>
   <script src="{% static 'stisla-admin/dist/js/sa-functions.js' %}"></script>
 
-  <script src="{% static 'stisla-admin/dist/js/scripts.js' %}"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
   <script src="{% static 'stisla-admin/dist/modules/summernote/summernote-lite.js' %}"></script>
 
 
+  <script>
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      datasets: [{
+        label: 'Statistics',
+        data: [460, 458, 330, 502, 430, 610, 488],
+        borderWidth: 2,
+        backgroundColor: 'rgb(87,75,144)',
+        borderColor: 'rgb(87,75,144)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#ffffff',
+        pointRadius: 4
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            stepSize: 150
+          }
+        }],
+        xAxes: [{
+          gridLines: {
+            display: false
+          }
+        }]
+      },
+    }
+  });
+  </script>
 
-
+  <script src="{% static 'stisla-admin/dist/js/scripts.js' %}"></script>
   <script src="{% static 'stisla-admin/dist/js/custom.js' %}"></script>
   <script src="{% static 'stisla-admin/dist/js/demo.js' %}"></script>
 

@@ -1,4 +1,5 @@
 from .models import General, DamageType, Damage , DamageStatus
+from .models import General, DamageType, Damage , DamageStatus
 from django.shortcuts import get_object_or_404 ,render
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -26,7 +27,10 @@ from django.contrib.auth.models import User
 
 class ChartsView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'damage/charts/charts.html', {})
+        general = General.objects.get(pk=1)
+        args = {'general': general,
+                }
+        return render(request, 'damage/charts/charts.html', args)
 
 
 def get_data(request, *args, **kwargs):
@@ -93,7 +97,8 @@ class TestView(TemplateView):
     template_name = 'stisla-admin/templates/index.html'
 
 class Test1View(TemplateView):
-    template_name = 'damage/test/templates/damage/menus/test.html'
+    #template_name = 'damage/test/sidebarmenu_test.html'
+    template_name = 'damage/charts/chart_test.html'
 
 def test_pdf(request):
     response = HttpResponse(content_type='application/pdf')
@@ -214,7 +219,7 @@ class IndexView(TemplateView):
 class IndexDeyaView(TemplateView):
 
     general = General.objects.get(pk=1)
-    template_name = 'damage/index/index_deya.html'
+    template_name = 'damage/menus/sidebarmenu.html'
 
     def get(self, request):
         context = {

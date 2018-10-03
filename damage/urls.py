@@ -8,7 +8,7 @@ urlpatterns = [
 
     url(r'^api/chart/data/$', views.ApiChartDataView.as_view(), name="api-chart-data"),
 
-    url(r'^api/charts/$', views.ChartsView.as_view(), name="api-charts"),
+    url(r'^charts/bar/eidos/$', views.ChartsView.as_view(), name="chart-bar-eidos"),
 
 
 

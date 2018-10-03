@@ -1,4 +1,4 @@
-{% extends 'damage/base.html' %}
+{% extends 'damage/menus/sidebarmenu.html' %}
 
 {% load widget_tweaks %}
 {% load static %}
@@ -23,7 +23,7 @@
 
 
 <div class="container">
-    <h1 style="font-family: Calibri; align-content: center;" align="center" > KΡΙΤΗΡΙΑ ΠΡΟΒΟΛΗΣ ΒΛΑΒΩΝ </h1>
+    <h1 class="header-criteria" > KΡΙΤΗΡΙΑ ΠΡΟΒΟΛΗΣ ΒΛΑΒΩΝ </h1>
 
     <form method="post"  enctype="multipart/form-data">
         {% csrf_token %}
@@ -49,10 +49,9 @@
             <div class="col-3" align="right">
 
                 <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                          style="color: white; width: 300px">
-                    Επιλογή Περιόδου Ημερομηνιών
+                  <button class="btn btn-outline-secondary dropdown-toggle btn-dropdown-dates btn-shadow btn-round has-icon  btn-block" type="button" id="dropdownMenuButton"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <i class="fa fa-calendar" aria-hidden="true"></i>Επιλογή Ημερομηνιών
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dateselected">
                     <li><a class="dropdown-item"  style="color: #062c33; width: 300px">Σήμερα</a></li>
@@ -114,21 +113,22 @@
 
         <div class="form-group row"  >
 
-            <div class="col-3">
-                <button type="submit" class="btn btn-success" name="showlist" style="width: 200px">
-                    <span class="glyphicon glyphicon-ok"></span> Προβολή Βλαβών
+            <div class="p-1 mt-1 mb-1 col-2">
+                <button type="submit" class="btn btn-outline-success  btn-shadow btn-round has-icon has-icon-nofloat btn-block" name="showlist" >
+                    <i class="fa fa-spinner" aria-hidden="true"></i><div>Προβολή</div>
                 </button>
             </div>
-            <div class="col-3">
-                <button type="submit" class="btn btn-success" name="showmap" style="width: 200px">
-                    <span class="glyphicon glyphicon-map-marker"></span> Προβολή στο Χάρτη
+            <div class = "col-1"></div>
+            <div class="p-1 mt-1 mb-1 col-2">
+                <button type="submit" class="btn btn-outline-info btn-shadow btn-round has-icon has-icon-nofloat btn-block" name="showmap" >
+                    <i class="fa fa-map-marker" aria-hidden="true"></i><div>Χάρτης</div>
                  </button>
             </div>
-            <!--<a href="{% url 'damage-add' %}" class="btn btn-default">Cancel</a>-->
-            <div class="col-3">
-                <button type="button" class = "btn btn-danger" style="width: 200px"
+            <div class = "col-1"></div>
+            <div class="p-1 mt-1 mb-4 col-2">
+                <button type="button" class="btn btn-outline-danger btn-shadow btn-round has-icon has-icon-nofloat btn-block"
                         onClick="javascript:history.go(-1);">
-                    <span class="glyphicon glyphicon-backward"></span> Επιστροφή
+                    <i class="ion ion-arrow-return-left"></i><div>Επιστροφή</div>
                 </button>
             </div>
 

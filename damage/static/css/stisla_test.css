@@ -160,8 +160,92 @@ body.sidebar-gone .main-content {
 	padding-left: 10px;
 }
 
+/*******************/
+/* navbar */
+.navbar {
+	height: 70px;
+	left: 250px;
+	right: 5px;
+	position: absolute;
+	z-index: 890;
+	background-color: transparent;
+}
+.navbar.active {
+	background-color: #574B90;
+}
+.navbar-bg {
+	content: ' ';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 115px;
+	background-color: #574B90;
+	z-index: -1;
+}
+.navbar .form-inline .form-control {
+	border-radius: 30px 0 0 30px;
+	border-color: transparent;
+	padding-left: 20px;
+	padding-right: 0;
+	margin-right: -6px;
+	width: 220px;
+	min-height: 46px;
+}
+.navbar .form-inline .btn {
+	border-radius: 0 30px 30px 0;
+	background-color: #fff;
+	padding: 9px 15px 9px 15px;
+	border-color: transparent;
+}
+.navbar .nav-link {
+	color: #fff;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+.navbar .nav-link.beep {
+	position: relative;
+}
+.navbar .nav-link.beep:after {
+	content: '';
+	position: absolute;
+	top: 2px;
+	right: 8px;
+	width: 7px;
+	height: 7px;
+	background-color: #dc3545;
+	border-radius: 50%;
+}
+.navbar .nav-link.nav-link-lg {
+	line-height: 16px;
+}
+.navbar .nav-link.nav-link-lg div {
+	margin-top: 3px;
+}
+.navbar .nav-link.nav-link-lg i {
+	font-size: 24px;
+	margin-top: -2px;
+}
+.remove-caret:after {
+	display: none;
+}
+.navbar .nav-link:hover {
+	color: #fff;
+	opacity: .8;
+}
+.navbar .nav-link.disabled {
+	color: #fff;
+	opacity: .6;
+}
+/* end navbar */
 
 
+
+
+
+
+
+/*   main-content */
 .main-content {
 	padding-left: 280px;
 	padding-right: 30px;
@@ -169,3 +253,47 @@ body.sidebar-gone .main-content {
 	width: 100%;
 	position: relative;
 }
+
+
+
+
+/*section*/
+.section {
+	position: relative;
+	z-index: 1;
+}
+.section .section-header {
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 40px rgba(0,0,0,.05);
+	        box-shadow: 0 0 40px rgba(0,0,0,.05);
+	border-radius: 3px;
+	padding: 20px;
+	margin: -7px 0 20px 0;
+	display: inline-block;
+	width: 100%;
+	font-family: 'Montserrat';
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+.section .section-header div {
+	display: inline-block;
+	font-size: 24px;
+	margin-top: 3px;
+	float: left;
+}
+.section .section-header .float-right {
+	margin-top: 0;
+}
+.section .section-header .btn {
+	font-size: 12px;
+}
+.section .section-header + .section-body .section-title:first-child {
+	margin-top: 0;
+}
+.section .section-title {
+	font-size: 16px;
+	color: #868e96;
+	font-weight: 500;
+	margin: 30px 0 15px 0;
+}
+/*end section*/

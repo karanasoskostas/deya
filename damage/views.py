@@ -1,11 +1,10 @@
-from .models import General, DamageType, Damage , DamageStatus
-from .models import General, DamageType, Damage , DamageStatus
+from .models import General, DamageType, Damage, DamageStatus, DamageHistoryStatus
 from django.shortcuts import get_object_or_404 ,render
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView, View
 from damage.forms import HomeTestForm, DamageEntryForm, DamageTypeForm, DamageListForm, DamageListCriteriaForm, \
-    ContactDetailsForm, ContactListForm, ContactListCriteriaForm
+    ContactDetailsForm, ContactListForm, ContactListCriteriaForm, DamageStatusHistoryForm
 from django.utils import timezone
 import datetime
 import pytz
@@ -139,7 +138,7 @@ class HomeTest(TemplateView):
         return render(request, self.template_name)
 
 class damage_entry_view(TemplateView):
-    template_name = "damage/damageadd.html"
+    template_name = "damage/entry/damageadd.html"
 
 
     def get(self, request):
@@ -299,7 +298,7 @@ class DamageTypeTest(TemplateView):
 
 class DamageUpdateView(generic.UpdateView):
     model = Damage
-    template_name = "damage/damageadd.html"
+    template_name = "damage/entry/damageadd.html"
     form_class = DamageEntryForm
     success_url = 'damage/list/'
     # def form_valid(self, form):
@@ -365,10 +364,13 @@ class DamageListCriteriaView(TemplateView):
             todatetext = tdate.strftime('%d_%m_%Y')
 
             damagestatus = request.POST.get('damagestatus')
+            if damagestatus == "":
+                damagestatus = "None"
             #damagestatus = form.damagestatus
             #print('damagestatus ', damagestatus)
             damagetype = request.POST.get('damagetype')
-
+            if damagetype == "":
+                damagetype = "None"
             #print('damagetype ',damagetype)
 
             #return render(request, template, args)
@@ -471,7 +473,7 @@ class DamageMarkersView(TemplateView):
 
 
 class DamageListView(TemplateView):
-    template_name = "damage/damagelist_table.html"
+    template_name = "damage/entry/damagelist_table.html"
 
     def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
         form = DamageListForm()
@@ -562,7 +564,6 @@ class ContactDetailsView(TemplateView):
 
     def post(self, request):
         general = General.objects.get(pk=1)
-        print( general.deya_name)
 
         form = ContactDetailsForm(request.POST)
         form.non_field_errors()
@@ -697,5 +698,64 @@ class ContactListCriteriaView(TemplateView):
             # form = DamageEntryForm()
             args = {'form': form,
                     'general': general
+                    }
+            return render(request, self.template_name, args)
+
+
+class DamageStatusView(TemplateView):
+    template_name = "damage/entry/damagestatus.html"
+
+    def get(self, request, pk):
+        #form = ContactDetailsForm()
+        general = General.objects.get(pk=1)
+        damage = Damage.objects.get(pk=pk)
+        form = DamageStatusHistoryForm()
+
+        status_list = DamageHistoryStatus.objects.filter(damage=damage).order_by('-entry_date')
+
+        args = {
+            'general': general,
+            'damage': damage,
+            'form': form,
+            'status_list': status_list
+        }
+        return render(request, self.template_name, args)
+
+    def post(self, request, pk):
+        general = General.objects.get(pk=1)
+
+        form = DamageStatusHistoryForm(request.POST)
+        form.non_field_errors()
+
+        if form.is_valid():
+
+            post = form.save(commit=False)
+            post.userip = get_client_ip(request)  # το IP του χρήστη
+            if self.request.user.is_authenticated:  # κάποια στιγμή το is_authenticated() χτύπησε !!!!
+                post.user = request.user
+            post.entry_date = datetime.now(tz=timezone.utc)
+            #damage = request.POST.get('damage')
+            damage = Damage.objects.get(pk=pk)
+            damage.damagestatus = post.damagestatus
+            post.damage = damage
+            post.save()
+            damage.save()
+
+            status_list = DamageHistoryStatus.objects.filter(damage=damage).order_by('-entry_date')
+
+            args = {
+                'general': general,
+                'damage': damage,
+                'form': form,
+                'status_list': status_list
+            }
+
+            return redirect(request.META.get('HTTP_REFERER'))
+
+        else:
+            print('form is not valid')
+            print(form.errors)
+            # form = DamageEntryForm()
+            args = {'form': form
                     }
             return render(request, self.template_name, args)

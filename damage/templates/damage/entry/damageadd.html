@@ -1,0 +1,240 @@
+{% extends 'damage/menus/sidebarmenu.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+
+
+
+{% block title %} {{ general.deya_name }} - BΛΑΒΕΣ {% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <h1 class="header-criteria" > KATAΧΩΡΗΣΗ ΒΛΑΒΗΣ  </h1>
+
+    <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+
+             <div class="form-group col-md-6"  >
+
+                 <div class="form-group" >
+                     <label for="label" >Όνομα</label>
+                     {% render_field form.firstname class="form-control" placeholder="" %}
+                 </div>
+
+                 <div class="form-group" >
+                     <label for = "{{ form.lastname.id_for_label }}" >Επώνυμο</label>
+                     {% render_field form.lastname class="form-control" placeholder="" %}
+                 </div>
+
+                 <div class="form-group" >
+                     <label for = "{{ form.address.id_for_label }}" >Διεύθυνση</label>
+                     {% render_field form.address class="form-control" %}
+                 </div>
+
+                  <div class="form-row" >
+                     <div class="col-md-3 mb-3">
+                        <label for = "{{ form.zipcode.id_for_label }}" >T.K.</label>
+                        {% render_field form.zipcode class="form-control" %}
+                     </div>
+                     <div class="col-md-4 mb-3">
+                        <label for = "{{ form.town.id_for_label }}" >Πόλη</label>
+                        {% render_field form.town class="form-control" %}
+                     </div>
+                     <div class="col-md-5 mb-3">
+                        <label for = "{{ form.area.id_for_label }}" >Περιοχή</label>
+                        {% render_field form.area class="form-control" %}
+                     </div>
+                 </div>
+
+                  <div class="form-group" >
+                    <label for = "{{ form.email.id_for_label }}" >E-Mail</label>
+                   {% render_field form.email class="form-control" type="email" %}
+
+                 </div>
+
+                 <div class="form-row" >
+                     <div class="form-group col-md-6">
+                        <label for = "{{ form.thl.id_for_label }}" >Τηλέφωνο</label>
+                        {% render_field form.thl class="form-control" %}
+                     </div>
+                     <div class="form-group col-md-6">
+                        <label for = "{{ form.mobile.id_for_label }}" >Κινητό Τηλέφωνο</label>
+                        {% render_field form.mobile class="form-control" %}
+                     </div>
+                 </div>
+
+             </div>
+
+
+
+            <!-- Δεξιό μερος της οθόνης -->
+             <div class="form-group col-md-6"  >
+                 <div class="form-group" >
+                     <label for={{ form.damagetype.id_for_label }} >Είδος Βλάβης</label>
+                     {% render_field form.damagetype class="form-control" %}
+                </div>
+
+                 <div class="form-group" >
+                     <label for={{ form.damageaddress.id_for_label }} >Διευθυνση Βλάβης</label>
+                     {% render_field form.damageaddress class="form-control" id="damageaddress" %}
+                </div>
+
+                <div class="form-row" >
+                     <div class="col-lg-3">
+                        <label for = "{{ form.damagezipcode.id_for_label }}" >T.K.</label>
+                        {% render_field form.damagezipcode class="form-control" %}
+                     </div>
+                     <div class="col-lg-4">
+                        <label for = "{{ form.damagetown.id_for_label }}" >Πόλη</label>
+                        {% render_field form.damagetown class="form-control" %}
+                     </div>
+                     <div class="col-lg-5">
+                        <label for = "{{ form.damagearea.id_for_label }}" >Περιοχή</label>
+                        {% render_field form.damagearea class="form-control" %}
+                     </div>
+                </div>
+
+                 <br/>
+                 <div class="form-group" >
+                     <label for={{ form.damagecom.id_for_label }} >Παρατηρήσεις προς τη ΔΕΥΑ</label>
+                     {% render_field form.damagecom class="form-control" %}
+                </div>
+
+             </div>
+
+
+
+
+        </div>
+
+        <div class="row" >
+
+            <div class="col">
+
+                <div class="map_canvas"></div>
+
+                 <div class="row">
+
+                     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+
+                     <div class="form-row" >
+
+                        {% if form.formatted_address.value != None %}
+                            {%  render_field form.formatted_address id="geocomplete" type="text" placeholder="Διεύθυνση στο Χάρτη.." class="form-control" style="width: 400px" %}
+                        {%  else %}
+                                <input id="geocomplete" type="text" placeholder="Διεύθυνση στο Χάρτη.." style="width: 400px"
+                                       class="form-control" value={{ general.deya_mapaddress }}  />
+                        {% endif %}
+
+                        <input id="find" class="btn btn-primary" type="button" value="Αναζήτηση" />
+
+
+                        <label for = "{{ form.latitude.id_for_label }}" >Latitude</label>
+                        <!--<input name="lat" type="text" value="">-->
+                        {% render_field form.lat class="form-control" id="lat"%}
+
+                     </div>
+
+                     <div class="form-row" >
+                       <label for = "{{ form.longitude.id_for_label }}" >Logitude</label>
+                      <!-- <input name="lng" type="text" value="">-->
+                        {% render_field form.lng class="form-control" id="lng"%}
+
+                     </div>
+
+                     <div class="form-row" >
+                         <label for = "{{ form.formatted_address.id_for_label }}" >Formatted Address</label>
+                           <!--<input name="formatted_address" type="text" value="">-->
+                         {% render_field form.formatted_address class="form-control"   %}
+
+                     </div>
+
+                 </div>
+
+
+                <div class="map_canvas"></div>
+
+                <a id="reset" href="#" style="display:none;">Reset Marker</a>
+
+            </div>
+            <div class="col">
+
+                <div class="form-row">
+                    <input type="hidden" name="next" value="{{ request.path }}"/>
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-ok"></span> Καταχώρηση Βλάβης
+                     </button>
+                <a href="{% url 'damage-add' %}" class="btn btn-outline-danger" >Cancel</a>
+             </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+
+   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script src="{% static 'jquery.geocomplete.js' %}" type='text/javascript'></script>
+
+    <script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form ",
+          markerOptions: {
+          draggable: true,
+          title:"Σύρετε για να τοποθετήσετε στη διέυθυνση που θέλετε."
+          }
+        });
+
+        $("#geocomplete").bind("geocode:dragged", function(event, latLng){
+          $("input[name=lat]").val(latLng.lat());
+          $("input[name=lng]").val(latLng.lng());
+          $("#reset").show();
+        });
+
+
+        $("#reset").click(function(){
+          $("#geocomplete").geocomplete("resetMarker");
+          $("#reset").hide();
+          return false;
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        }).click();
+      });
+    </script>
+    <script src="http://maps.googleapis.com/maps/api/js?key={{ general.google_api_key }}&libraries=places&callback=initMap&language=el&region=EL">
+    </script>
+    <!-- key=AIzaSyDmdCbjHSXuma43DN3X8ihHuyU-rI3KKZY  -->
+    <script src="{% static 'jquery.geocomplete.js' %}" type='text/javascript'></script>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+

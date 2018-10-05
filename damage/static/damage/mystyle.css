@@ -8,6 +8,32 @@
     text-align: center;
 
     /*text-shadow: 1px 2px dimgray;*/
-
 }
 
+
+.input-readonly {
+    border: 0px;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.label .default-label {
+    font-weight: bold;
+    color: red;
+    font-family: Calibri;
+    font-size: 5px;
+    align-content: right;
+}
+
+.header-table {
+    background-color:#e8eee5;
+    color: #1e347b;
+    font-family: Calibri;
+    font-weight: bold ;
+    letter-spacing: 2px;
+    align-content: left;
+    text-align: left;
+
+
+
+}

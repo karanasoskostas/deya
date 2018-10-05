@@ -1,0 +1,148 @@
+{% extends 'damage/menus/sidebarmenu.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+
+
+
+{% block title %} {{ general.deya_name }} - STATUS ΒΛΑΒΩΝ{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+
+    <h3 class="header-criteria" > STATUS ΒΛΑΒΩΝ  </h3>
+
+    <div class="container-fluid" >
+        <h6 class="header-table" >ΣΤΟΙΧΕΙΑ ΒΛΑΒΗΣ</h6>
+        <table class="table table-striped table-bordered table-hover " id="mastertable" >
+            <thead class="thead-light">
+                        <tr>
+                            <th scope="col" ><a>Ημερομηνία</a></th>
+                            <th scope="col"><a>Ονοματεπώνυμο</a></th>
+                            <th scope="col" ><a> Eίδος Βλάβης </a></th>
+                            <th scope="col"><a>Διεύθυνση Βλάβης</a></th>
+                            <th scope="col"><a>ΤΚ</a></th>
+                            <th scope="col"><a>Πόλη</a></th>
+                            <th scope="col"><a>Περιοχή</a></th>
+                            <th scope="col"><a>Status</a></th>
+                        </tr>
+                    </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="#">{{ damage.entry_date | date:'d/m/Y H:i' }} </a>
+                    </td>
+                    <td>
+                        <a href="#">{{ damage.lastname }} {{ damage.firstname }}</a>
+                    </td>
+                    <td>
+                        <a href="#">{{ damage.damagetype.desc }} </a>
+                    </td>
+                    <td>
+                        <a href="#">{{ damage.damageaddress }} </a>
+                    </td>
+                    <td>
+                        <a href="#">{{ damage.damagezipcode }} </a>
+                    </td>
+                    <td>
+                        <a href="#">{{ damage.damagetown }} </a>
+                    </td>
+                    <td>
+                        <a href="#">{{ damage.damagearea }} </a>
+                    </td>
+                    <td>
+                        <a href="#">{{ damage.damagestatus.desc }} </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h6 class="header-table" >STATUS ΠΡΟΣ ΚΑΤΑΧΩΡΗΣΗ</h6>
+        <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="form-row">
+
+                <div class="col-sm-4 form-group" >
+                     <label for="label" >Status</label>
+                     {% render_field form.damagestatus class="form-control" placeholder="" %}
+                </div>
+
+                <div class="col-sm-8 form-group" >
+                     <label>Παρατηρήσεις</label>
+                     {% render_field form.com class="form-control" %}
+                </div>
+
+            </div>
+
+            <div class="form-group row"  >
+
+            <div class="p-1 mt-1 mb-1 col-sm-2" align="center">
+                <button type="submit" class="btn btn-outline-success btn-shadow btn-round has-icon has-icon-nofloat btn-block" name="save" >
+                    <i class="fa fa-save" aria-hidden="true"></i><div>Αποθήκευση</div>
+                </button>
+            </div>
+            <div class = "col-sm-1"></div>
+            <div class="p-1 mt-1 mb-4 col-sm-2">
+                <button type="button" class="btn btn-outline-danger btn-shadow btn-round has-icon has-icon-nofloat btn-block"
+                        onClick="javascript:history.go(-1);">
+                    <i class="ion ion-arrow-return-left"></i><div>Επιστροφή</div>
+                </button>
+            </div>
+
+         </div>
+        </form>
+
+        <h6 class="header-table" >ΙΣΤΟΡΙΚΟ ΕΞΕΛΙΞΗΣ ΤΗΣ ΒΛΑΒΗΣ</h6>
+        <table class="table table-striped table-bordered table-hover " id="detailtable" >
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col" width="10%"><a>Ημερομηνία</a></th>
+                    <th scope="col" width="15%"><a>Status</a></th>
+                    <th scope="col" ><a> Χρήστης </a></th>
+                    <th scope="col" ><a> Παρατηρήσεις </a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for status in status_list %}
+
+                <tr>
+                    <td>
+                        <a >{{ status.entry_date | date:'d/m/Y H:i' }} </a>
+                    </td>
+                    <td>
+                         <a >{{ status.damagestatus.desc }} </a>
+                        </td>
+                    <td>
+                        <a >{{ status.user  }} </a>
+                    </td>
+                    <td>
+                        <a >{{ status.com  }} </a>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends 'damage/menus/sidebarmenu.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load cool_paginate %}
+
+
+{% block title %} {{ general.deya_name }} - ΛΙΣΤΑ BΛΑΒΩΝ {% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid" >
+
+
+        <form  >
+
+
+
+            <h1 class="header-criteria" > ΛΙΣΤΑ ΒΛΑΒΩΝ  </h1>
+
+                <form class="form-inline " >
+                    <div class="container-fluid text-center row"  >
+                        <div class="col-sm">
+                            <label for="l1">Από Ημερομηνία :</label>
+                            <input type="text"  id="example-text-input" value= {{ fromdate }} readonly
+                                   style="border: 0px; font-weight: bold; color: darkblue "/>
+                        </div>
+                        <div class="col-sm">
+                            <label for="l2" >Έως Ημερομηνία :</label>
+                            <input type="text"  id="e2" value= {{ todate }} readonly
+                                   style="border: 0px; font-weight: bold; color: darkblue"/>
+                        </div>
+                        <div class="col-sm">
+                            <label for="l3" >Status :</label>
+                            <label style="border: 0px; font-weight: bold; color: darkblue">{{ statusdesc }}</label>
+                        </div>
+                        <div class="col-sm">
+                            <label for="l3" >Είδος :</label>
+                            <label style="border: 0px; font-weight: bold; color: darkblue">{{ typedesc }}</label>
+                        </div>
+                    </div>
+                </form>
+
+
+                <table class="table table-striped table-bordered table-hover " id="mytable" >
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col"><a>Ημερομηνία</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=entry_date&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=entry_date&direction=DESC" ></a>
+                                </div>
+                            </th>
+                            <th scope="col"><a>Ονοματεπώνυμο</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=lastname&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=lastname&direction=DESC" ></a>
+                                </div>
+                            </th>
+
+                            <th scope="col" ><a> Eίδος Βλάβης </a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagetype__desc&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagetype__desc&direction=DESC" ></a>
+                                </div>
+                            </th>
+                            <th scope="col"><a>Διεύθυνση Βλάβης</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damageaddress&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damageaddress&direction=DESC" ></a>
+                                </div>
+                            </th>
+                            <th scope="col"><a>ΤΚ</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagezipcode&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagezipcode&direction=DESC" ></a>
+                                </div>
+                            </th>
+                            <th scope="col"><a>Πόλη</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagetown&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagetown&direction=DESC" ></a>
+                                </div>
+                            </th>
+                            <th scope="col"><a>Περιοχή</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagearea&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagearea&direction=DESC" ></a>
+                                </div>
+                            </th>
+                            <th scope="col"><a>Status</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=damagestatus__desc&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=damagestatus__desc&direction=DESC" ></a>
+                                </div>
+                            </th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for damage in damage_list %}
+
+                            <tr>
+
+                                <td>
+                                    <a href="{%  url 'damage-by-id' pk=damage.id %}">{{ damage.entry_date | date:'d/m/Y H:i' }} </a>
+                                </td>
+
+                                <td>
+                                        <a href="#">{{ damage.lastname }} {{ damage.firstname }}</a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damagetype.desc }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damageaddress }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damagezipcode }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damagetown }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ damage.damagearea }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="{%  url 'damage-status' pk=damage.id %}">{{ damage.damagestatus.desc }} </a>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+
+
+                    </tbody>
+
+                </table>
+                {% if page_obj %}
+                    {% cool_paginate page_obj=page_obj %}
+                {% endif %}
+
+        </form>
+        <br>
+
+    </div>
+
+
+
+
+
+{% endblock %}

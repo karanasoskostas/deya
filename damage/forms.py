@@ -1,5 +1,5 @@
 from django import forms
-from .models import DamageType, Damage , DamageStatus, ContactDetails
+from .models import DamageType, Damage , DamageStatus, ContactDetails, DamageHistoryStatus
 
 
 class DamageTypeChoiceField(forms.ModelChoiceField):
@@ -149,7 +149,7 @@ class ContactDetailsForm(forms.ModelForm):
     thl = forms.CharField(max_length=100, required=True)
     com = forms.CharField(max_length=1000, widget=forms.Textarea(attrs={
         'placeholder': '',
-        'rows': 10
+        'rows': 10,
     }), required=True)
 
     class Meta:
@@ -165,5 +165,19 @@ class ContactListForm(forms.ModelForm):
 
 
 class ContactListCriteriaForm(forms.Form):
-    fromdate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
-    todate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=False)
+    fromdate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=True)
+    todate = forms.CharField(widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}), required=True)
+
+
+class DamageStatusHistoryForm(forms.ModelForm):
+    entry_date = forms.CharField(widget=forms.HiddenInput(attrs={'type': 'datetime-local'}), required=False)
+    damagestatus = DamageStatusChoiceField(queryset=DamageStatus.objects.all(),
+                                  widget=forms.Select(attrs={'class': 'select2_single form-control', 'blank': 'True'}))
+    com = forms.CharField(max_length=1000, widget=forms.Textarea(attrs={
+        'placeholder': '',
+        'rows': 2,
+    }))
+
+    class Meta:
+        model = DamageHistoryStatus
+        fields = ['entry_date', 'damagestatus', 'com']

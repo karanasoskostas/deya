@@ -132,7 +132,9 @@
                                 </td>
 
                                 <td>
-                                    <a href="{%  url 'damage-status' pk=damage.id %}">{{ damage.damagestatus.desc }} </a>
+                                    <a href="{%  url 'damage-status' pk=damage.id %}" target="_blank" data-delay='{"show":"800", "hide":"200"}'
+                                    data-toggle="tooltip" data-placement="top" title="Ιστορικό Εξέλιξης της Βλάβης" >
+                                        {{ damage.damagestatus.desc }} </a>
                                 </td>
                             </tr>
 

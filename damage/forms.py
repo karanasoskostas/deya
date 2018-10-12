@@ -1,5 +1,6 @@
 from django import forms
-from .models import DamageType, Damage , DamageStatus, ContactDetails, DamageHistoryStatus
+from .models import DamageType, Damage , DamageStatus, ContactDetails, DamageHistoryStatus, \
+    ContactManagement
 
 
 class DamageTypeChoiceField(forms.ModelChoiceField):
@@ -181,3 +182,19 @@ class DamageStatusHistoryForm(forms.ModelForm):
     class Meta:
         model = DamageHistoryStatus
         fields = ['entry_date', 'damagestatus', 'com']
+
+class ContactManagementForm(forms.ModelForm):
+    entry_date = forms.CharField(widget=forms.HiddenInput(attrs={'type': 'datetime-local'}), required=False)
+    com = forms.CharField(max_length=1000, required=True, widget=forms.Textarea(attrs={
+        'placeholder': '',
+        'rows': 2,
+    }))
+    deyacom = forms.CharField(max_length=500, required=False, widget=forms.Textarea(attrs={
+        'placeholder': '',
+        'rows': 2,
+        })
+    )
+
+    class Meta:
+        model = ContactManagement
+        fields = ['entry_date', 'deyacom', 'com']

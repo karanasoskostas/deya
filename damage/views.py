@@ -1,10 +1,12 @@
-from .models import General, DamageType, Damage, DamageStatus, DamageHistoryStatus
+from .models import General, DamageType, Damage, DamageStatus, DamageHistoryStatus , ContactDetails, \
+    ContactManagement
 from django.shortcuts import get_object_or_404 ,render
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView, View
 from damage.forms import HomeTestForm, DamageEntryForm, DamageTypeForm, DamageListForm, DamageListCriteriaForm, \
-    ContactDetailsForm, ContactListForm, ContactListCriteriaForm, DamageStatusHistoryForm
+    ContactDetailsForm, ContactListForm, ContactListCriteriaForm, DamageStatusHistoryForm, \
+    ContactManagementForm
 from django.utils import timezone
 import datetime
 import pytz
@@ -689,6 +691,9 @@ class ContactListCriteriaView(TemplateView):
 
             if 'showlist' in request.POST:           # ανάλογα με ποιο button εχει πατήσει
                 viewurl = 'contact-list-dates'
+            if 'history' in request.POST:           # ανάλογα με ποιο button εχει πατήσει
+                viewurl = 'contact-list-history-dates'
+
 
             return redirect(viewurl, pfromdate=fromdatetext, ptodate=todatetext)
 
@@ -759,3 +764,119 @@ class DamageStatusView(TemplateView):
             args = {'form': form
                     }
             return render(request, self.template_name, args)
+
+class ContactManagementView(TemplateView):
+    template_name = "damage/contact/contactmanagement.html"
+
+    def get(self, request, pk):
+        general = General.objects.get(pk=1)
+        contact = ContactDetails.objects.get(pk=pk)
+        form = ContactManagementForm()
+
+        contact_list = ContactManagement.objects.filter(contact=contact).order_by('-entry_date')
+
+        args = {
+            'general': general,
+            'contact': contact,
+            'form': form,
+            'contact_list': contact_list
+        }
+        return render(request, self.template_name, args)
+
+    def post(self, request, pk):
+        general = General.objects.get(pk=1)
+
+        form = ContactManagementForm(request.POST)
+        form.non_field_errors()
+
+        if form.is_valid():
+
+            post = form.save(commit=False)
+            post.userip = get_client_ip(request)  # το IP του χρήστη
+            if self.request.user.is_authenticated:  # κάποια στιγμή το is_authenticated() χτύπησε !!!!
+                post.user = request.user
+            post.entry_date = datetime.now(tz=timezone.utc)
+            #damage = request.POST.get('damage')
+            contact = ContactDetails.objects.get(pk=pk)
+            post.contact = contact
+            post.save()
+
+            contactdetails_mail(post.id)
+
+            contact_list = ContactManagement.objects.filter(contact=contact).order_by('-entry_date')
+
+            args = {
+                'general': general,
+                'contact': contact,
+                'form': form,
+                'contact_list': contact_list
+            }
+
+            return redirect(request.META.get('HTTP_REFERER'))
+
+        else:
+            print('form is not valid')
+            print(form.errors)
+            # form = DamageEntryForm()
+            args = {'form': form
+                    }
+            return render(request, self.template_name, args)
+
+
+class ContactDetailsHistoryListView(TemplateView):
+    #template_name = "damage/contact/contactlist_table.html"
+    template_name = "damage/contact/contact_masterdetail_table.html"
+
+    #def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
+    def get(self, request, pfromdate, ptodate):
+        form = ContactListForm()
+
+        if pfromdate is None:  # παντα is None oxi == None
+            pfromdate = '01_01_2000'
+
+        if ptodate is None:
+            ptodate = '01_01_2100'
+
+        fdate = datetime.strptime(pfromdate, '%d_%m_%Y')  # ερχεται με format dd_mm_yyyy
+        fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)  # min time to datetime
+
+        tdate = datetime.strptime(ptodate, '%d_%m_%Y')  # string to datetime
+        tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
+
+        order_by = request.GET.get('order_by', 'entry_date')
+        direction = request.GET.get('direction', 'ASC')
+        if Lower(direction) == Lower('DESC'):
+            order_by = '-{}'.format(order_by)
+
+        d_list = ContactDetails.objects.filter(entry_date__range=(fdate, tdate)).order_by(order_by)
+        contact_history = ContactManagement.objects.filter(contact__entry_date__range=(fdate, tdate)).order_by('-entry_date')
+
+        paginator = Paginator(d_list, 3)
+
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
+
+        try:
+             contact_list = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            contact_list = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            contact_list = paginator.page(paginator.num_pages)
+
+        general = General.objects.get(pk=1)
+        fromdatetext = fdate.strftime('%d/%m/%Y')
+        todatetext = tdate.strftime('%d/%m/%Y')
+
+        args = {
+            'form': form,
+            'contact_list': contact_list,
+            'page_obj': page_obj,
+            'general': general,
+            'fromdate': fromdatetext,
+            'todate': todatetext,
+            'contact_history': contact_history
+
+        }
+        return render(request, self.template_name, args)

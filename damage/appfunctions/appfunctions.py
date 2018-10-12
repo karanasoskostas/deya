@@ -1,4 +1,4 @@
-from damage.models import General, Damage, ContactDetails
+from damage.models import General, Damage, ContactDetails, ContactManagement
 from django.conf import settings
 from django.template import loader
 from damage.utils.utils import *
@@ -40,17 +40,16 @@ def damage_mail(pk):
     return
 
 
-
-
 def contactdetails_mail(pk):
-    contactdetails = ContactDetails.objects.get(pk=pk)
+    contactmanagment = ContactManagement.objects.get(pk=pk)
+    contactdetails = ContactDetails.objects.get(pk=contactmanagment.contact.pk)
     general = General.objects.get(pk=1)
 
-    if not contactdetails:
+    if not contactmanagment:
         return
 
-    subject = 'NΝεα Καταχώρηση στη Φόρμα Επικοινωνίας :' + contactdetails.name
-    message = 'Here is the message.'
+    subject = 'Απάντηση στη Φόρμα Επικοινωνίας :' + contactdetails.name
+    message = contactmanagment.com
     senderemail = settings.EMAIL_HOST_USER
     receivers = [contactdetails.email, settings.EMAIL_HOST_USER]
     template = 'damage/email/addmail.html'
@@ -76,3 +75,4 @@ def contactdetails_mail(pk):
     # This makes send_mass_mail() slightly more efficient.
 
     return
+

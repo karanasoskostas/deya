@@ -17,3 +17,6 @@ class LocationDetails(models.Model):
 
     def __str__(self):
         return str(self.formatted_address)
+
+    class Meta:
+        db_table = 'locationdetails'

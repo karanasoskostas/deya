@@ -1,6 +1,6 @@
 import os
 import socket
-
+from django.conf import global_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -69,6 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # application processors
+                'damage.processor.lastcontacts',
 
             ],
         },
@@ -170,8 +172,9 @@ COOL_PAGINATOR_PREVIOUS_NAME = "Προηγούμενη"
 
 EMAIL_HOST = socket.gethostbyname('smtp.mail.yahoo.com')
 EMAIL_HOST_USER = 'demodeya@yahoo.com'
-EMAIL_HOST_PASSWORD = 'ipuvvkjkfdpfvpch'
+EMAIL_HOST_PASSWORD = 'obultwpiqewbhlie'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 DJANGO_SETTINGS_MODULE = 'deya.settings'
+

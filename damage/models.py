@@ -68,6 +68,10 @@ class DamageHistoryStatus(models.Model):
     def __str__(self):
         return str("{:%d/%m/%Y  %H:%M:%S}".format(self.entry_date)) + '    -    ' + self.damagestatus.desc
 
+    class Meta:
+        db_table = 'damagehistorystatus'
+
+
 class General(models.Model):
     deya_aa = models.IntegerField()
     deya_name = models.CharField(max_length=100)
@@ -91,8 +95,25 @@ class ContactDetails(models.Model):
     com = models.CharField(max_length=1000, null=True, default=None)
     userip = models.CharField(max_length=100, null=True, default=None)
 
+
     def __str__(self):
         return str("{:%d/%m/%Y  %H:%M:%S}".format(self.entry_date)) + '    -    ' + self.name + ' ' + self.email
 
     class Meta:
         db_table = 'contactdetails'
+
+
+class ContactManagement(models.Model):
+    entry_date = models.DateTimeField()
+    contact = models.ForeignKey(ContactDetails, on_delete=models.DO_NOTHING)
+    com = models.CharField(max_length=1000, null=True, default=None)
+    deyacom = models.CharField(max_length=500, null=True, default=None)
+    user = models.ForeignKey(User, blank=True, null=True, default=None, on_delete=models.DO_NOTHING)
+    userip = models.CharField(max_length=100, null=True, default=None)
+
+
+    def __str__(self):
+        return str("{:%d/%m/%Y  %H:%M:%S}".format(self.entry_date)) + '    -    ' + self.com
+
+    class Meta:
+        db_table = 'contactmanagement'

@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{% static 'stisla-admin/dist/modules/flag-icon-css/css/flag-icon.min.css' %}">
     <link rel="stylesheet" href="{% static 'stisla-admin/dist/css/demo.css' %}">
     <link rel="stylesheet" href="{% static 'stisla-admin/dist/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stisla-admin/dist/modules/toastr/build/toastr.min.css' %}">
     <link rel="stylesheet" href="{% static 'damage/mystyle.css' %}">
 </head>
 
@@ -50,6 +51,31 @@
         </form>
 
         <ul class="navbar-nav navbar-right">
+
+            <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="ion ion-android-mail"></i></a>
+                <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                  <div class="dropdown-header">Τελευταία 10 Μυνήματα
+
+                  </div>
+
+                  <div class="dropdown-list-content">
+
+                  {% for contact in lastcontacts %}
+
+                    <a href="{%  url 'contact-management' pk=contact.id %}" target="_blank" class="dropdown-item dropdown-item-unread">
+
+                      {{ contact.name }}
+                      <div class="dropdown-item-desc">
+                        {{ contact.com }}
+                        <div class="time">{{ contact.entry_date | date:'d/m/Y H:i' }}</div>
+                      </div>
+                    </a>
+
+                  {% endfor %}
+
+                  </div>
+                </div>
+            </li>
 
           <li class="dropdown">
               <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg fa fa-user">
@@ -111,7 +137,7 @@
               <a href="#" class="has-dropdown"><i class="ion ion-android-mail"></i><span>Μυνήματα</span></a>
               <ul class="menu-dropdown">
                 <li><a href="{% url 'contact-list-criteria' %}"><i class="fa fa-envelope-open" aria-hidden="true"></i> Προβολή Μηνημάτων</a></li>
-                <li><a href="../../stisla-admin/templates/fontawesome.html"><i class="ion ion-ios-circle-outline"></i> Font Awesome</a></li>
+                <li><a href="../../stisla-admin/templates/fontawesome.html"><i class="fa fa-align-left"></i> Προβολή με Ιστορικό</a></li>
                 <li><a href="../../stisla-admin/templates/flag.html"><i class="ion ion-ios-circle-outline"></i> Flag</a></li>
               </ul>
             </li>
@@ -204,12 +230,13 @@
   <script src="{% static 'stisla-admin/dist/modules/scroll-up-bar/stisla-admin/dist/scroll-up-bar.min.js' %}"></script>
   <script src="{% static 'stisla-admin/dist/js/sa-functions.js' %}"></script>
 
+
   <script src="{% static 'stisla-admin/dist/js/scripts.js' %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
   <script src="{% static 'stisla-admin/dist/modules/summernote/summernote-lite.js' %}"></script>
 
 
-
+  <script src="{% static 'stisla-admin/dist/modules/toastr/build/toastr.min.js' %}"></script>
 
   <script src="{% static 'stisla-admin/dist/js/custom.js' %}"></script>
   <script src="{% static 'stisla-admin/dist/js/demo.js' %}"></script>

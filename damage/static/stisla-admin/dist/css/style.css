@@ -1271,9 +1271,11 @@ table tr:hover .table-links {
 /*tooltip*/
 .tooltip {
 	font-size: 12px;
+	background-color: #2b669a;
 }
 .tooltip-inner {
 	padding: 7px 13px;
+	background-color: #2b669a;
 }
 /*end tooltip*/
 

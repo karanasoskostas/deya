@@ -1,0 +1,173 @@
+{% extends 'damage/menus/sidebarmenu.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load cool_paginate %}
+
+
+{% block title %} {{ general.deya_name }} - ΛΙΣΤΑ BΛΑΒΩΝ {% endblock %}
+
+
+{% block body %}
+
+
+    <div class="container-" >
+
+
+        <form  >
+
+            <h1 class="header-criteria" > ΛΙΣΤΑ ΜΥΝΗΜΑΤΩΝ ME IΣΤΟΡΙΚΟ </h1>
+
+                <form class="form-inline " >
+                    <div class="container-fluid text-center row"   >
+                        <div class="col-sm" style="alignment: right">
+                            <label for="l1">Από Ημερομηνία :</label>
+                            <input type="text"  id="example-text-input" value= {{ fromdate }} readonly
+                                   style="border: 0px; font-weight: bold; color: darkblue "/>
+                        </div>
+                        <div class="col-sm" style="alignment: left">
+                            <label for="l2" >Έως Ημερομηνία :</label>
+                            <input type="text"  id="e2" value= {{ todate }} readonly
+                                   style="border: 0px; font-weight: bold; color: darkblue"/>
+                        </div>
+
+                    </div>
+                </form>
+
+
+                <table class="table table-striped table-bordered table-hover table-condensed" id="mytable" >
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" width="10%"><a>Ημερομηνία</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=entry_date&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=entry_date&direction=DESC" ></a>
+                                </div>
+                            </th>
+                            <th scope="col" width="15%"><a>Ονοματεπώνυμο</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=name&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=name&direction=DESC" ></a>
+                                </div>
+                            </th>
+
+                            <th scope="col" width="15%"><a> E-Mail </a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=email&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=email&direction=DESC" ></a>
+                                </div>
+                            </th>
+                            <th scope="col" width="10%"><a>Τηλέφωνο</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=thl&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=thl&direction=DESC" ></a>
+                                </div>
+                            </th>
+                            <th scope="col"><a>Μύνημα</a>
+                                <div class="btn-group-vertical">
+                                    <a class="fa fa-fw fa-sort-down align-right" href="?order_by=com&direction=ASC" ></a>
+                                    <a class="fa fa-fw fa-sort-up align-right" href="?order_by=com&direction=DESC" ></a>
+                                </div>
+                            </th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for contact in contact_list %}
+
+                            <tr data-toggle="collapse" data-target=".demo{{ contact.pk }}" >
+
+                                <td>
+                                    <a href="#"> {{ contact.entry_date | date:'d/m/Y H:i' }} </a>
+                                </td>
+
+                                <td>
+                                        <a href="#">{{ contact.name }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ contact.email }} </a>
+                                </td>
+
+                                <td>
+                                    <a href="#">{{ contact.thl }} </a>
+                                </td>
+
+                                <td style="width: 40%">
+                                    <a href="#" >
+
+                                         {{ contact.com }}
+                                    </a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="hiddenRow" colspan="5">
+
+                                    <div class="collapse demo{{ contact.pk }}" >
+
+                                        <table class="table table-striped table-bordered table-hover " id="detailtable" >
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col" width="10%"><a>Ημερομηνία</a></th>
+                                                    <th scope="col" ><a>Απάντηση</a></th>
+                                                    <th scope="col" width="30%"><a> Παρατηρήσεις </a></th>
+                                                    <th scope="col" width="10%"><a> Χρήστης </a></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for his in contact_history %}
+                                                {% if his.contact.pk == contact.pk %}
+
+                                                    <tr>
+                                                        <td class="hiddenRow">
+                                                            <a >{{ his.entry_date | date:'d/m/Y H:i' }} </a>
+                                                        </td>
+                                                        <td class="hiddenRow">
+                                                             <a >{{ his.com }} </a>
+                                                            </td>
+                                                        <td class="hiddenRow">
+                                                            <a >{{ his.deyacom  }} </a>
+                                                        </td >
+                                                        <td class="hiddenRow">
+                                                            <a >{{ his.user  }} </a>
+                                                        </td>
+
+                                                    </tr>
+
+                                                {% endif %}
+                                            {% endfor %}
+                                            </tbody>
+
+                                        </table>
+
+                                    </div>
+
+                                 </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+                <script>
+                    $('.collapse').on('show.bs.collapse', function () {
+                        $('.collapse.in').collapse('hide');
+                    });
+                </script>
+
+
+                {% if page_obj %}
+                    {% cool_paginate page_obj=page_obj %}
+                {% endif %}
+
+        </form>
+        <br>
+
+    </div>
+
+{% endblock %}

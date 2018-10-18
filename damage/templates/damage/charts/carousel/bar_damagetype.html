@@ -1,0 +1,79 @@
+
+<script>
+//var endpoint = '/damage/api/data'
+var endpoint = '/damage/api/chart/data/damagetype'   // the framework API View
+
+//var defaultData = [12, 19, 3, 5, 2, 3]
+//var labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+
+var defaultData = []
+var labels = []
+var backgroundcolors = []
+var bordercolors = []
+$.ajax({
+    method: 'GET',
+    url: endpoint,
+    success: function(data){
+        defaultData = data.default
+        labels = data.labels
+        backgroundcolors = data.background
+        bordercolors = data.border
+        console.log(backgroundcolors)
+        console.log(bordercolors)
+        setChartBar()
+        /*setChartLine()*/
+
+
+    },
+    error: function(error_data){
+        console.log('error')
+        console.log(error_data)
+    }
+})
+
+function setChartBar(){
+    var ctx = document.getElementById("myChartBarDamageType").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Αριθμός Βλαβών ανα Είδος Βλάβης',
+                    data: defaultData,
+                    backgroundColor: backgroundcolors,
+                    borderColor: bordercolors,
+                    borderWidth: 1
+                }],
+
+
+
+            },
+             options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+             }
+
+        })
+
+}
+
+
+
+
+</script>
+<body>
+    <div class="row">
+
+            <div class="col-sm-12">
+                <canvas id="myChartBarDamageType" width="400" height="300" ></canvas>
+
+            </div>
+
+    </div>
+</body>
+

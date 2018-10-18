@@ -2,54 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d878107-aaee-4f39-96f4-8b30d56aeeb4" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/damage/processor.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/contact/contact_masterdetail_table.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/contact/contactmanagement.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/charts/carousel.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagestatus.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/damage/admin.py" afterPath="$PROJECT_DIR$/damage/admin.py" />
-      <change beforePath="$PROJECT_DIR$/damage/appfunctions/appfunctions.py" afterPath="$PROJECT_DIR$/damage/appfunctions/appfunctions.py" />
-      <change beforePath="$PROJECT_DIR$/damage/forms.py" afterPath="$PROJECT_DIR$/damage/forms.py" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/damage/migrations/0001_initial.py" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0002_auto_20180622_2313.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0003_damage_status.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0004_auto_20180623_2305.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0005_auto_20180623_2307.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0006_general.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0007_auto_20180629_0941.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0008_auto_20180629_2156.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0009_auto_20180708_2331.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0010_auto_20180708_2333.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0011_auto_20180710_2309.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0012_auto_20180710_2316.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0013_auto_20180711_1207.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0014_auto_20180711_1243.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0015_damage_userip.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0016_auto_20180712_1527.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0017_auto_20180713_1120.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0018_general_google_api_key.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0019_auto_20180719_1235.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0020_auto_20180719_1236.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0021_auto_20180719_2249.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0021_auto_20180720_1456.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0022_merge_20180722_2337.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0023_auto_20180722_2337.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0024_auto_20180724_0914.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0025_auto_20180724_0931.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0026_auto_20180802_0901.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0027_contactdetails.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0028_contactdetails_userip.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/migrations/0029_damagehistorystatus.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/models.py" afterPath="$PROJECT_DIR$/damage/models.py" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations.rar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/processor.py" afterPath="$PROJECT_DIR$/damage/processor.py" />
       <change beforePath="$PROJECT_DIR$/damage/static/damage/mystyle.css" afterPath="$PROJECT_DIR$/damage/static/damage/mystyle.css" />
       <change beforePath="$PROJECT_DIR$/damage/static/stisla-admin/dist/css/style.css" afterPath="$PROJECT_DIR$/damage/static/stisla-admin/dist/css/style.css" />
+      <change beforePath="$PROJECT_DIR$/damage/templates/damage/charts/charts.html" afterPath="$PROJECT_DIR$/damage/templates/damage/charts/charts.html" />
       <change beforePath="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" afterPath="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" />
       <change beforePath="$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html" afterPath="$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html" />
       <change beforePath="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" afterPath="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" />
-      <change beforePath="$PROJECT_DIR$/damage/templates/damage/entry/damagelist_table.html" afterPath="$PROJECT_DIR$/damage/templates/damage/entry/damagelist_table.html" />
-      <change beforePath="$PROJECT_DIR$/damage/templates/damage/entry/damagestatus.html" afterPath="$PROJECT_DIR$/damage/templates/damage/entry/damagestatus.html" />
       <change beforePath="$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html" afterPath="$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html" />
       <change beforePath="$PROJECT_DIR$/damage/urls.py" afterPath="$PROJECT_DIR$/damage/urls.py" />
-      <change beforePath="$PROJECT_DIR$/damage/utils/genmodels.py" afterPath="$PROJECT_DIR$/damage/utils/genmodels.py" />
       <change beforePath="$PROJECT_DIR$/damage/views.py" afterPath="$PROJECT_DIR$/damage/views.py" />
       <change beforePath="$PROJECT_DIR$/deya/settings.py" afterPath="$PROJECT_DIR$/deya/settings.py" />
     </list>
@@ -72,30 +37,170 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/damage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18810">
-              <caret line="881" column="56" lean-forward="false" selection-start-line="881" selection-start-column="56" selection-end-line="881" selection-end-column="56" />
+            <state relative-caret-position="457">
+              <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
               <folding>
-                <element signature="e#0#124#0" expanded="true" />
+                <element signature="e#1518#1722#0" expanded="false" />
+                <element signature="e#1618#1656#0" expanded="false" />
+                <element signature="e#1776#1830#0" expanded="false" />
+                <element signature="e#2044#3840#0" expanded="false" />
+                <element signature="e#2571#2675#0" expanded="false" />
+                <element signature="e#2717#2826#0" expanded="false" />
+                <element signature="e#2868#2977#0" expanded="false" />
+                <element signature="e#3019#3128#0" expanded="false" />
+                <element signature="e#3170#3281#0" expanded="false" />
+                <element signature="e#3323#3428#0" expanded="false" />
+                <element signature="e#3524#3588#0" expanded="false" />
+                <element signature="e#3650#3810#0" expanded="false" />
+                <element signature="e#4710#4819#0" expanded="false" />
+                <element signature="e#4861#4970#0" expanded="false" />
+                <element signature="e#5012#5121#0" expanded="false" />
+                <element signature="e#5163#5274#0" expanded="false" />
+                <element signature="e#5316#5421#0" expanded="false" />
+                <element signature="e#5879#6115#0" expanded="false" />
+                <element signature="e#5962#6115#0" expanded="false" />
+                <element signature="e#6014#6057#0" expanded="false" />
+                <element signature="e#6168#6413#0" expanded="false" />
+                <element signature="e#6312#6355#0" expanded="false" />
+                <element signature="e#6799#7089#0" expanded="false" />
+                <element signature="e#6936#7089#0" expanded="false" />
+                <element signature="e#6988#7031#0" expanded="false" />
+                <element signature="e#7126#7230#0" expanded="false" />
+                <element signature="e#7259#7656#0" expanded="false" />
+                <element signature="e#7698#8106#0" expanded="false" />
+                <element signature="e#7780#7912#0" expanded="false" />
+                <element signature="e#7819#7855#0" expanded="false" />
+                <element signature="e#7951#8106#0" expanded="false" />
+                <element signature="e#8142#8432#0" expanded="false" />
+                <element signature="e#8218#8432#0" expanded="false" />
+                <element signature="e#8822#9353#0" expanded="false" />
+                <element signature="e#8941#9076#0" expanded="false" />
+                <element signature="e#8951#9016#0" expanded="false" />
+                <element signature="e#9115#9353#0" expanded="false" />
+                <element signature="e#9396#9964#0" expanded="false" />
+                <element signature="e#9521#9656#0" expanded="false" />
+                <element signature="e#9531#9596#0" expanded="false" />
+                <element signature="e#9696#9964#0" expanded="false" />
+                <element signature="e#9904#9905#0" expanded="false" />
+                <element signature="e#10005#10480#0" expanded="false" />
+                <element signature="e#10132#10267#0" expanded="false" />
+                <element signature="e#10142#10207#0" expanded="false" />
+                <element signature="e#10306#10480#0" expanded="false" />
+                <element signature="e#10524#10700#0" expanded="false" />
+                <element signature="e#10547#10619#0" expanded="false" />
+                <element signature="e#10736#10962#0" expanded="false" />
+                <element signature="e#10851#10903#0" expanded="false" />
+                <element signature="e#10994#11107#0" expanded="false" />
+                <element signature="e#11065#11107#0" expanded="false" />
+                <element signature="e#11392#13110#0" expanded="false" />
+                <element signature="e#11560#11628#0" expanded="false" />
+                <element signature="e#12462#12537#0" expanded="false" />
+                <element signature="e#12612#12708#0" expanded="false" />
+                <element signature="e#12806#13110#0" expanded="false" />
+                <element signature="e#12924#12999#0" expanded="false" />
+                <element signature="e#13160#14071#0" expanded="false" />
+                <element signature="e#13295#13324#0" expanded="false" />
+                <element signature="e#13491#14071#0" expanded="false" />
+                <element signature="e#14234#16501#0" expanded="false" />
+                <element signature="e#14330#14547#0" expanded="false" />
+                <element signature="e#14422#14490#0" expanded="false" />
+                <element signature="e#14586#16501#0" expanded="false" />
+                <element signature="e#14748#16221#0" expanded="false" />
+                <element signature="e#15550#15583#0" expanded="false" />
+                <element signature="e#15771#15803#0" expanded="false" />
+                <element signature="e#16249#16501#0" expanded="false" />
+                <element signature="e#16365#16440#0" expanded="false" />
+                <element signature="e#16547#19511#0" expanded="false" />
+                <element signature="e#16675#19511#0" expanded="false" />
+                <element signature="e#17424#17514#0" expanded="false" />
+                <element signature="e#17541#17708#0" expanded="false" />
+                <element signature="e#17776#17860#0" expanded="false" />
+                <element signature="e#17887#18040#0" expanded="false" />
+                <element signature="e#18420#18776#0" expanded="false" />
+                <element signature="e#18787#18804#0" expanded="false" />
+                <element signature="e#19219#19234#0" expanded="false" />
+                <element signature="e#19304#19454#0" expanded="false" />
+                <element signature="e#19554#22551#0" expanded="false" />
+                <element signature="e#19692#22551#0" expanded="false" />
+                <element signature="e#20429#20519#0" expanded="false" />
+                <element signature="e#20546#20713#0" expanded="false" />
+                <element signature="e#20781#20865#0" expanded="false" />
+                <element signature="e#20892#21045#0" expanded="false" />
+                <element signature="e#21785#21877#0" expanded="false" />
+                <element signature="e#21916#22046#0" expanded="false" />
+                <element signature="e#22207#22494#0" expanded="false" />
+                <element signature="e#22598#23819#0" expanded="false" />
+                <element signature="e#22688#22824#0" expanded="false" />
+                <element signature="e#22731#22767#0" expanded="false" />
+                <element signature="e#22863#23819#0" expanded="false" />
+                <element signature="e#23022#23579#0" expanded="false" />
+                <element signature="e#23261#23283#0" expanded="false" />
+                <element signature="e#23411#23519#0" expanded="false" />
+                <element signature="e#23607#23819#0" expanded="false" />
+                <element signature="e#23723#23758#0" expanded="false" />
+                <element signature="e#23870#25986#0" expanded="false" />
+                <element signature="e#24060#25955#0" expanded="false" />
+                <element signature="e#25257#25350#0" expanded="false" />
+                <element signature="e#25389#25520#0" expanded="false" />
+                <element signature="e#25680#25898#0" expanded="false" />
+                <element signature="e#26038#27832#0" expanded="false" />
+                <element signature="e#26135#26353#0" expanded="false" />
+                <element signature="e#26228#26296#0" expanded="false" />
+                <element signature="e#26392#27832#0" expanded="false" />
+                <element signature="e#26555#27552#0" expanded="false" />
+                <element signature="e#27580#27832#0" expanded="false" />
+                <element signature="e#27696#27771#0" expanded="false" />
+                <element signature="e#27877#29756#0" expanded="false" />
+                <element signature="e#27967#28432#0" expanded="false" />
+                <element signature="e#28237#28375#0" expanded="false" />
+                <element signature="e#28475#29756#0" expanded="false" />
+                <element signature="e#28639#29516#0" expanded="false" />
+                <element signature="e#29295#29453#0" expanded="false" />
+                <element signature="e#29544#29756#0" expanded="false" />
+                <element signature="e#29660#29695#0" expanded="false" />
+                <element signature="e#29805#31644#0" expanded="false" />
+                <element signature="e#29902#30342#0" expanded="false" />
+                <element signature="e#30143#30285#0" expanded="false" />
+                <element signature="e#30385#31644#0" expanded="false" />
+                <element signature="e#30547#31404#0" expanded="false" />
+                <element signature="e#31179#31341#0" expanded="false" />
+                <element signature="e#31432#31644#0" expanded="false" />
+                <element signature="e#31548#31583#0" expanded="false" />
+                <element signature="e#31702#33940#0" expanded="false" />
+                <element signature="e#31962#33940#0" expanded="false" />
+                <element signature="e#33195#33288#0" expanded="false" />
+                <element signature="e#33327#33458#0" expanded="false" />
+                <element signature="e#33618#33883#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contactlist_criteria.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html">
+      <file leaf-file-name="query.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/models/query.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2288">
-              <caret line="104" column="133" lean-forward="false" selection-start-line="104" selection-start-column="133" selection-end-line="104" selection-end-column="133" />
+            <state relative-caret-position="201">
+              <caret line="267" column="0" lean-forward="false" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contactlist_table.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html">
+      <file leaf-file-name="manager.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/models/manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="89" column="70" lean-forward="false" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="70" />
+            <state relative-caret-position="201">
+              <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="charts.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/charts.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="49" lean-forward="false" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -104,70 +209,55 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/damage/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1342">
-              <caret line="62" column="35" lean-forward="false" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contact_masterdetail_table.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contact_masterdetail_table.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="159" column="23" lean-forward="false" selection-start-line="158" selection-start-column="1" selection-end-line="159" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sidebarmenu.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="54" column="173" lean-forward="false" selection-start-line="54" selection-start-column="173" selection-end-line="54" selection-end-column="173" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mystyle.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/static/damage/mystyle.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="42" column="22" lean-forward="false" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="damagelist_criteria.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deya/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="71" column="40" lean-forward="false" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+            <state relative-caret-position="198">
+              <caret line="9" column="77" lean-forward="false" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="processor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/processor.py">
+      <file leaf-file-name="bar_damagestatus.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagestatus.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="55" lean-forward="false" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+            <state relative-caret-position="308">
+              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bar_damagetype.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagetype.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="947">
+              <caret line="77" column="7" lean-forward="false" selection-start-line="77" selection-start-column="7" selection-end-line="77" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="carousel.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="169" column="71" lean-forward="false" selection-start-line="169" selection-start-column="71" selection-end-line="169" selection-end-column="71" />
+              <folding>
+                <element signature="e#3482#3674#2#HTML" expanded="true" />
+                <element signature="e#3743#3935#2#HTML" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="carousel.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/carousel.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -179,35 +269,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>slide</find>
-      <find>sidebar-br</find>
-      <find>side</find>
-      <find>user-r</find>
-      <find>sidebar-user</find>
-      <find>menu</find>
-      <find>menu-he</find>
-      <find>active</find>
-      <find>has-</find>
-      <find>has-dropdown</find>
-      <find>has</find>
-      <find>has-d</find>
-      <find>drop</find>
-      <find>carr</find>
-      <find>dropdown</find>
-      <find>main-content</find>
-      <find>none</find>
-      <find>Criteria</find>
-      <find>_add.</find>
-      <find>eadd.</find>
-      <find>kw</find>
-      <find>user</find>
       <find>kwargs['pk']</find>
       <find>.model</find>
       <find>mail</find>
@@ -216,6 +284,28 @@
       <find>sidebar</find>
       <find>[:</find>
       <find>TEMPLATE_CONTEXT_PROCESSORS</find>
+      <find>dropdown-header</find>
+      <find>tooltip</find>
+      <find>dropdown-item-desc</find>
+      <find>time</find>
+      <find>dropdown-list-content</find>
+      <find>overflow-y</find>
+      <find>dropdown-list-toggle</find>
+      <find>dropdown-menu</find>
+      <find>dropdown</find>
+      <find>overflow</find>
+      <find>rails</find>
+      <find>search</find>
+      <find>Table</find>
+      <find>horizrailenabled</find>
+      <find>rails-</find>
+      <find>dropdown-list</find>
+      <find>carou</find>
+      <find>canv</find>
+      <find>chart</find>
+      <find>ApiChartDataView</find>
+      <find>myChartBar</find>
+      <find>defaultData</find>
     </findStrings>
     <replaceStrings>
       <replace>col-auto</replace>
@@ -226,6 +316,8 @@
       <replace>request)</replace>
       <replace>form-group</replace>
       <replace>table.</replace>
+      <replace>myChartBarDamageStatus</replace>
+      <replace>defaultData2</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\projects\PRACTICE\Django\deya</dir>
@@ -241,12 +333,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/damage/tables.py" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/damage/save_templates/damagelist_table.html" />
-        <option value="$PROJECT_DIR$/damage/static/js/sorttable.js" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage.html" />
-        <option value="$PROJECT_DIR$/damage/static/styles.css" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/test/test_list.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/damagelist_table.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/contact/contactdetails.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/email/contactemail.html" />
@@ -257,11 +343,8 @@
         <option value="$PROJECT_DIR$/deya/urls.py" />
         <option value="$PROJECT_DIR$/damage/templates/damage/index/index_deya.html" />
         <option value="$PROJECT_DIR$/damage/utils/utils.py" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/charts/chartbase.html" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/charts/charts.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/index/index.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/menus/admintemplate/templates/index.html" />
-        <option value="$PROJECT_DIR$/damage/static/stisla-admin/dist/css/style.css" />
         <option value="$PROJECT_DIR$/damage/static/js/criteria_dates.js" />
         <option value="$PROJECT_DIR$/damage/static/damage/gijgo-combined-1.9.6/css/gijgo.css" />
         <option value="$PROJECT_DIR$/damage/templates/damage/menus/navmenu.html" />
@@ -276,22 +359,31 @@
         <option value="$PROJECT_DIR$/damage/admin.py" />
         <option value="$PROJECT_DIR$/damage/templates/damage/entry/damagelist_table.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/entry/damagestatus.html" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" />
         <option value="$PROJECT_DIR$/damage/utils/genmodels.py" />
         <option value="$PROJECT_DIR$/damage/forms.py" />
         <option value="$PROJECT_DIR$/damage/templates/damage/contact/contactmanagement.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/contact/contact_materdetail_table.html" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html" />
         <option value="$PROJECT_DIR$/damage/models.py" />
         <option value="$PROJECT_DIR$/damage/templates/damage/contact/contact_masterdetail_table.html" />
         <option value="$PROJECT_DIR$/damage/appfunctions/appfunctions.py" />
-        <option value="$PROJECT_DIR$/damage/views.py" />
-        <option value="$PROJECT_DIR$/damage/urls.py" />
-        <option value="$PROJECT_DIR$/deya/settings.py" />
         <option value="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" />
         <option value="$PROJECT_DIR$/damage/processor.py" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html" />
+        <option value="$PROJECT_DIR$/deya/settings.py" />
+        <option value="$PROJECT_DIR$/damage/static/stisla-admin/dist/modules/nicescroll/jquery.nicescroll.js" />
+        <option value="$PROJECT_DIR$/damage/static/stisla-admin/dist/css/style.css" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/test/test_carousel.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/charts/chartbase.html" />
         <option value="$PROJECT_DIR$/damage/static/damage/mystyle.css" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/charts/charts.html" />
+        <option value="$PROJECT_DIR$/damage/views.py" />
+        <option value="$PROJECT_DIR$/damage/urls.py" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagetype.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel/carousel.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagestatus.html" />
       </list>
     </option>
   </component>
@@ -306,7 +398,7 @@
       <scroll-view-position x="0" y="0" />
     </layout>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="1872" />
     <option name="height" value="1000" />
@@ -327,7 +419,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -354,10 +445,89 @@
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="damage" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="charts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="charts" type="462c0819:PsiDirectoryNode" />
+              <item name="carousel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="contact" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="criteria" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="entry" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="menus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -386,11 +556,11 @@
       <recent name="C:\projects\PRACTICE\Django\deya\damage\templates\damage" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\Django\deya\damage\templates\damage\charts\carousel" />
       <recent name="C:\projects\Django\deya\damage\templates\damage\criteria" />
       <recent name="C:\projects\Django\deya\damage\templates\stisla-admin\templates" />
       <recent name="C:\projects\Django\deya\damage\templates\damage\save_templates" />
       <recent name="C:\projects\Django\deya\damage\templates\damage\messages" />
-      <recent name="C:\projects\Django\deya\damage\templates\damage\email" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -516,22 +686,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30652174" sideWeight="0.5063966" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30108696" sideWeight="0.50852877" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28695652" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30108696" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30108696" sideWeight="0.4914712" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34891304" sideWeight="0.4936034" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18123667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23987207" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3173913" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3173913" sideWeight="0.4946695" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -578,18 +748,29 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html</url>
-          <line>37</line>
+          <line>24</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagestatus.html</url>
+          <line>8</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/damage/views.py</url>
-          <line>757</line>
+          <line>855</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/damage/views.py</url>
-          <line>853</line>
+          <line>951</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/damage/views.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -602,129 +783,15 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="28" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/save_contactlist_criteria.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="108" column="26" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="122" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/js/criteria_dates.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="41" column="82" lean-forward="false" selection-start-line="41" selection-start-column="82" selection-end-line="41" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/damage/gijgo-combined-1.9.6/css/gijgo.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/damage/gijgo-combined-1.9.6/js/gijgo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="2851" column="16" lean-forward="false" selection-start-line="2851" selection-start-column="12" selection-end-line="2851" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/damage/gijgo-combined-1.9.6/css/gijgo.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="388" column="15" lean-forward="false" selection-start-line="388" selection-start-column="15" selection-end-line="388" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/test/test.css" />
-    <entry file="file://$PROJECT_DIR$/damage/static/damage/images/b.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/modules/summernote/summernote.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1481">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/js/scripts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="25" column="48" lean-forward="false" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/modules/ionicons/css/ionicons.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/damagetype_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="83" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/css/stisla_temporary.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="388" column="0" lean-forward="false" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/damage/style.css" />
     <entry file="file://$PROJECT_DIR$/damage/templates/stisla-admin/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4334">
           <caret line="197" column="27" lean-forward="false" selection-start-line="197" selection-start-column="18" selection-end-line="197" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11858">
-          <caret line="539" column="0" lean-forward="false" selection-start-line="539" selection-start-column="0" selection-end-line="545" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -744,14 +811,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/damage/templates/damage/damage/jquery.geocomplete.js" />
     <entry file="file://$PROJECT_DIR$/damage/templates/damage/damagelist_table.html" />
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damagelist_table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="134" column="124" lean-forward="false" selection-start-line="134" selection-start-column="124" selection-end-line="134" selection-end-column="124" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damagestatus.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
@@ -760,14 +819,6 @@
             <element signature="e#508#1000#0#HTML" expanded="false" />
             <element signature="e#1034#2090#0#HTML" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damageadd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2838">
-          <caret line="129" column="99" lean-forward="false" selection-start-line="128" selection-start-column="32" selection-end-line="129" selection-end-column="99" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -803,13 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/damage/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4158">
-          <caret line="191" column="62" lean-forward="false" selection-start-line="191" selection-start-column="62" selection-end-line="191" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/damage/utils/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -830,7 +874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -857,91 +900,390 @@
         <state relative-caret-position="1694">
           <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
-            <element signature="e#0#76#0" expanded="true" />
+            <element signature="e#0#76#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html">
+    <entry file="file://$PROJECT_DIR$/damage/static/js/moment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2288">
-          <caret line="104" column="133" lean-forward="false" selection-start-line="104" selection-start-column="133" selection-end-line="104" selection-end-column="133" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18810">
-          <caret line="881" column="56" lean-forward="false" selection-start-line="881" selection-start-column="56" selection-end-line="881" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1342">
-          <caret line="62" column="35" lean-forward="false" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/processor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="55" lean-forward="false" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contact_masterdetail_table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="159" column="23" lean-forward="false" selection-start-line="158" selection-start-column="1" selection-end-line="159" selection-end-column="23" />
-          <folding />
+        <state relative-caret-position="-7458">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="89" column="70" lean-forward="false" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="70" />
+        <state relative-caret-position="286">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/deya/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="71" column="40" lean-forward="false" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+        <state relative-caret-position="133">
+          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/processor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="66" lean-forward="false" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/modules/scroll-up-bar/dist/scroll-up-bar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2888">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/js/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-293">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4026">
+          <caret line="185" column="43" lean-forward="false" selection-start-line="185" selection-start-column="28" selection-end-line="185" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/utils/datastructures.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2530">
+          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contact_masterdetail_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3608">
+          <caret line="164" column="36" lean-forward="false" selection-start-line="164" selection-start-column="23" selection-end-line="164" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/modules/nicescroll/jquery.nicescroll.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="876" column="8" lean-forward="false" selection-start-line="876" selection-start-column="8" selection-end-line="876" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damageadd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damagelist_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2948">
+          <caret line="134" column="124" lean-forward="false" selection-start-line="134" selection-start-column="124" selection-end-line="134" selection-end-column="124" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="315" column="33" lean-forward="false" selection-start-line="315" selection-start-column="33" selection-end-line="315" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="54" column="58" lean-forward="false" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="79" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/damage/static/damage/mystyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="42" column="22" lean-forward="false" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+        <state relative-caret-position="463">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/chartbase.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-131">
+          <caret line="0" column="45" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/test/test_carousel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="20" column="22" lean-forward="false" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="54" column="173" lean-forward="false" selection-start-line="54" selection-start-column="173" selection-end-line="54" selection-end-column="173" />
+        <state relative-caret-position="173">
+          <caret line="192" column="102" lean-forward="false" selection-start-line="192" selection-start-column="102" selection-end-line="192" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/charts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="49" lean-forward="false" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="77" lean-forward="false" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/models/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/models/query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="267" column="0" lean-forward="false" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rest_framework/response.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+          <folding>
+            <element signature="e#1518#1722#0" expanded="false" />
+            <element signature="e#1618#1656#0" expanded="false" />
+            <element signature="e#1776#1830#0" expanded="false" />
+            <element signature="e#2044#3840#0" expanded="false" />
+            <element signature="e#2571#2675#0" expanded="false" />
+            <element signature="e#2717#2826#0" expanded="false" />
+            <element signature="e#2868#2977#0" expanded="false" />
+            <element signature="e#3019#3128#0" expanded="false" />
+            <element signature="e#3170#3281#0" expanded="false" />
+            <element signature="e#3323#3428#0" expanded="false" />
+            <element signature="e#3524#3588#0" expanded="false" />
+            <element signature="e#3650#3810#0" expanded="false" />
+            <element signature="e#4710#4819#0" expanded="false" />
+            <element signature="e#4861#4970#0" expanded="false" />
+            <element signature="e#5012#5121#0" expanded="false" />
+            <element signature="e#5163#5274#0" expanded="false" />
+            <element signature="e#5316#5421#0" expanded="false" />
+            <element signature="e#5879#6115#0" expanded="false" />
+            <element signature="e#5962#6115#0" expanded="false" />
+            <element signature="e#6014#6057#0" expanded="false" />
+            <element signature="e#6168#6413#0" expanded="false" />
+            <element signature="e#6312#6355#0" expanded="false" />
+            <element signature="e#6799#7089#0" expanded="false" />
+            <element signature="e#6936#7089#0" expanded="false" />
+            <element signature="e#6988#7031#0" expanded="false" />
+            <element signature="e#7126#7230#0" expanded="false" />
+            <element signature="e#7259#7656#0" expanded="false" />
+            <element signature="e#7698#8106#0" expanded="false" />
+            <element signature="e#7780#7912#0" expanded="false" />
+            <element signature="e#7819#7855#0" expanded="false" />
+            <element signature="e#7951#8106#0" expanded="false" />
+            <element signature="e#8142#8432#0" expanded="false" />
+            <element signature="e#8218#8432#0" expanded="false" />
+            <element signature="e#8822#9353#0" expanded="false" />
+            <element signature="e#8941#9076#0" expanded="false" />
+            <element signature="e#8951#9016#0" expanded="false" />
+            <element signature="e#9115#9353#0" expanded="false" />
+            <element signature="e#9396#9964#0" expanded="false" />
+            <element signature="e#9521#9656#0" expanded="false" />
+            <element signature="e#9531#9596#0" expanded="false" />
+            <element signature="e#9696#9964#0" expanded="false" />
+            <element signature="e#9904#9905#0" expanded="false" />
+            <element signature="e#10005#10480#0" expanded="false" />
+            <element signature="e#10132#10267#0" expanded="false" />
+            <element signature="e#10142#10207#0" expanded="false" />
+            <element signature="e#10306#10480#0" expanded="false" />
+            <element signature="e#10524#10700#0" expanded="false" />
+            <element signature="e#10547#10619#0" expanded="false" />
+            <element signature="e#10736#10962#0" expanded="false" />
+            <element signature="e#10851#10903#0" expanded="false" />
+            <element signature="e#10994#11107#0" expanded="false" />
+            <element signature="e#11065#11107#0" expanded="false" />
+            <element signature="e#11392#13110#0" expanded="false" />
+            <element signature="e#11560#11628#0" expanded="false" />
+            <element signature="e#12462#12537#0" expanded="false" />
+            <element signature="e#12612#12708#0" expanded="false" />
+            <element signature="e#12806#13110#0" expanded="false" />
+            <element signature="e#12924#12999#0" expanded="false" />
+            <element signature="e#13160#14071#0" expanded="false" />
+            <element signature="e#13295#13324#0" expanded="false" />
+            <element signature="e#13491#14071#0" expanded="false" />
+            <element signature="e#14234#16501#0" expanded="false" />
+            <element signature="e#14330#14547#0" expanded="false" />
+            <element signature="e#14422#14490#0" expanded="false" />
+            <element signature="e#14586#16501#0" expanded="false" />
+            <element signature="e#14748#16221#0" expanded="false" />
+            <element signature="e#15550#15583#0" expanded="false" />
+            <element signature="e#15771#15803#0" expanded="false" />
+            <element signature="e#16249#16501#0" expanded="false" />
+            <element signature="e#16365#16440#0" expanded="false" />
+            <element signature="e#16547#19511#0" expanded="false" />
+            <element signature="e#16675#19511#0" expanded="false" />
+            <element signature="e#17424#17514#0" expanded="false" />
+            <element signature="e#17541#17708#0" expanded="false" />
+            <element signature="e#17776#17860#0" expanded="false" />
+            <element signature="e#17887#18040#0" expanded="false" />
+            <element signature="e#18420#18776#0" expanded="false" />
+            <element signature="e#18787#18804#0" expanded="false" />
+            <element signature="e#19219#19234#0" expanded="false" />
+            <element signature="e#19304#19454#0" expanded="false" />
+            <element signature="e#19554#22551#0" expanded="false" />
+            <element signature="e#19692#22551#0" expanded="false" />
+            <element signature="e#20429#20519#0" expanded="false" />
+            <element signature="e#20546#20713#0" expanded="false" />
+            <element signature="e#20781#20865#0" expanded="false" />
+            <element signature="e#20892#21045#0" expanded="false" />
+            <element signature="e#21785#21877#0" expanded="false" />
+            <element signature="e#21916#22046#0" expanded="false" />
+            <element signature="e#22207#22494#0" expanded="false" />
+            <element signature="e#22598#23819#0" expanded="false" />
+            <element signature="e#22688#22824#0" expanded="false" />
+            <element signature="e#22731#22767#0" expanded="false" />
+            <element signature="e#22863#23819#0" expanded="false" />
+            <element signature="e#23022#23579#0" expanded="false" />
+            <element signature="e#23261#23283#0" expanded="false" />
+            <element signature="e#23411#23519#0" expanded="false" />
+            <element signature="e#23607#23819#0" expanded="false" />
+            <element signature="e#23723#23758#0" expanded="false" />
+            <element signature="e#23870#25986#0" expanded="false" />
+            <element signature="e#24060#25955#0" expanded="false" />
+            <element signature="e#25257#25350#0" expanded="false" />
+            <element signature="e#25389#25520#0" expanded="false" />
+            <element signature="e#25680#25898#0" expanded="false" />
+            <element signature="e#26038#27832#0" expanded="false" />
+            <element signature="e#26135#26353#0" expanded="false" />
+            <element signature="e#26228#26296#0" expanded="false" />
+            <element signature="e#26392#27832#0" expanded="false" />
+            <element signature="e#26555#27552#0" expanded="false" />
+            <element signature="e#27580#27832#0" expanded="false" />
+            <element signature="e#27696#27771#0" expanded="false" />
+            <element signature="e#27877#29756#0" expanded="false" />
+            <element signature="e#27967#28432#0" expanded="false" />
+            <element signature="e#28237#28375#0" expanded="false" />
+            <element signature="e#28475#29756#0" expanded="false" />
+            <element signature="e#28639#29516#0" expanded="false" />
+            <element signature="e#29295#29453#0" expanded="false" />
+            <element signature="e#29544#29756#0" expanded="false" />
+            <element signature="e#29660#29695#0" expanded="false" />
+            <element signature="e#29805#31644#0" expanded="false" />
+            <element signature="e#29902#30342#0" expanded="false" />
+            <element signature="e#30143#30285#0" expanded="false" />
+            <element signature="e#30385#31644#0" expanded="false" />
+            <element signature="e#30547#31404#0" expanded="false" />
+            <element signature="e#31179#31341#0" expanded="false" />
+            <element signature="e#31432#31644#0" expanded="false" />
+            <element signature="e#31548#31583#0" expanded="false" />
+            <element signature="e#31702#33940#0" expanded="false" />
+            <element signature="e#31962#33940#0" expanded="false" />
+            <element signature="e#33195#33288#0" expanded="false" />
+            <element signature="e#33327#33458#0" expanded="false" />
+            <element signature="e#33618#33883#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagetype.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="947">
+          <caret line="77" column="7" lean-forward="false" selection-start-line="77" selection-start-column="7" selection-end-line="77" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/carousel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="169" column="71" lean-forward="false" selection-start-line="169" selection-start-column="71" selection-end-line="169" selection-end-column="71" />
+          <folding>
+            <element signature="e#3482#3674#2#HTML" expanded="true" />
+            <element signature="e#3743#3935#2#HTML" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagestatus.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
           <folding />
         </state>
       </provider>

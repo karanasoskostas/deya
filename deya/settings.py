@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # application processors
                 'damage.processor.lastcontacts',
+                'damage.processor.lastdamagesstatus_1',
 
             ],
         },

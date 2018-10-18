@@ -26,6 +26,10 @@ from rest_framework.response import Response
 from rest_framework import authentication, permissions
 from django.contrib.auth.models import User
 
+
+#--------------------------------------------------------------------------------------------------------------
+#   CHART Views
+#--------------------------------------------------------------------------------------------------------------
 class ChartsView(View):
     def get(self, request, *args, **kwargs):
         general = General.objects.get(pk=1)
@@ -40,9 +44,10 @@ def get_data(request, *args, **kwargs):
         'customers': 10,
     }
     return JsonResponse(data)
-
-
-class ApiChartDataView(APIView):
+#..............................................
+#     ANA ΕΙΔΟΣ ΒΛΑΒΗΣ - ΟΛΕΣ ΟΙ ΒΛΑΒΕΣ
+#..............................................
+class ApiChartDataViewDamageType(APIView):
     authentication_classes = []
     permission_classes = []
 
@@ -94,8 +99,101 @@ class ApiChartDataView(APIView):
         return Response(data)
 
 
+#..............................................
+#     ANA STATUS ΒΛΑΒΗΣ - ΟΛΕΣ ΟΙ ΒΛΑΒΕΣ
+#..............................................
+class ApiChartDataViewDamageStatus(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        labels = list()
+        default_items = list()
+        background_colors = list()
+        border_colors = list()
+        damage = Damage.objects.all().values('damagestatus').annotate(total=Count('damagestatus')).values_list('damagestatus__desc', 'total').order_by('damagestatus')
+        i = 1
+        for d in damage:
+            labels.append(d[0])
+            default_items.append(d[1])
+            if i == 1:
+                bcolor = 'rgba(255, 99, 132, 0.2)'
+                border = 'rgba(255,99,132,1)'
+                i = i+1
+            elif i == 2:
+                bcolor = 'rgba(54, 162, 235, 0.2)'
+                border = 'rgba(54, 162, 235, 1)'
+                i = i + 1
+            elif i == 3:
+                bcolor = 'rgba(255, 206, 86, 0.2)'
+                border = 'rgba(255, 206, 86, 1)'
+                i = i + 1
+            elif i == 4:
+                bcolor = 'rgba(75, 192, 192, 0.2)'
+                border = 'rgba(75, 192, 192, 1)'
+                i = i + 1
+            elif i == 5:
+                bcolor = 'rgba(153, 102, 255, 0.2)'
+                border = 'rgba(153, 102, 255, 1)'
+                i = i + 1
+            elif i == 6:
+                bcolor = 'rgba(255, 159, 64, 0.2)'
+                border = 'rgba(255, 159, 64, 1)'
+                i = 1
+            background_colors.append(bcolor)
+            border_colors.append(border)
+
+        #labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        #default_items = [12, 19, 3, 5, 1, 3]
+        data = {
+            'labels': labels,
+            'default': default_items,
+            'background': background_colors,
+            'border': border_colors
+        }
+        return Response(data)
+
+
+class ChartCarouselView(TemplateView):
+    template_name = "damage/charts/carousel.html"
+
+    def get(self, request):
+        general = General.objects.get(pk=1)
+
+        args = {
+            'general': general,
+        }
+
+        return render(request, self.template_name, args)
+
+
+class ChartCarouselVariousView(TemplateView):
+    template_name = "damage/charts/carousel/carousel.html"
+
+    def get(self, request):
+        general = General.objects.get(pk=1)
+
+        args = {
+            'general': general,
+        }
+
+        return render(request, self.template_name, args)
+#--------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------
+#   TEST Views
+#--------------------------------------------------------------------------------------------------------------
 class TestView(TemplateView):
-    template_name = 'stisla-admin/templates/index.html'
+    template_name = "damage/test/test_carousel.html"
+    #template_name = "damage/charts/carousel.html"
+
+    def get(self, request):
+        general = General.objects.get(pk=1)
+
+        args = {
+            'general': general,
+        }
+
+        return render(request, self.template_name, args)
 
 class Test1View(TemplateView):
     #template_name = 'damage/test/sidebarmenu_test.html'
@@ -121,10 +219,22 @@ def test_pdf(request):
 
     return response
 
+class DamageTypeTest(TemplateView):
+    template_name = "damage/damagetypetest.html"
 
-class Mdb(TemplateView):
-    template_name = "damage/mdb.html"
+    def get(self, request):
+        form = DamageTypeForm()
+        args = {
+            'form': form
+        }
+        return render(request, self.template_name, args)
 
+    def post(self, request):
+        form = DamageTypeForm(request.POST)
+
+        form = DamageTypeForm()
+        args = {'form': form}
+        return render(request, self.template_name, args)
 
 class HomeTest(TemplateView):
     template_name = "damage/hometest.html"
@@ -138,7 +248,97 @@ class HomeTest(TemplateView):
             print('not authonticated')
 
         return render(request, self.template_name)
+#--------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------
+#   INDEX Views
+#--------------------------------------------------------------------------------------------------------------
 
+class IndexView(TemplateView):
+
+    general = General.objects.get(pk=1)
+    template_name = 'damage/index/index.html'
+
+    def get(self, request):
+        context = {
+                    'general': self.general
+                  }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        if 'add' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
+            viewurl = 'damage-add'
+        elif 'list' in request.POST:
+            viewurl = 'damage-list-criteria'
+
+        print(viewurl)
+        return redirect(viewurl)
+
+
+class IndexDeyaView(TemplateView):
+
+    general = General.objects.get(pk=1)
+    template_name = 'damage/menus/sidebarmenu.html'
+
+    def get(self, request):
+        context = {
+                    'general': self.general
+                  }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+         if 'contact' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
+             viewurl = 'contact-list-criteria'
+         elif 'list' in request.POST:
+             viewurl = 'damage-list-criteria'
+        #
+        # print(viewurl)
+         return redirect(viewurl)
+
+class FrontPageView(TemplateView):
+    general = General.objects.get(pk=1)
+    template_name = 'damage/frontpage/frontpage.html'
+
+    def get(self, request):
+        context = {
+                    'general': self.general
+                  }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        if 'guest' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
+            viewurl = 'index'
+        else:
+            viewurl = 'login'
+
+        return redirect(viewurl)
+
+
+
+class DamageTypeCreate(CreateView):
+    model = DamageType
+    # δε χρειαζεται , απο default χρησιμοποιεί τη form με το ονομα του model
+    #template_name = 'damage/damagetype_form.html'
+    fields = ['code', 'desc']
+
+
+def damagetype_add(request):
+    general = General.objects.get(pk=1)
+    template = loader.get_template('damage/damagetype_add.html')
+    context = {
+                'general': general
+              }
+    return HttpResponse(template.render(context, request))
+
+
+class Map(TemplateView):
+    template_name = "damage/map.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+#--------------------------------------------------------------------------------------------------------------
+#   ENTRY Views
+#--------------------------------------------------------------------------------------------------------------
 class damage_entry_view(TemplateView):
     template_name = "damage/entry/damageadd.html"
 
@@ -195,109 +395,6 @@ class damage_entry_view(TemplateView):
              print(request.build_absolute_uri())
              return render(request, self.template_name, args)
 
-
-class IndexView(TemplateView):
-
-    general = General.objects.get(pk=1)
-    template_name = 'damage/index/index.html'
-
-    def get(self, request):
-        context = {
-                    'general': self.general
-                  }
-        return render(request, self.template_name, context)
-
-    def post(self, request):
-        if 'add' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
-            viewurl = 'damage-add'
-        elif 'list' in request.POST:
-            viewurl = 'damage-list-criteria'
-
-        print(viewurl)
-        return redirect(viewurl)
-
-
-class IndexDeyaView(TemplateView):
-
-    general = General.objects.get(pk=1)
-    template_name = 'damage/menus/sidebarmenu.html'
-
-    def get(self, request):
-        context = {
-                    'general': self.general
-                  }
-        return render(request, self.template_name, context)
-
-    def post(self, request):
-         if 'contact' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
-             viewurl = 'contact-list-criteria'
-         elif 'list' in request.POST:
-             viewurl = 'damage-list-criteria'
-        #
-        # print(viewurl)
-         return redirect(viewurl)
-
-
-
-class FrontPageView(TemplateView):
-    general = General.objects.get(pk=1)
-    template_name = 'damage/frontpage/frontpage.html'
-
-    def get(self, request):
-        context = {
-                    'general': self.general
-                  }
-        return render(request, self.template_name, context)
-
-    def post(self, request):
-        if 'guest' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
-            viewurl = 'index'
-        else:
-            viewurl = 'login'
-
-        return redirect(viewurl)
-
-class DamageTypeCreate(CreateView):
-    model = DamageType
-    # δε χρειαζεται , απο default χρησιμοποιεί τη form με το ονομα του model
-    #template_name = 'damage/damagetype_form.html'
-    fields = ['code', 'desc']
-
-
-def damagetype_add(request):
-    general = General.objects.get(pk=1)
-    template = loader.get_template('damage/damagetype_add.html')
-    context = {
-                'general': general
-              }
-    return HttpResponse(template.render(context, request))
-
-
-class Map(TemplateView):
-    template_name = "damage/map.html"
-
-    def get(self, request):
-        return render(request, self.template_name)
-
-
-class DamageTypeTest(TemplateView):
-    template_name = "damage/damagetypetest.html"
-
-    def get(self, request):
-        form = DamageTypeForm()
-        args = {
-            'form': form
-        }
-        return render(request, self.template_name, args)
-
-    def post(self, request):
-        form = DamageTypeForm(request.POST)
-
-        form = DamageTypeForm()
-        args = {'form': form}
-        return render(request, self.template_name, args)
-
-
 class DamageUpdateView(generic.UpdateView):
     model = Damage
     template_name = "damage/entry/damageadd.html"
@@ -331,7 +428,7 @@ class DamageUpdateView(generic.UpdateView):
         return HttpResponseRedirect(next)
         #return redirect_url
 
-
+#--------------------------------------------------------------------------------------------------------------
 
 class DamageListCriteriaView(TemplateView):
     template_name = "damage/criteria/damagelist_criteria.html"
@@ -471,7 +568,6 @@ class DamageMarkersView(TemplateView):
                 'lng': lng
                 }
         return render(request, self.template_name, args)
-
 
 
 class DamageListView(TemplateView):
@@ -625,6 +721,8 @@ class ContactDetailsListView(TemplateView):
 
         d_list = ContactDetails.objects.filter(entry_date__range=(fdate, tdate)).order_by(order_by)
 
+        search_string = request.GET.get('search_box', None)
+        print(search_string)
 
         paginator = Paginator(d_list, 5)
 
@@ -654,6 +752,8 @@ class ContactDetailsListView(TemplateView):
 
         }
         return render(request, self.template_name, args)
+
+    #def post(self, request):
 
 
 class ContactListCriteriaView(TemplateView):
@@ -688,12 +788,10 @@ class ContactListCriteriaView(TemplateView):
             fromdatetext = fdate.strftime('%d_%m_%Y')
             todatetext = tdate.strftime('%d_%m_%Y')
 
-
             if 'showlist' in request.POST:           # ανάλογα με ποιο button εχει πατήσει
                 viewurl = 'contact-list-dates'
-            if 'history' in request.POST:           # ανάλογα με ποιο button εχει πατήσει
+            else:           # ανάλογα με ποιο button εχει πατήσει
                 viewurl = 'contact-list-history-dates'
-
 
             return redirect(viewurl, pfromdate=fromdatetext, ptodate=todatetext)
 
@@ -880,3 +978,5 @@ class ContactDetailsHistoryListView(TemplateView):
 
         }
         return render(request, self.template_name, args)
+
+

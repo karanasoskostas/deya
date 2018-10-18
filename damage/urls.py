@@ -6,10 +6,12 @@ urlpatterns = [
 
     url(r'^api/data/$', views.get_data, name="api-data"),
 
-    url(r'^api/chart/data/$', views.ApiChartDataView.as_view(), name="api-chart-data"),
+    url(r'^api/chart/data/damagetype/$', views.ApiChartDataViewDamageType.as_view(), name="api-chart-data-damagetype"),
+    url(r'^api/chart/data/damagestatus/$', views.ApiChartDataViewDamageStatus.as_view(), name="api-chart-data-damagestatus"),
 
     url(r'^charts/bar/eidos/$', views.ChartsView.as_view(), name="chart-bar-eidos"),
-
+    url(r'^charts/carousel/$', views.ChartCarouselView.as_view(), name="chart-carousel"),
+    url(r'^charts/carousel/various/$', views.ChartCarouselVariousView.as_view(), name="chart-carousel-various"),
 
 
     url(r'^test/$', views.TestView.as_view(), name="test"),
@@ -54,8 +56,8 @@ urlpatterns = [
         views.DamageMarkersView.as_view(), name="damage-list-markers"),
 
     # /damage/contact/
-        url(r'damage/contact/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/$',
-            views.ContactDetailsListView.as_view(), name="contact-list-dates"),
+    url(r'damage/contact/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/$',
+        views.ContactDetailsListView.as_view(), name="contact-list-dates"),
 
     url(r'damage/contact/history/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/$',
         views.ContactDetailsHistoryListView.as_view(), name="contact-list-history-dates"),

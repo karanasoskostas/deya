@@ -45,6 +45,8 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 	border: none;
 	-webkit-box-shadow: 0 0 25px rgba(0,0,0,.15);
 	        box-shadow: 0 0 25px rgba(0,0,0,.15);
+}
+.dropdown-menu-user {
 	width: 200px;
 }
 .dropdown-menu a {
@@ -93,8 +95,10 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 .dropdown-list .dropdown-item .time {
 	margin-top: 10px;
-	font-weight: 500;
-	font-size: 10px;
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana;
+	color: #1e347b;
 }
 .dropdown-list .dropdown-item .dropdown-item-img {
 	float: left;
@@ -110,7 +114,8 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 .dropdown-list .dropdown-list-content {
 	height: 350px;
-	overflow: hidden;
+	/*overflow: hidden;*/
+	overflow-y: auto !important;
 }
 /* end dropdown */
 
@@ -2212,10 +2217,7 @@ table tr:hover .table-links {
 		position: static;
 	}
 	.dropdown-list-toggle .dropdown-list {
-		left: 10px !important;
-		width: calc(100% - 20px);
-	}
-	.card-author-box .author-box-left {
+		left: 510px !important;
 		float: none;
 	}
 	.card-author-box .author-box-details {
@@ -2353,3 +2355,24 @@ table tr:hover .table-links {
 @media (min-width: 992px) and (max-width: 1199.98px) {
 }
 @media (min-width: 1200px) { }
+
+
+
+/*-------------------------------------------------------------------------------------------------
+
+*/
+
+.dropdown-list-contacts .dropdown-header {
+	letter-spacing: .5px;
+	font-weight: 500;
+	padding: 15px;
+	font-size: 14px;
+	background-color: #cdfec1;
+	font-family: Calibri;
+	font-weight: bold;
+}
+.nicescroll-rails.nicescroll-rails-vr {
+    opacity: 0 !important;
+    display: none;
+}
+

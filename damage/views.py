@@ -168,7 +168,7 @@ class ChartCarouselView(TemplateView):
 
 
 class ChartCarouselVariousView(TemplateView):
-    template_name = "damage/charts/carousel/carousel.html"
+    template_name = "damage/charts/carousel/carousel_various.html"
 
     def get(self, request):
         general = General.objects.get(pk=1)

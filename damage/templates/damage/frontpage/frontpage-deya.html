@@ -1,0 +1,97 @@
+{% extends 'damage/menus/sidebarmenu.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %} {{ general.deya_name }} - Carousel Various{% endblock %}
+
+{% block body %}
+
+
+
+
+<div class = "main-container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-sm card-danger ">
+          <div class="card-icon text-danger ">
+            <i class="ion ion-wrench"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-body">
+              {{ new_damages }}
+            </div>
+            <div class="card-header pb-0">
+              <h4>ΝEEΣ ΒΛΑΒΕΣ ΣΗΜΕΡΑ ({{ today | date:'d/m/Y' }})</h4>
+            </div>
+          </div>
+          <div class="card-cta">
+            <a href="{%  url 'today-damage-list' %}">Περισσότερα ...<i class="ion ion-ios-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-sm card-warning">
+          <div class="card-icon text-warning">
+            <i class="ion ion-android-mail"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-body">
+                {{ new_messages }}
+            </div>
+            <div class="card-header pb-0">
+              <h4 >ΝEA MYNHMATA ΣΗΜΕΡΑ ({{ today | date:'d/m/Y' }})</h4>
+            </div>
+          </div>
+          <div class="card-cta">
+            <a href="{%  url 'today-contact-list' %}" name="contacts">Περισσότερα ... <i class="ion ion-ios-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-sm">
+          <div class="card-icon text-warning">
+            <i class="ion ion-paper-airplane"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-body">
+              1,201
+            </div>
+            <div class="card-header pb-0">
+              <h4>Reports</h4>
+            </div>
+          </div>
+          <div class="card-cta">
+            <a href="#">More Info <i class="ion ion-ios-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-sm">
+          <div class="card-icon text-success">
+            <i class="ion ion-record"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-body">
+              47
+            </div>
+            <div class="card-header pb-0">
+              <h4>Online Users</h4>
+            </div>
+          </div>
+          <div class="card-cta">
+            <a href="#">More Info <i class="ion ion-ios-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

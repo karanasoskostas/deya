@@ -178,6 +178,8 @@ class ChartCarouselVariousView(TemplateView):
         }
 
         return render(request, self.template_name, args)
+
+
 #--------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------------------
 #   TEST Views
@@ -275,24 +277,22 @@ class IndexView(TemplateView):
 
 
 class IndexDeyaView(TemplateView):
-
+    template_name = 'damage/frontpage/frontpage-deya.html'
     general = General.objects.get(pk=1)
-    template_name = 'damage/menus/sidebarmenu.html'
+    today = datetime.now(tz=timezone.utc)
+    datetime_filter = datetime(today.year, today.month, today.day)
+    new_messages = ContactDetails.objects.filter(entry_date__startswith=datetime_filter.date()).count()
+    new_damages = Damage.objects.filter(entry_date__startswith=datetime_filter.date()).count()
 
     def get(self, request):
-        context = {
-                    'general': self.general
-                  }
-        return render(request, self.template_name, context)
 
-    def post(self, request):
-         if 'contact' in request.POST:  # ανάλογα με ποιο button εχει πατήσει
-             viewurl = 'contact-list-criteria'
-         elif 'list' in request.POST:
-             viewurl = 'damage-list-criteria'
-        #
-        # print(viewurl)
-         return redirect(viewurl)
+        args = { 'general': self.general,
+                 'today': self.today,
+                 'new_messages': self.new_messages,
+                 'new_damages': self.new_damages
+               }
+        return render(request, self.template_name, args)
+
 
 class FrontPageView(TemplateView):
     general = General.objects.get(pk=1)
@@ -311,7 +311,6 @@ class FrontPageView(TemplateView):
             viewurl = 'login'
 
         return redirect(viewurl)
-
 
 
 class DamageTypeCreate(CreateView):
@@ -394,6 +393,7 @@ class damage_entry_view(TemplateView):
                     }
              print(request.build_absolute_uri())
              return render(request, self.template_name, args)
+
 
 class DamageUpdateView(generic.UpdateView):
     model = Damage
@@ -489,6 +489,15 @@ class DamageListCriteriaView(TemplateView):
                     'general': general
                     }
             return render(request, self.template_name, args)
+
+
+class DamageTodayView(TemplateView):
+    viewurl = 'damage-list-dates'
+
+    def get(self, request):
+        fromdatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
+        todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
+        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus="None", pdamagetype="None")
 
 
 class DamageMarkersView(TemplateView):
@@ -756,6 +765,15 @@ class ContactDetailsListView(TemplateView):
     #def post(self, request):
 
 
+class ContactDetailsTodayView(TemplateView):
+    viewurl = 'contact-list-dates'
+
+    def get(self, request):
+        fromdatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
+        todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
+        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext)
+
+
 class ContactListCriteriaView(TemplateView):
     template_name = "damage/criteria/contactlist_criteria.html"
 
@@ -862,6 +880,7 @@ class DamageStatusView(TemplateView):
             args = {'form': form
                     }
             return render(request, self.template_name, args)
+
 
 class ContactManagementView(TemplateView):
     template_name = "damage/contact/contactmanagement.html"

@@ -22,6 +22,7 @@
 
 
   </head>
+
   <body id="top">
 
   <div class="site-wrapper">
@@ -38,19 +39,17 @@
           <form method="post">
               {% csrf_token %}
 
-            <div class="form-group col-md-8"  >
+            <div class="form-group col-md-8"  s >
                   <h1 class="lead cover-copy">ΕΠΙΚΟΙΝΩΝΕΙΣΤΕ ΜΕ ΤΗ ΔΕΥΑ</h1>
                   <!--<p class="lead cover-copy">Kαταχωρείστε UserName και Password για να Προχωρήσετε</p>-->
 
-
                   <div class="form-group row">
-                        <label for="label" >Ονοματεπώνυμο</label>
-                        {% render_field form.name class="form-control" placeholder="" %}
+                    <label for="label" >Ονοματεπώνυμο</label>
+                    {% render_field form.name class="form-control" placeholder=""  %}
                   </div>
                   <div class="form-group row">
                         <label for = "{{ form.email.id_for_label }}" >E-Mail</label>
                         {% render_field form.email class="form-control" placeholder="" %}
-
                   </div>
                   <div class="form-group row">
                         <label for = "{{ form.thl.id_for_label }}" >Τηλέφωνα Επικοινωνίας</label>
@@ -60,7 +59,6 @@
                   <div class="form-group row">
                         <label for = "{{ form.com.id_for_label }}" >Κείμενο για τη ΔΕΥΑ</label>
                         {% render_field form.com class="form-control" placeholder="" %}
-
                   </div>
                   <br/>
 

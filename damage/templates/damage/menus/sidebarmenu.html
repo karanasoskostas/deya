@@ -12,8 +12,8 @@
 
 
 
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}" type="text/javascript"></script>
 
-    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
     <script src="{% static 'damage\gijgo-combined-1.9.6\js\gijgo.min.js' %}" type="text/javascript"></script>
@@ -61,7 +61,7 @@
 
         <ul class="navbar-nav navbar-right">
 
-             <li class="dropdown dropdown-list-toggle" id="lastcontacts"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep">               <i class="ion ion-android-mail" data-toggle="tooltip" data-placement="bottom" title="Tελευταία 10 Μυνήματα" data-delay='{"show":"800", "hide":"200"}'></i></a>
+             <li class="dropdown dropdown-list-toggle " id="lastcontacts"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="ion ion-android-mail" data-toggle="tooltip" data-placement="bottom" title="Tελευταία 10 Μυνήματα" data-delay='{"show":"800", "hide":"200"}'></i></a>
                 <div class="dropdown-menu dropdown-list dropdown-menu-right dropdown-list-contacts " id="test">
                   <div class="dropdown-header">Τελευταία 10 Μυνήματα
 
@@ -189,7 +189,6 @@
                 <li><a href="{% url 'chart-bar-eidos' %}"><i class="fa fa-envelope-open" aria-hidden="true"></i>Είδος Βλάβης #</a></li>
                 <li><a href="{% url 'chart-carousel' %}"><i class="ion ion-ios-browsers-outline"></i> Carousel</a></li>
                 <li><a href="{% url 'chart-carousel-various' %}"><i class="ion ion-ios-barcode-outline"></i>Carousel Various</a></li>
-
               </ul>
             </li>
             <li>
@@ -278,7 +277,9 @@
 
 
   <script src="{% static 'stisla-admin/dist/js/scripts.js' %}"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
   <script src="{% static 'stisla-admin/dist/modules/summernote/summernote-lite.js' %}"></script>
 
 

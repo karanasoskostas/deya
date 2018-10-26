@@ -3,6 +3,12 @@ from django.conf import settings
 from django.template import loader
 from damage.utils.utils import *
 
+def check_authentication(request, template_name):
+    if request.user.is_authenticated:
+        return template_name
+    else:
+        return  "damage/menus/404.html"
+
 
 def damage_mail(pk):
     damage = Damage.objects.get(pk=pk)

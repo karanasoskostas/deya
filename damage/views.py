@@ -16,7 +16,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponseRedirect, JsonResponse
 from damage.appfunctions.appfunctions import *
 from django.db.models.functions import Lower
-from django.db.models import Count, Exists, OuterRef
+from django.db.models import Count, Exists, OuterRef, Q
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from io import BytesIO
@@ -44,9 +44,9 @@ def get_data(request, *args, **kwargs):
         'customers': 10,
     }
     return JsonResponse(data)
+
 #..............................................
 #     ANA ΕΙΔΟΣ ΒΛΑΒΗΣ - ΟΛΕΣ ΟΙ ΒΛΑΒΕΣ
-#..............................................
 class ApiChartDataViewDamageType(APIView):
     authentication_classes = []
     permission_classes = []
@@ -153,21 +153,24 @@ class ApiChartDataViewDamageStatus(APIView):
         }
         return Response(data)
 
-
+#--------------------------------------------------------------------------------------------------------------
+# Carousel 1 chart
 class ChartCarouselView(TemplateView):
     template_name = "damage/charts/carousel.html"
 
     def get(self, request):
         general = General.objects.get(pk=1)
-
+        self.template_name = check_authentication(request, self.template_name)
         args = {
             'general': general,
         }
 
         return render(request, self.template_name, args)
 
-
+#--------------------------------------------------------------------------------------------------------------
+# Carousel many charts
 class ChartCarouselVariousView(TemplateView):
+
     template_name = "damage/charts/carousel/carousel_various.html"
 
     def get(self, request):
@@ -176,7 +179,7 @@ class ChartCarouselVariousView(TemplateView):
         args = {
             'general': general,
         }
-
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
 
@@ -279,7 +282,8 @@ class IndexView(TemplateView):
         print(viewurl)
         return redirect(viewurl)
 
-
+#---------------------------------------------------------------------------------------------------------------
+#   ΚENTΡIKH ΣΕΛΙΔΑ
 class IndexDeyaView(TemplateView):
     template_name = 'damage/frontpage/frontpage-deya.html'
 
@@ -310,6 +314,8 @@ class IndexDeyaView(TemplateView):
                  'damages_status_50': damages_status_50,
                  'no_replay_messages': no_replay_messages,
                }
+
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
 
@@ -356,8 +362,10 @@ class Map(TemplateView):
 
 #--------------------------------------------------------------------------------------------------------------
 #   ENTRY Views
+
 #--------------------------------------------------------------------------------------------------------------
-class damage_entry_view(TemplateView):
+#   DAMAGE ENTRY View
+class DamageEntryView(TemplateView):
     template_name = "damage/entry/damageadd.html"
 
 
@@ -367,6 +375,8 @@ class damage_entry_view(TemplateView):
         args = {'form': form,
                 'general': general,
                 }
+
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
     def post(self, request):
@@ -448,7 +458,7 @@ class DamageUpdateView(generic.UpdateView):
         #return redirect_url
 
 #--------------------------------------------------------------------------------------------------------------
-
+# Damage Criteria
 class DamageListCriteriaView(TemplateView):
     template_name = "damage/criteria/damagelist_criteria.html"
 
@@ -460,6 +470,7 @@ class DamageListCriteriaView(TemplateView):
             'form': form,
             'general': general
         }
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
     def post(self, request):
@@ -509,7 +520,8 @@ class DamageListCriteriaView(TemplateView):
                     }
             return render(request, self.template_name, args)
 
-
+#--------------------------------------------------------------------------------------------------------------
+# ΒΛΑΒΕΣ ΗΜΕΡΑΣ
 class DamageTodayView(TemplateView):
     viewurl = 'damage-list-dates'
 
@@ -518,7 +530,8 @@ class DamageTodayView(TemplateView):
         todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
         return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus="None", pdamagetype="None")
 
-
+#--------------------------------------------------------------------------------------------------------------
+# Damage STATUS 10
 class DamageStatus10View(TemplateView):
     viewurl = 'damage-list-dates'
 
@@ -528,7 +541,8 @@ class DamageStatus10View(TemplateView):
         status = DamageStatus.objects.filter(code=10).values('id')[0]['id']
         return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=status, pdamagetype="None")
 
-
+#--------------------------------------------------------------------------------------------------------------
+# Damage STATUS 50
 class DamageStatus50View(TemplateView):
     viewurl = 'damage-list-dates'
 
@@ -538,7 +552,8 @@ class DamageStatus50View(TemplateView):
         status = DamageStatus.objects.filter(code=50).values('id')[0]['id']
         return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=status, pdamagetype="None")
 
-
+#--------------------------------------------------------------------------------------------------------------
+# ΠΡΟΒΟΛΗ ΒΛΑΒΩΝ ΣΤΟ ΧΑΡΤΗ
 class DamageMarkersView(TemplateView):
     template_name = "damage/maps/markers.html"
 
@@ -615,9 +630,12 @@ class DamageMarkersView(TemplateView):
                 'lat': lat,
                 'lng': lng
                 }
+
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
-
+#--------------------------------------------------------------------------------------------------------------
+# ΠΡΟΒΟΛΗ ΒΛΑΒΩΝ table
 class DamageListView(TemplateView):
     template_name = "damage/entry/damagelist_table.html"
 
@@ -695,9 +713,11 @@ class DamageListView(TemplateView):
             'typedesc': typedesc
 
         }
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
-
+#--------------------------------------------------------------------------------------------------------------
+# ΚΑΤΑΧΩΡΗΣΗ ΜΥΝΗΜΑΤΟΣ
 class ContactDetailsView(TemplateView):
     template_name = "damage/contact/contactdetails.html"
 
@@ -742,7 +762,8 @@ class ContactDetailsView(TemplateView):
                     }
             return render(request, self.template_name, args)
 
-
+#--------------------------------------------------------------------------------------------------------------
+# ΠΡΟΒΟΛΗ ΜΥΝΗΜΑΤΩΝ table
 class ContactDetailsListView(TemplateView):
     template_name = "damage/contact/contactlist_table.html"
 
@@ -776,7 +797,9 @@ class ContactDetailsListView(TemplateView):
 
 
         search_string = request.GET.get('search_box', None)
-        print(search_string)
+        if search_string not in [None, '']:
+            d_list = d_list.filter(Q(name__contains=search_string) | Q(email__contains=search_string)|
+                                   Q(thl__contains=search_string) | Q(com__contains=search_string))
 
         paginator = Paginator(d_list, 8)
 
@@ -805,11 +828,13 @@ class ContactDetailsListView(TemplateView):
             'todate': todatetext,
 
         }
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
     #def post(self, request):
 
-
+#--------------------------------------------------------------------------------------------------------------
+# ΜΥΝΗΜΑΤΑ ΗΜΕΡΑΣ
 class ContactDetailsTodayView(TemplateView):
     viewurl = 'contact-list-dates'
 
@@ -818,7 +843,8 @@ class ContactDetailsTodayView(TemplateView):
         todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
         return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pkind=0)
 
-
+#--------------------------------------------------------------------------------------------------------------
+# ΜΥΝΗΜΑΤΑ ΧΩΡΙΣ ΑΠΑΝΤΗΣΗ
 class ContactDetailsNoReplayView(TemplateView):
     viewurl = 'contact-list-dates'
 
@@ -827,8 +853,8 @@ class ContactDetailsNoReplayView(TemplateView):
         todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
         return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pkind=1)
 
-
-
+#--------------------------------------------------------------------------------------------------------------
+# ΕΠΙΛΟΓΗ ΜΥΝΗΜΑΤΩΝ ΚΡΙΤΗΡΙΑ
 class ContactListCriteriaView(TemplateView):
     template_name = "damage/criteria/contactlist_criteria.html"
 
@@ -840,6 +866,7 @@ class ContactListCriteriaView(TemplateView):
             'form': form,
             'general': general
         }
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
     def post(self, request):
@@ -936,7 +963,8 @@ class DamageStatusView(TemplateView):
                     }
             return render(request, self.template_name, args)
 
-
+#--------------------------------------------------------------------------------------------------------------
+# ΚΑΤΑΧΩΡΗΣΗ ΑΠΑΝΤΗΣΕΩΝ ΜΥΝΗΜΑΤΩΝ
 class ContactManagementView(TemplateView):
     template_name = "damage/contact/contactmanagement.html"
 
@@ -953,6 +981,7 @@ class ContactManagementView(TemplateView):
             'form': form,
             'contact_list': contact_list
         }
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
     def post(self, request, pk):
@@ -994,7 +1023,8 @@ class ContactManagementView(TemplateView):
                     }
             return render(request, self.template_name, args)
 
-
+#--------------------------------------------------------------------------------------------------------------
+# ΜΥΝΗΜΑΤΑ ΜΕ ΑΠΑΝΤΗΣΕΙΣ table
 class ContactDetailsHistoryListView(TemplateView):
     #template_name = "damage/contact/contactlist_table.html"
     template_name = "damage/contact/contact_masterdetail_table.html"
@@ -1051,6 +1081,7 @@ class ContactDetailsHistoryListView(TemplateView):
             'contact_history': contact_history
 
         }
+        self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
 

@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'damagetype/add/$', views.DamageTypeCreate.as_view(), name="damagetype-add"),
 
     # /damage/damage/add/
-    url(r'damage/add/$', views.damage_entry_view.as_view(), name="damage-add"),
+    url(r'damage/add/$', views.DamageEntryView.as_view(), name="damage-add"),
 
     url(r'damage/status/(?P<pk>[0-9]+)/$', views.DamageStatusView.as_view(), name="damage-status"),
 

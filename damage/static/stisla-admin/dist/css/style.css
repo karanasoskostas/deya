@@ -2367,7 +2367,8 @@ table tr:hover .table-links {
 	font-weight: 500;
 	padding: 15px;
 	font-size: 14px;
-	background-color: #cdfec1;
+	color: white;
+	background-color: #2e7985;
 	font-family: Calibri;
 	font-weight: bold;
 }

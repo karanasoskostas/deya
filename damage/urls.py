@@ -52,13 +52,15 @@ urlpatterns = [
     url(r'damage/list/criteria/$', views.DamageListCriteriaView.as_view(), name="damage-list-criteria"),
 
     url(r'damage/list/today/$', views.DamageTodayView.as_view(), name="today-damage-list"),
+    url(r'damage/list/status10/$', views.DamageStatus10View.as_view(), name="damage-status10"),
+    url(r'damage/list/status50/$', views.DamageStatus50View.as_view(), name="damage-status50"),
 
     # /damage/damage/list/15_08_2018/15_08_2018/1   το .* παιζει οταν θελω η παραμετρος να ειναι None
     url(r'damage/markers/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/$',
         views.DamageMarkersView.as_view(), name="damage-list-markers"),
 
     # /damage/contact/
-    url(r'damage/contact/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/$',
+    url(r'damage/contact/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pkind>[0-9]+)/$',
         views.ContactDetailsListView.as_view(), name="contact-list-dates"),
 
     url(r'damage/contact/history/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/$',
@@ -67,6 +69,6 @@ urlpatterns = [
     # /damage/damage/list/criteria/
     url(r'contact/list/criteria/$', views.ContactListCriteriaView.as_view(), name="contact-list-criteria"),
 
-    url(r'damage/contact/today/$',
-        views.ContactDetailsTodayView.as_view(), name="today-contact-list"),
+    url(r'damage/contact/today/$',views.ContactDetailsTodayView.as_view(), name="today-contact-list"),
+    url(r'damage/contact/noreplay/$',views.ContactDetailsNoReplayView.as_view(), name="noreplay-contact-list"),
 ]

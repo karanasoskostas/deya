@@ -10,13 +10,13 @@ from damage.forms import HomeTestForm, DamageEntryForm, DamageTypeForm, DamageLi
 from django.utils import timezone
 import datetime
 import pytz
-from datetime import datetime, date
+from datetime import datetime, timedelta
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect, JsonResponse
 from damage.appfunctions.appfunctions import *
 from django.db.models.functions import Lower
-from django.db.models import Count
+from django.db.models import Count, Exists, OuterRef
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from io import BytesIO
@@ -197,9 +197,11 @@ class TestView(TemplateView):
 
         return render(request, self.template_name, args)
 
+
 class Test1View(TemplateView):
     #template_name = 'damage/test/sidebarmenu_test.html'
     template_name = 'damage/charts/chart_test.html'
+
 
 def test_pdf(request):
     response = HttpResponse(content_type='application/pdf')
@@ -221,6 +223,7 @@ def test_pdf(request):
 
     return response
 
+
 class DamageTypeTest(TemplateView):
     template_name = "damage/damagetypetest.html"
 
@@ -237,6 +240,7 @@ class DamageTypeTest(TemplateView):
         form = DamageTypeForm()
         args = {'form': form}
         return render(request, self.template_name, args)
+
 
 class HomeTest(TemplateView):
     template_name = "damage/hometest.html"
@@ -278,18 +282,33 @@ class IndexView(TemplateView):
 
 class IndexDeyaView(TemplateView):
     template_name = 'damage/frontpage/frontpage-deya.html'
-    general = General.objects.get(pk=1)
-    today = datetime.now(tz=timezone.utc)
-    datetime_filter = datetime(today.year, today.month, today.day)
-    new_messages = ContactDetails.objects.filter(entry_date__startswith=datetime_filter.date()).count()
-    new_damages = Damage.objects.filter(entry_date__startswith=datetime_filter.date()).count()
 
     def get(self, request):
+        general = General.objects.get(pk=1)
+        today = datetime.now(tz=timezone.utc)
+        datetime_filter = datetime(today.year, today.month, today.day)
 
-        args = { 'general': self.general,
-                 'today': self.today,
-                 'new_messages': self.new_messages,
-                 'new_damages': self.new_damages
+        new_damages = Damage.objects.filter(entry_date__startswith=datetime_filter.date()).count()
+        damages_status_1 = Damage.objects.filter(damagestatus__code=1).count()
+        # 10 ΕΠΙΒΕΒΑΙΩΜΕΝΗ ΒΛΑΒΗ
+        damages_status_lt_10 = Damage.objects.filter(damagestatus__code__lt=10).count()
+        # 50 ΣΕ ΕΠΙΣΚΕΥΗ
+        damages_status_50 = Damage.objects.filter(damagestatus__code=50).count()
+        new_messages = ContactDetails.objects.filter(entry_date__startswith=datetime_filter.date()).count()
+        no_replay_messages = ContactDetails.objects.annotate(
+            no_replay=Exists(ContactManagement.objects.filter(contact__pk=OuterRef('pk')))
+        ).filter(no_replay=False,).count()
+
+        messages = ContactDetails.objects.all().count()
+
+        args = { 'general': general,
+                 'today': today,
+                 'new_messages': new_messages,
+                 'new_damages': new_damages,
+                 'damages_status_1': damages_status_1,
+                 'damages_status_lt_10': damages_status_lt_10,
+                 'damages_status_50': damages_status_50,
+                 'no_replay_messages': no_replay_messages,
                }
         return render(request, self.template_name, args)
 
@@ -500,6 +519,26 @@ class DamageTodayView(TemplateView):
         return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus="None", pdamagetype="None")
 
 
+class DamageStatus10View(TemplateView):
+    viewurl = 'damage-list-dates'
+
+    def get(self, request):
+        fromdatetext = (datetime.now(tz=timezone.utc) - timedelta(days=36500)).strftime('%d_%m_%Y')
+        todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
+        status = DamageStatus.objects.filter(code=10).values('id')[0]['id']
+        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=status, pdamagetype="None")
+
+
+class DamageStatus50View(TemplateView):
+    viewurl = 'damage-list-dates'
+
+    def get(self, request):
+        fromdatetext = (datetime.now(tz=timezone.utc) - timedelta(days=36500)).strftime('%d_%m_%Y')
+        todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
+        status = DamageStatus.objects.filter(code=50).values('id')[0]['id']
+        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=status, pdamagetype="None")
+
+
 class DamageMarkersView(TemplateView):
     template_name = "damage/maps/markers.html"
 
@@ -708,7 +747,7 @@ class ContactDetailsListView(TemplateView):
     template_name = "damage/contact/contactlist_table.html"
 
     #def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
-    def get(self, request, pfromdate, ptodate):
+    def get(self, request, pfromdate, ptodate, pkind):
         form = ContactListForm()
 
         if pfromdate is None:  # παντα is None oxi == None
@@ -730,10 +769,16 @@ class ContactDetailsListView(TemplateView):
 
         d_list = ContactDetails.objects.filter(entry_date__range=(fdate, tdate)).order_by(order_by)
 
+        if pkind == '1':  # Μυνήματα χωρίς Απάντηση pkind=1
+            d_list = d_list.annotate(
+                        no_replay=Exists(ContactManagement.objects.filter(contact__pk=OuterRef('pk')))
+                    ).filter(no_replay=False,)
+
+
         search_string = request.GET.get('search_box', None)
         print(search_string)
 
-        paginator = Paginator(d_list, 5)
+        paginator = Paginator(d_list, 8)
 
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)
@@ -771,7 +816,17 @@ class ContactDetailsTodayView(TemplateView):
     def get(self, request):
         fromdatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
         todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
-        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext)
+        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pkind=0)
+
+
+class ContactDetailsNoReplayView(TemplateView):
+    viewurl = 'contact-list-dates'
+
+    def get(self, request):
+        fromdatetext = (datetime.now(tz=timezone.utc) - timedelta(days=36500)).strftime('%d_%m_%Y')
+        todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
+        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pkind=1)
+
 
 
 class ContactListCriteriaView(TemplateView):
@@ -808,10 +863,10 @@ class ContactListCriteriaView(TemplateView):
 
             if 'showlist' in request.POST:           # ανάλογα με ποιο button εχει πατήσει
                 viewurl = 'contact-list-dates'
+                return redirect(viewurl, pfromdate=fromdatetext, ptodate=todatetext, pkind=0)
             else:           # ανάλογα με ποιο button εχει πατήσει
                 viewurl = 'contact-list-history-dates'
-
-            return redirect(viewurl, pfromdate=fromdatetext, ptodate=todatetext)
+                return redirect(viewurl, pfromdate=fromdatetext, ptodate=todatetext)
 
         else:
             print('form is not valid')

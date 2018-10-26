@@ -12,6 +12,7 @@
 
 <div class = "main-container">
     <div class="row">
+
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="card card-sm card-danger ">
           <div class="card-icon text-danger ">
@@ -30,6 +31,70 @@
           </div>
         </div>
       </div>
+
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-sm card-info ">
+          <div class="card-icon text-info ">
+            <i class="ion ion-wrench"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-body">
+              {{ damages_status_1 }}
+            </div>
+            <div class="card-header pb-0">
+              <h4>ΒΛΑΒΕΣ ΧΩΡΙΣ ΕΠΙΚΟΙΝΩΝΙΑ</h4>
+            </div>
+          </div>
+          <div class="card-cta">
+            <a href="{%  url 'today-damage-list' %}">Περισσότερα ...<i class="ion ion-ios-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-sm card-info ">
+          <div class="card-icon text-info ">
+            <i class="ion ion-wrench"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-body">
+              {{ damages_status_lt_10 }}
+            </div>
+            <div class="card-header pb-0">
+              <h4>MH ΕΠΙΒΕΒΑΙΩΜΕΝΕΣ ΒΛΑΒΕΣ</h4>
+            </div>
+          </div>
+          <div class="card-cta">
+            <a href="{%  url 'damage-status10' %}">Περισσότερα ...<i class="ion ion-ios-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card card-sm card-success ">
+          <div class="card-icon text-success ">
+            <i class="ion ion-wrench"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-body">
+              {{ damages_status_50 }}
+            </div>
+            <div class="card-header pb-0">
+              <h4>ΣΕ ΕΠΙΣΚΕΥΗ</h4>
+            </div>
+          </div>
+          <div class="card-cta">
+            <a href="{%  url 'damage-status50' %}">Περισσότερα ...<i class="ion ion-ios-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
 
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="card card-sm card-warning">
@@ -52,41 +117,26 @@
 
 
       <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card card-sm">
-          <div class="card-icon text-warning">
-            <i class="ion ion-paper-airplane"></i>
+        <div class="card card-sm card-danger">
+          <div class="card-icon text-danger">
+            <i class="ion ion-android-mail"></i>
           </div>
           <div class="card-wrap">
             <div class="card-body">
-              1,201
+                {{ no_replay_messages }}
             </div>
             <div class="card-header pb-0">
-              <h4>Reports</h4>
+              <h4 >MYNHMATA XΩΡΙΣ ΑΠΑΝΤΗΣΗ</h4>
             </div>
           </div>
           <div class="card-cta">
-            <a href="#">More Info <i class="ion ion-ios-arrow-right"></i></a>
+            <a href="{%  url 'noreplay-contact-list' %}" name="contacts">Περισσότερα ... <i class="ion ion-ios-arrow-right"></i></a>
           </div>
         </div>
       </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card card-sm">
-          <div class="card-icon text-success">
-            <i class="ion ion-record"></i>
-          </div>
-          <div class="card-wrap">
-            <div class="card-body">
-              47
-            </div>
-            <div class="card-header pb-0">
-              <h4>Online Users</h4>
-            </div>
-          </div>
-          <div class="card-cta">
-            <a href="#">More Info <i class="ion ion-ios-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
+
+
+
     </div>
 
 </div>

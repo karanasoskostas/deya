@@ -18,7 +18,7 @@
         {% csrf_token %}
         <div class="form-row">
 
-             <div class="form-group col-sm-12"  >
+             <div class="form-group col-md-6"  >
 
                  <div class="form-group" >
                      <label for="label" >Όνομα</label>
@@ -67,12 +67,12 @@
                      </div>
                  </div>
 
-
+             </div>
 
 
 
             <!-- Δεξιό μερος της οθόνης -->
-
+             <div class="form-group col-md-6"  >
                  <div class="form-group" >
                      <label for={{ form.damagetype.id_for_label }} >Είδος Βλάβης</label>
                      {% render_field form.damagetype class="form-control" %}
@@ -84,11 +84,11 @@
                 </div>
 
                 <div class="form-row" >
-                     <div class="col-lg-2">
+                     <div class="col-lg-3">
                         <label for = "{{ form.damagezipcode.id_for_label }}" >T.K.</label>
                         {% render_field form.damagezipcode class="form-control" %}
                      </div>
-                     <div class="col-lg-5">
+                     <div class="col-lg-4">
                         <label for = "{{ form.damagetown.id_for_label }}" >Πόλη</label>
                         {% render_field form.damagetown class="form-control" %}
                      </div>
@@ -99,49 +99,39 @@
                 </div>
 
                  <br/>
-                 <div class="form-row form-group" >
+                 <div class="form-group" >
                      <label for={{ form.damagecom.id_for_label }} >Παρατηρήσεις προς τη ΔΕΥΑ</label>
                      {% render_field form.damagecom class="form-control" %}
                 </div>
 
+             </div>
 
 
 
-            </div>
 
         </div>
 
-        <div class="col-sm-12">
-            <div class="form-group-sm"  >
+        <div class="row" >
 
+            <div class="col">
 
+                <div class="map_canvas"></div>
 
-                <div class="form-row">
-                    <div class="map_canvas" style="margin-top: 10px; width: 100%; height: 500px; "></div>
-                </div>
+                 <div class="row">
 
+                     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
 
-                 <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+                     <div class="form-row" >
 
-                 <div class="form-row" >
+                        {% if form.formatted_address.value != None %}
+                            {%  render_field form.formatted_address id="geocomplete" type="text" placeholder="Διεύθυνση στο Χάρτη.." class="form-control" style="width: 400px" %}
+                        {%  else %}
+                                <input id="geocomplete" type="text" placeholder="Διεύθυνση στο Χάρτη.." style="width: 400px"
+                                       class="form-control" value={{ general.deya_mapaddress }}  />
+                        {% endif %}
 
-                    {% if form.formatted_address.value != None %}
-                        {%  render_field form.formatted_address id="geocomplete" type="text" placeholder="Διεύθυνση στο Χάρτη.." class="form-control" style="width: 400px" %}
-                    {%  else %}
-                            <input id="geocomplete" type="text" placeholder="Διεύθυνση στο Χάρτη.." style="width: 400px"
-                                   class="form-control" value={{ general.deya_mapaddress }}  />
-                    {% endif %}
+                        <input id="find" class="btn btn-primary" type="button" value="Αναζήτηση" />
 
-                 <div class="p-1 mt-1 mb-1 col-2" >
-                        <input id="find" class="btn btn-outline-info  btn-shadow btn-round " type="button" value="Αναζήτηση">
-
-                  </div>
-                  <div class = "col-1"></div>
-                  <div class="p-1 mt-1 mb-4 col-2">
-                    <a id="reset" href="#" class="btn btn-outline-secondary btn-shadow btn-round " >  Reset Marker</a>
-                  </div>
-                  </div>
-                     <div style="display: none;">
 
                         <label for = "{{ form.latitude.id_for_label }}" >Latitude</label>
                         <!--<input name="lat" type="text" value="">-->
@@ -149,50 +139,41 @@
 
                      </div>
 
-                     <div class="form-row"   style="display: none;">
+                     <div class="form-row" >
                        <label for = "{{ form.longitude.id_for_label }}" >Logitude</label>
                       <!-- <input name="lng" type="text" value="">-->
                         {% render_field form.lng class="form-control" id="lng"%}
 
                      </div>
 
-                     <div class="form-row"  style="display: none;" >
+                     <div class="form-row" >
                          <label for = "{{ form.formatted_address.id_for_label }}" >Formatted Address</label>
                            <!--<input name="formatted_address" type="text" value="">-->
                          {% render_field form.formatted_address class="form-control"   %}
 
                      </div>
 
+                 </div>
+
+
+                <div class="map_canvas"></div>
+
+                <a id="reset" href="#" style="display:none;">Reset Marker</a>
 
             </div>
-        </div>
+            <div class="col">
 
-        <br/>
-        <div class="form-group form-row"  >
+                <div class="form-row">
+                    <input type="hidden" name="next" value="{{ request.path }}"/>
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-ok"></span> Καταχώρηση Βλάβης
+                     </button>
+                <a href="{% url 'damage-add' %}" class="btn btn-outline-danger" >Cancel</a>
+             </div>
 
-
-            <div class="p-1 mt-1 mb-1 col-2">
-                <button type="submit" class="btn btn-outline-success btn-shadow btn-round has-icon has-icon-nofloat btn-block" name="history" >
-                    <i class="fa fa-save" aria-hidden="true"></i><div>Αποθήκευση</div>
-                </button>
             </div>
-
-            <div class = "col-2"></div>
-
-            <div class="p-1 mt-1 mb-4 col-2">
-                <button type="button" class="btn btn-outline-danger btn-shadow btn-round has-icon has-icon-nofloat btn-block" name="back"
-                        onClick="window.history.back();return false;">
-                    <i class="ion ion-arrow-return-left"></i><div>Επιστροφή</div>
-                </button>
-            </div>
-
 
         </div>
-
-
-
-
-
 
     </form>
 
@@ -206,7 +187,7 @@
       $(function(){
         $("#geocomplete").geocomplete({
           map: ".map_canvas",
-          details: "form",
+          details: "form ",
           markerOptions: {
           draggable: true,
           title:"Σύρετε για να τοποθετήσετε στη διέυθυνση που θέλετε."

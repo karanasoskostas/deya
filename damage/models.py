@@ -25,6 +25,28 @@ class DamageStatus(models.Model):
         db_table = 'damagestatus'
 
 
+class Areas(models.Model):
+    code = models.IntegerField()
+    desc = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.code) + ' - ' + self.desc
+
+    class Meta:
+        db_table = 'areas'
+
+
+class DamageCategory(models.Model):
+    code = models.IntegerField( unique=True)
+    desc = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.code) + ' - ' + self.desc
+
+    class Meta:
+        db_table = 'damagecategory'
+
+
 class Damage(models.Model):
     entry_date = models.DateTimeField()
     firstname = models.CharField(max_length=50, blank=False, default=None)

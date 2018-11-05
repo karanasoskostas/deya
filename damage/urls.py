@@ -45,6 +45,9 @@ urlpatterns = [
     url(r'damage/list_dates/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/$',
         views.DamageListView.as_view(), name="damage-list-dates"),
 
+    url(r'damage/list_history_dates/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/$',
+        views.DamageListHistoryView.as_view(), name="damage-list-history-dates"),
+
     # /damage/damage/list/1
     url(r'damage/list/(?P<pk>[0-9]+)/$', views.DamageUpdateView.as_view(), name="damage-by-id"),
 
@@ -71,4 +74,8 @@ urlpatterns = [
 
     url(r'damage/contact/today/$',views.ContactDetailsTodayView.as_view(), name="today-contact-list"),
     url(r'damage/contact/noreplay/$',views.ContactDetailsNoReplayView.as_view(), name="noreplay-contact-list"),
+
+
+    #----------------  ΠΑΡΑΜΕΤΡΙΚΑ
+    url(r'damage/areas/$',views.AreasView.as_view(), name="areas"),
 ]

@@ -193,26 +193,17 @@
               </ul>
             </li>
 
-            <li style="display: none;">
-              <a href="../../stisla-admin/templates/table.html"><i class="ion ion-clipboard"></i><span>Tables</span></a>
-            </li>
+            <li class="menu-header">Παράμετροι Εφαρμογής</li>
 
-            <li style="display: none;">
-              <a href="../../stisla-admin/templates/chartjs.html"><i class="ion ion-stats-bars"></i><span>Chart.js</span></a>
-            </li>
 
-            <li style="display: none;">
-              <a href="../../stisla-admin/templates/simple.html"><i class="ion ion-ios-location-outline"></i><span>Google Maps</span></a>
-            </li>
 
-            <li style="display: none;">
-              <a href="#" class="has-dropdown"><i class="ion ion-ios-copy-outline"></i><span>Examples</span></a>
+
+
+            <li >
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-copy-outline"></i><span>Aρχεία</span></a>
               <ul class="menu-dropdown">
-                <li><a href="../../stisla-admin/templates/login.html"><i class="ion ion-ios-circle-outline"></i> Login</a></li>
-                <li><a href="../../stisla-admin/templates/register.html"><i class="ion ion-ios-circle-outline"></i> Register</a></li>
-                <li><a href="../../stisla-admin/templates/forgot.html"><i class="ion ion-ios-circle-outline"></i> Forgot Password</a></li>
-                <li><a href="../../stisla-admin/templates/reset.html"><i class="ion ion-ios-circle-outline"></i> Reset Password</a></li>
-                <li><a href="../../stisla-admin/templates/404.html"><i class="ion ion-ios-circle-outline"></i> 404</a></li>
+                <li><a href="{% url 'areas' %}"><i class="ion ion-android-pin"></i> Περιοχές</a></li>
+                <li><a href="{% url 'chart-bar-eidos' %}"><i class="ion ion-android-list"></i> Κατηγορίες Βλαβών</a></li>
               </ul>
             </li>
 

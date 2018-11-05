@@ -42,3 +42,12 @@
     align-content: center;
     text-align: center;
 }
+.message-entry {
+    background-color:#ebccd1;
+    color: #761c19;
+    font-family: Verdana;
+    font-weight: bold ;
+    letter-spacing: 2px;
+    align-content: left;
+    text-align: left;
+}

@@ -1,12 +1,12 @@
 from .models import General, DamageType, Damage, DamageStatus, DamageHistoryStatus , ContactDetails, \
-    ContactManagement
+    ContactManagement , Areas, DamageCategory
 from django.shortcuts import get_object_or_404 ,render
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView, View
 from damage.forms import HomeTestForm, DamageEntryForm, DamageTypeForm, DamageListForm, DamageListCriteriaForm, \
     ContactDetailsForm, ContactListForm, ContactListCriteriaForm, DamageStatusHistoryForm, \
-    ContactManagementForm
+    ContactManagementForm, AreasForm
 from django.utils import timezone
 import datetime
 import pytz
@@ -25,7 +25,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 from django.contrib.auth.models import User
-
+from django.contrib import messages
 
 #--------------------------------------------------------------------------------------------------------------
 #   CHART Views
@@ -303,7 +303,7 @@ class IndexDeyaView(TemplateView):
             no_replay=Exists(ContactManagement.objects.filter(contact__pk=OuterRef('pk')))
         ).filter(no_replay=False,).count()
 
-        messages = ContactDetails.objects.all().count()
+
 
         args = { 'general': general,
                  'today': today,
@@ -505,6 +505,8 @@ class DamageListCriteriaView(TemplateView):
             #return render(request, template, args)
             if 'showlist' in request.POST:           # ανάλογα με ποιο button εχει πατήσει
                 viewurl = 'damage-list-dates'
+            elif 'history' in request.POST:
+                viewurl = 'damage-list-history-dates'
             else:
                 viewurl = 'damage-list-markers'
 
@@ -716,6 +718,91 @@ class DamageListView(TemplateView):
         self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
+#-----------------------------------------------------------------------------------------------------
+# ΛΙΣΤΑ ΒΛΑΒΩΝ ΜΕ ΙΣΤΟΡΙΚΟ ΔΙΑΧΕΙΡΙΣΗΣ
+class DamageListHistoryView(TemplateView):
+    template_name = "damage/entry/damagelist_history_table.html"
+
+    def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
+        form = DamageListForm()
+
+        if pfromdate is None:      # παντα is None oxi == None
+            pfromdate = '01_01_2000'
+
+        if ptodate is None:
+            ptodate = '01_01_2100'
+
+        fdate = datetime.strptime(pfromdate, '%d_%m_%Y')  # ερχεται με format dd_mm_yyyy
+        fdate = datetime.combine(fdate, datetime.min.time(), tzinfo=pytz.UTC)  # min time to datetime
+
+        tdate = datetime.strptime(ptodate, '%d_%m_%Y')  # string to datetime
+        tdate = datetime.combine(tdate, datetime.max.time(), tzinfo=pytz.UTC)  # add max time to datetime
+        # tdate = datetime.strptime(todate, '%d/%m/%Y') + timedelta(days=1)  #  και αυτό παίζει !!!!
+
+        if pdamagestatus == '' or pdamagestatus =="None":
+            fromdamagestatuspk = 0
+            todamagestatuspk = 99999
+            statusdesc = 'ΟΛΑ'
+        else:
+            fromdamagestatuspk = int(pdamagestatus)
+            todamagestatuspk = fromdamagestatuspk
+            statusdesc = DamageStatus.objects.get(pk=fromdamagestatuspk).desc
+
+        if pdamagetype == '' or pdamagetype =="None":
+            fromdamagetypepk = 0
+            todamagetypepk = 99999
+            typedesc = 'ΟΛΑ'
+        else:
+            fromdamagetypepk = int(pdamagetype)
+            todamagetypepk = fromdamagetypepk
+            typedesc = DamageType.objects.get(pk=fromdamagetypepk).desc
+
+        order_by = request.GET.get('order_by', 'entry_date')
+        direction = request.GET.get('direction', 'ASC')
+        if Lower(direction) == Lower('DESC'):
+            order_by = '-{}'.format(order_by)
+
+        d_list = Damage.objects.filter(entry_date__range=(fdate, tdate),
+                                       damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk),
+                                       damagetype__pk__range=(fromdamagetypepk, todamagetypepk)).order_by(order_by)
+
+        damage_history = DamageHistoryStatus.objects.filter(damage__entry_date__range=(fdate, tdate),
+                                                            damage__damagestatus__pk__range=(fromdamagestatuspk, todamagestatuspk),
+                                                            damage__damagetype__pk__range=(fromdamagetypepk, todamagetypepk)).order_by('-entry_date')
+
+        paginator = Paginator(d_list, 5)
+
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
+
+        try:
+             damage_list = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            damage_list = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            damage_list = paginator.page(paginator.num_pages)
+
+        general = General.objects.get(pk=1)
+        fromdatetext = fdate.strftime('%d/%m/%Y')
+        todatetext = tdate.strftime('%d/%m/%Y')
+
+
+        args = {
+            'form': form,
+            'damage_list': damage_list,
+            'damage_history': damage_history,
+            'page_obj': page_obj,
+            'general': general,
+            'fromdate': fromdatetext,
+            'todate': todatetext,
+            'statusdesc': statusdesc,
+            'typedesc': typedesc
+
+        }
+        self.template_name = check_authentication(request, self.template_name)
+        return render(request, self.template_name, args)
 #--------------------------------------------------------------------------------------------------------------
 # ΚΑΤΑΧΩΡΗΣΗ ΜΥΝΗΜΑΤΟΣ
 class ContactDetailsView(TemplateView):
@@ -1085,3 +1172,107 @@ class ContactDetailsHistoryListView(TemplateView):
         return render(request, self.template_name, args)
 
 
+class AreasView(TemplateView):
+    template_name = "damage/files/areas.html"
+    pagerows = 4
+
+    def get(self, request):
+        general = General.objects.get(pk=1)
+        areas_list = Areas.objects.all().order_by('desc')
+        form = AreasForm()
+
+        #contact_list = ContactManagement.objects.filter(contact=contact).order_by('-entry_date')
+
+        paginator = Paginator(areas_list, self.pagerows)
+
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
+
+        try:
+            areas_list = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            areas_list = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            areas_list = paginator.page(paginator.num_pages)
+
+
+        args = {
+            'general': general,
+            'form': form,
+            'areas_list': areas_list,
+            'page_obj': page_obj
+        }
+        self.template_name = check_authentication(request, self.template_name)
+        return render(request, self.template_name, args)
+
+    def post(self, request):
+        general = General.objects.get(pk=1)
+        form = AreasForm(request.POST)
+        form.non_field_errors()
+
+        if 'delete' in request.POST:
+            pk = request.POST.get("pk", "")
+            item = Areas.objects.get(id=pk)
+            item.delete()
+
+        if 'save' in request.POST:
+
+            edit_flag = request.POST.get("edit_flag", "")
+            if edit_flag == "1":  #  UPDATE
+                code = request.POST.get("code", "")
+                desc = request.POST.get("desc", "")
+                area = Areas.objects.get(code=code)
+                area.desc = desc
+                area.save()
+            else:                 # ΝΕΑ ΕΓΓΡΑΦΗ
+
+                if form.is_valid():
+                    post = form.save(commit=False)
+                    #post.userip = get_client_ip(request)  # το IP του χρήστη
+                    # if self.request.user.is_authenticated:  # κάποια στιγμή το is_authenticated() χτύπησε !!!!
+                    #     post.user = request.user
+                    #post.entry_date = datetime.now(tz=timezone.utc)
+                    #damage = request.POST.get('damage')
+
+                    code = request.POST.get("code", "")
+                    area = Areas.objects.filter(code=code)
+                    if area:
+                        messages.error(request, 'Ο Κωδικός '+ code +' Υπάρχει ήδη !!')
+                    else:
+                        post.save()
+                else:
+                    print('form is not valid')
+                    print(form.errors)
+                    # form = DamageEntryForm()
+                    args = {'form': form
+                            }
+                    return render(request, self.template_name, args)
+
+
+        areas_list = Areas.objects.all().order_by('desc')
+
+        paginator = Paginator(areas_list, self.pagerows)
+
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
+
+        try:
+            areas_list = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            areas_list = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            areas_list = paginator.page(paginator.num_pages)
+
+        args = {
+            'general': general,
+            'form': form,
+            'areas_list': areas_list,
+            'page_obj': page_obj,
+
+        }
+
+        return redirect(request.META.get('HTTP_REFERER'))

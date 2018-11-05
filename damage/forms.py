@@ -1,6 +1,6 @@
 from django import forms
 from .models import DamageType, Damage , DamageStatus, ContactDetails, DamageHistoryStatus, \
-    ContactManagement
+    ContactManagement, Areas , DamageCategory
 
 
 class DamageTypeChoiceField(forms.ModelChoiceField):
@@ -198,3 +198,12 @@ class ContactManagementForm(forms.ModelForm):
     class Meta:
         model = ContactManagement
         fields = ['entry_date', 'deyacom', 'com']
+
+
+class AreasForm(forms.ModelForm):
+    code = forms.IntegerField()
+    desc = forms.CharField(max_length=100)
+
+    class Meta:
+        model = Areas
+        fields = ('code', 'desc',)

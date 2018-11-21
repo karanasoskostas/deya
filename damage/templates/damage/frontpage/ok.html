@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ general.deya_name }} - BΛΑΒΕΣ </title>
+    <meta name="description" content="ΒΛΑΒΕΣ"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'damage/bootstrap-4.1.1-dist/css/bootstrap.min.css' %}" >
+
+    <link rel="stylesheet" href="{% static 'damage/font-awesome-4.7.0/css/font-awesome.min.css' %}" >
+
+    <link href="{% static 'styles/frontpage.css' %}" rel="stylesheet">
+
+  </head>
+  <body id="top">
+
+  <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">{{ general.deya_name }}</h3>
+              <nav class="nav nav-masthead">
+
+                {% include 'damage/menus/top-right.html' %}
+
+              </nav>
+            </div>
+          </div><br>
+            <form >
+
+              <div class="inner cover">
+                <h1 class="cover-heading">EΠΙΤΥΧΗΣ ΚΑΤΑΧΩΡΗΣΗ</h1>
+                <p class="lead cover-copy">Τα στοιχεία της βλάβης καταχωρήθηκαν με επιτυχία</p>
+                <p class="lead">
+
+                    <a class="btn btn-lg btn-default btn-notify" name="guest"
+                       style="width: 300px !important;" href="{% url 'frontpage' %}" >Συνέχεια
+                    </a>
+
+                </p>
+              </div>
+            </form>
+          <div class="mastfoot">
+            <div class="inner">
+              <p>&copy; Developed and Designed by : <a href="#" target="_blank">Kostas Karanasos</a>.</p>
+            </div>
+          </div>
+          <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" href="{% url "index" %}">
+                  <!--
+                <div class="modal-header">
+                  <h5 class="modal-title" id="subscribeModalLabel">Get Notified on Launch:</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="form-control-label">Enter you e-mail to get notified when we launch</label>
+                      <input type="text" class="form-control" id="recipient-name" placeholder="your-name@example.com">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default">Subscribe</button>
+                </div>
+                -->
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>-->
+    <script src="{% static 'damage/bootstrap-4.1.1-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'scripts/main.js' %}"></script>
+  </body>
+</html>

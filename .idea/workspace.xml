@@ -2,19 +2,119 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d878107-aaee-4f39-96f4-8b30d56aeeb4" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/entry/damagelist_history_table.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/files/areas.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/messages/messages.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/damage/api/tests.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/damage/api/urls.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/damage/api/views.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/damage/appfunctions/exportexcel.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/files/damagecategory.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/frontpage/ok.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/damage/templates/damage/menus/menu.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/20181026.zip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/damage/admin.py" afterPath="$PROJECT_DIR$/damage/admin.py" />
+      <change beforePath="$PROJECT_DIR$/damage/appfunctions/appfunctions.py" afterPath="$PROJECT_DIR$/damage/appfunctions/appfunctions.py" />
       <change beforePath="$PROJECT_DIR$/damage/forms.py" afterPath="$PROJECT_DIR$/damage/forms.py" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/damage/migrations/0001_initial.py" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0002_remove_contactmanagement_dummy.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0003_contactdetails_dummy.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0004_auto_20181009_1409.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0005_remove_contactdetails_deya_contact_email.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0006_general_deya_contact_email.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0007_remove_general_deya_contact_email.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0008_general_deya_contact_email.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0009_remove_general_deya_contact_email.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0010_contactdetails_deya_contact_email.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0011_remove_contactdetails_deya_contact_email.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0012_areas_damagecategory.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0013_auto_20181031_1420.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0014_auto_20181031_1512.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0015_auto_20181031_1533.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0016_auto_20181031_1534.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/damage/migrations/0017_auto_20181031_1546.py" afterPath="" />
       <change beforePath="$PROJECT_DIR$/damage/models.py" afterPath="$PROJECT_DIR$/damage/models.py" />
       <change beforePath="$PROJECT_DIR$/damage/static/damage/mystyle.css" afterPath="$PROJECT_DIR$/damage/static/damage/mystyle.css" />
+      <change beforePath="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" afterPath="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" />
       <change beforePath="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" afterPath="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" />
+      <change beforePath="$PROJECT_DIR$/damage/templates/damage/entry/damageadd.html" afterPath="$PROJECT_DIR$/damage/templates/damage/entry/damageadd.html" />
+      <change beforePath="$PROJECT_DIR$/damage/templates/damage/files/areas.html" afterPath="$PROJECT_DIR$/damage/templates/damage/files/areas.html" />
+      <change beforePath="$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage-deya.html" afterPath="$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage-deya.html" />
+      <change beforePath="$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage.html" afterPath="$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage.html" />
       <change beforePath="$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html" afterPath="$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html" />
       <change beforePath="$PROJECT_DIR$/damage/urls.py" afterPath="$PROJECT_DIR$/damage/urls.py" />
       <change beforePath="$PROJECT_DIR$/damage/views.py" afterPath="$PROJECT_DIR$/damage/views.py" />
+      <change beforePath="$PROJECT_DIR$/deya/settings.py" afterPath="$PROJECT_DIR$/deya/settings.py" />
+      <change beforePath="$PROJECT_DIR$/deya/urls.py" afterPath="$PROJECT_DIR$/deya/urls.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-18.0.dist-info/LICENSE.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-18.0.dist-info/METADATA" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-18.0.dist-info/RECORD" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-18.0.dist-info/WHEEL" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-18.0.dist-info/entry_points.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-18.0.dist-info/top_level.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/__init__.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/__init__.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/basecommand.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/baseparser.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/build_env.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/build_env.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/cache.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/cache.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/cmdoptions.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/__init__.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/check.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/check.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/completion.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/completion.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/configuration.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/configuration.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/download.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/download.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/freeze.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/freeze.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/hash.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/hash.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/help.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/help.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/install.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/install.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/list.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/list.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/search.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/search.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/show.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/show.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/uninstall.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/uninstall.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/wheel.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/wheel.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/compat.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/configuration.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/configuration.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/exceptions.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/exceptions.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/index.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/index.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/models/index.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/models/index.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/operations/freeze.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/operations/freeze.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/operations/prepare.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/operations/prepare.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/pep425tags.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/pep425tags.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_file.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_file.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_install.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_install.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_set.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_set.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_uninstall.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_uninstall.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/resolve.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/resolve.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/status_codes.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/appdirs.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/appdirs.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/filesystem.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/filesystem.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/logging.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/logging.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/misc.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/misc.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/outdated.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/outdated.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/packaging.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/packaging.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/ui.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/utils/ui.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/__init__.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/bazaar.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/bazaar.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/git.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/git.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/mercurial.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/mercurial.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/subversion.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/vcs/subversion.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/wheel.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/wheel.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/certifi/__init__.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/certifi/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/certifi/__main__.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/certifi/__main__.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/certifi/cacert.pem" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/certifi/cacert.pem" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/packaging/__about__.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/packaging/__about__.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/packaging/requirements.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/packaging/requirements.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/packaging/specifiers.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/packaging/specifiers.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pkg_resources/__init__.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pkg_resources/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pkg_resources/py31compat.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pkg_resources/py31compat.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pyparsing.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pyparsing.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pytoml/parser.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pytoml/parser.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/requests/__init__.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/requests/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip-script.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip.exe" afterPath="$PROJECT_DIR$/venv/Scripts/pip.exe" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3-script.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.7-script.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.7.exe" afterPath="$PROJECT_DIR$/venv/Scripts/pip3.7.exe" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.exe" afterPath="$PROJECT_DIR$/venv/Scripts/pip3.exe" />
+      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,23 +132,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2266">
-              <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/damage/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1716">
-              <caret line="79" column="64" lean-forward="false" selection-start-line="79" selection-start-column="64" selection-end-line="79" selection-end-column="64" />
+            <state relative-caret-position="259">
+              <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -56,57 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sidebarmenu.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/damage/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4488">
-              <caret line="204" column="46" lean-forward="false" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="damagelist_table.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damagelist_table.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2948">
-              <caret line="134" column="81" lean-forward="false" selection-start-line="134" selection-start-column="69" selection-end-line="134" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="areas.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/templates/damage/files/areas.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1254">
-              <caret line="125" column="18" lean-forward="false" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
-              <folding>
-                <element signature="e#3213#3239#0#HTML" expanded="true" />
-                <element signature="e#3298#3317#0#HTML" expanded="true" />
-                <element signature="e#3816#3835#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="damageadd.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damageadd.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="24" />
+            <state relative-caret-position="1276">
+              <caret line="60" column="14" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -115,208 +157,42 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/damage/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-118">
-              <caret line="1228" column="8" lean-forward="false" selection-start-line="1228" selection-start-column="8" selection-end-line="1228" selection-end-column="8" />
+            <state relative-caret-position="-748">
+              <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="25" />
               <folding>
-                <element signature="e#1346#1457#0" expanded="false" />
-                <element signature="e#1614#1818#0" expanded="false" />
-                <element signature="e#1663#1818#0" expanded="false" />
-                <element signature="e#1714#1752#0" expanded="false" />
-                <element signature="e#1865#1956#0" expanded="false" />
-                <element signature="e#1872#1926#0" expanded="false" />
-                <element signature="e#1958#2005#0" expanded="false" />
-                <element signature="e#2093#3889#0" expanded="false" />
-                <element signature="e#2199#3889#0" expanded="false" />
-                <element signature="e#2522#3563#0" expanded="false" />
-                <element signature="e#2620#2724#0" expanded="false" />
-                <element signature="e#2766#2875#0" expanded="false" />
-                <element signature="e#2917#3026#0" expanded="false" />
-                <element signature="e#3068#3177#0" expanded="false" />
-                <element signature="e#3219#3330#0" expanded="false" />
-                <element signature="e#3372#3477#0" expanded="false" />
-                <element signature="e#3573#3637#0" expanded="false" />
-                <element signature="e#3699#3859#0" expanded="false" />
-                <element signature="e#3892#3939#0" expanded="false" />
-                <element signature="e#4078#5882#0" expanded="false" />
-                <element signature="e#4184#5882#0" expanded="false" />
-                <element signature="e#4515#5556#0" expanded="false" />
-                <element signature="e#4613#4717#0" expanded="false" />
-                <element signature="e#4759#4868#0" expanded="false" />
-                <element signature="e#4910#5019#0" expanded="false" />
-                <element signature="e#5061#5170#0" expanded="false" />
-                <element signature="e#5212#5323#0" expanded="false" />
-                <element signature="e#5365#5470#0" expanded="false" />
-                <element signature="e#5566#5630#0" expanded="false" />
-                <element signature="e#5692#5852#0" expanded="false" />
-                <element signature="e#5884#5995#0" expanded="false" />
-                <element signature="e#6058#6372#0" expanded="false" />
-                <element signature="e#6141#6372#0" expanded="false" />
-                <element signature="e#6271#6314#0" expanded="false" />
-                <element signature="e#6374#6485#0" expanded="false" />
-                <element signature="e#6560#6891#0" expanded="false" />
-                <element signature="e#6660#6891#0" expanded="false" />
-                <element signature="e#6712#6755#0" expanded="false" />
-                <element signature="e#6894#7005#0" expanded="false" />
-                <element signature="e#7279#7569#0" expanded="false" />
-                <element signature="e#7416#7569#0" expanded="false" />
-                <element signature="e#7468#7511#0" expanded="false" />
-                <element signature="e#7607#7711#0" expanded="false" />
-                <element signature="e#7741#8138#0" expanded="false" />
-                <element signature="e#8181#8589#0" expanded="false" />
-                <element signature="e#8263#8395#0" expanded="false" />
-                <element signature="e#8302#8338#0" expanded="false" />
-                <element signature="e#8434#8589#0" expanded="false" />
-                <element signature="e#8626#8916#0" expanded="false" />
-                <element signature="e#8702#8916#0" expanded="false" />
-                <element signature="e#8917#9028#0" expanded="false" />
-                <element signature="e#9306#9837#0" expanded="false" />
-                <element signature="e#9425#9560#0" expanded="false" />
-                <element signature="e#9435#9500#0" expanded="false" />
-                <element signature="e#9599#9837#0" expanded="false" />
-                <element signature="e#9839#9951#0" expanded="false" />
-                <element signature="e#10011#11518#0" expanded="false" />
-                <element signature="e#10103#11518#0" expanded="false" />
-                <element signature="e#10984#11381#0" expanded="false" />
-                <element signature="e#11560#12035#0" expanded="false" />
-                <element signature="e#11687#11822#0" expanded="false" />
-                <element signature="e#11697#11762#0" expanded="false" />
-                <element signature="e#11861#12035#0" expanded="false" />
-                <element signature="e#12078#12254#0" expanded="false" />
-                <element signature="e#12101#12173#0" expanded="false" />
-                <element signature="e#12290#12516#0" expanded="false" />
-                <element signature="e#12405#12457#0" expanded="false" />
-                <element signature="e#12548#12661#0" expanded="false" />
-                <element signature="e#12619#12661#0" expanded="false" />
-                <element signature="e#12663#12774#0" expanded="false" />
-                <element signature="e#12967#14765#0" expanded="false" />
-                <element signature="e#13051#13340#0" expanded="false" />
-                <element signature="e#13135#13203#0" expanded="false" />
-                <element signature="e#13379#14765#0" expanded="false" />
-                <element signature="e#13533#14433#0" expanded="false" />
-                <element signature="e#14117#14192#0" expanded="false" />
-                <element signature="e#14267#14363#0" expanded="false" />
-                <element signature="e#14461#14765#0" expanded="false" />
-                <element signature="e#14579#14654#0" expanded="false" />
-                <element signature="e#14816#15727#0" expanded="false" />
-                <element signature="e#14951#14980#0" expanded="false" />
-                <element signature="e#15147#15727#0" expanded="false" />
-                <element signature="e#15729#15840#0" expanded="false" />
-                <element signature="e#16003#16299#0" expanded="false" />
-                <element signature="e#16095#16163#0" expanded="false" />
-                <element signature="e#17302#17335#0" expanded="false" />
-                <element signature="e#17523#17555#0" expanded="false" />
-                <element signature="e#18099#18351#0" expanded="false" />
-                <element signature="e#18215#18290#0" expanded="false" />
-                <element signature="e#18353#18464#0" expanded="false" />
-                <element signature="e#18522#18850#0" expanded="false" />
-                <element signature="e#18589#18850#0" expanded="false" />
-                <element signature="e#18852#18963#0" expanded="false" />
-                <element signature="e#19027#19457#0" expanded="false" />
-                <element signature="e#19094#19457#0" expanded="false" />
-                <element signature="e#19459#19570#0" expanded="false" />
-                <element signature="e#19634#20064#0" expanded="false" />
-                <element signature="e#19701#20064#0" expanded="false" />
-                <element signature="e#20066#20177#0" expanded="false" />
-                <element signature="e#20248#23292#0" expanded="false" />
-                <element signature="e#20376#23292#0" expanded="false" />
-                <element signature="e#21125#21215#0" expanded="false" />
-                <element signature="e#21242#21409#0" expanded="false" />
-                <element signature="e#21477#21561#0" expanded="false" />
-                <element signature="e#21588#21741#0" expanded="false" />
-                <element signature="e#22121#22477#0" expanded="false" />
-                <element signature="e#22488#22505#0" expanded="false" />
-                <element signature="e#22920#22935#0" expanded="false" />
-                <element signature="e#23005#23155#0" expanded="false" />
-                <element signature="e#23294#23405#0" expanded="false" />
-                <element signature="e#23469#26545#0" expanded="false" />
-                <element signature="e#23607#26545#0" expanded="false" />
-                <element signature="e#24344#24434#0" expanded="false" />
-                <element signature="e#24461#24628#0" expanded="false" />
-                <element signature="e#24696#24780#0" expanded="false" />
-                <element signature="e#24807#24960#0" expanded="false" />
-                <element signature="e#25700#25792#0" expanded="false" />
-                <element signature="e#25831#25961#0" expanded="false" />
-                <element signature="e#26122#26409#0" expanded="false" />
-                <element signature="e#26547#26649#0" expanded="false" />
-                <element signature="e#26736#30249#0" expanded="false" />
-                <element signature="e#26882#30249#0" expanded="false" />
-                <element signature="e#27619#27709#0" expanded="false" />
-                <element signature="e#27736#27903#0" expanded="false" />
-                <element signature="e#27971#28055#0" expanded="false" />
-                <element signature="e#28082#28235#0" expanded="false" />
-                <element signature="e#29358#29450#0" expanded="false" />
-                <element signature="e#29489#29619#0" expanded="false" />
-                <element signature="e#29780#30113#0" expanded="false" />
-                <element signature="e#30250#30361#0" expanded="false" />
-                <element signature="e#30429#31650#0" expanded="false" />
-                <element signature="e#30519#30655#0" expanded="false" />
-                <element signature="e#30562#30598#0" expanded="false" />
-                <element signature="e#30694#31650#0" expanded="false" />
-                <element signature="e#30853#31410#0" expanded="false" />
-                <element signature="e#31092#31114#0" expanded="false" />
-                <element signature="e#31242#31350#0" expanded="false" />
-                <element signature="e#31438#31650#0" expanded="false" />
-                <element signature="e#31554#31589#0" expanded="false" />
-                <element signature="e#31652#31763#0" expanded="false" />
-                <element signature="e#31838#34508#0" expanded="false" />
-                <element signature="e#32035#34477#0" expanded="false" />
-                <element signature="e#32981#33156#0" expanded="false" />
-                <element signature="e#33275#33465#0" expanded="false" />
-                <element signature="e#33700#33793#0" expanded="false" />
-                <element signature="e#33832#33963#0" expanded="false" />
-                <element signature="e#34123#34341#0" expanded="false" />
-                <element signature="e#34510#34621#0" expanded="false" />
-                <element signature="e#34689#34985#0" expanded="false" />
-                <element signature="e#34757#34985#0" expanded="false" />
-                <element signature="e#34987#35098#0" expanded="false" />
-                <element signature="e#35177#35499#0" expanded="false" />
-                <element signature="e#35245#35499#0" expanded="false" />
-                <element signature="e#35501#35612#0" expanded="false" />
-                <element signature="e#35691#37661#0" expanded="false" />
-                <element signature="e#35788#36085#0" expanded="false" />
-                <element signature="e#35881#35949#0" expanded="false" />
-                <element signature="e#36124#37661#0" expanded="false" />
-                <element signature="e#36287#37381#0" expanded="false" />
-                <element signature="e#37051#37175#0" expanded="false" />
-                <element signature="e#37258#37381#0" expanded="false" />
-                <element signature="e#37409#37661#0" expanded="false" />
-                <element signature="e#37525#37600#0" expanded="false" />
-                <element signature="e#37706#39585#0" expanded="false" />
-                <element signature="e#37796#38261#0" expanded="false" />
-                <element signature="e#38066#38204#0" expanded="false" />
-                <element signature="e#38304#39585#0" expanded="false" />
-                <element signature="e#38468#39345#0" expanded="false" />
-                <element signature="e#39124#39282#0" expanded="false" />
-                <element signature="e#39373#39585#0" expanded="false" />
-                <element signature="e#39489#39524#0" expanded="false" />
-                <element signature="e#39587#39698#0" expanded="false" />
-                <element signature="e#39780#41698#0" expanded="false" />
-                <element signature="e#39877#40396#0" expanded="false" />
-                <element signature="e#40118#40260#0" expanded="false" />
-                <element signature="e#40439#41698#0" expanded="false" />
-                <element signature="e#40601#41458#0" expanded="false" />
-                <element signature="e#41233#41395#0" expanded="false" />
-                <element signature="e#41486#41698#0" expanded="false" />
-                <element signature="e#41602#41637#0" expanded="false" />
-                <element signature="e#41700#41811#0" expanded="false" />
-                <element signature="e#41898#44215#0" expanded="false" />
-                <element signature="e#42158#44215#0" expanded="false" />
-                <element signature="e#43391#43484#0" expanded="false" />
-                <element signature="e#43523#43654#0" expanded="false" />
-                <element signature="e#43814#44079#0" expanded="false" />
-                <element signature="e#44946#45075#0" expanded="false" />
-                <element signature="e#45093#45233#0" expanded="false" />
-                <marker date="1541410566985" expanded="true" signature="45702:45716" ph="..." />
+                <element signature="e#37003#37325#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mystyle.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/damage/static/damage/mystyle.css">
+      <file leaf-file-name="exportexcel.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/damage/appfunctions/exportexcel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1166">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="88">
+              <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contactlist_table.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sidebarmenu.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1298">
+              <caret line="59" column="12" lean-forward="false" selection-start-line="58" selection-start-column="70" selection-end-line="59" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -328,43 +204,43 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dropdown</find>
-      <find>overflow</find>
-      <find>rails</find>
-      <find>search</find>
-      <find>Table</find>
-      <find>horizrailenabled</find>
-      <find>rails-</find>
-      <find>dropdown-list</find>
-      <find>canv</find>
-      <find>chart</find>
-      <find>ApiChartDataView</find>
-      <find>myChartBar</find>
-      <find>defaultData</find>
-      <find>jcarou</find>
-      <find>card-</find>
-      <find>card-hea</find>
-      <find>h4</find>
-      <find>card</find>
-      <find>ContactDetailsView</find>
-      <find>crite</find>
-      <find>timede</find>
-      <find>carou</find>
-      <find>user.</find>
-      <find>_en</find>
-      <find>displa</find>
-      <find>caro</find>
-      <find>EΠΙΛΟΓΈΣ</find>
-      <find>damage.forms</find>
-      <find>request.post</find>
-      <find>edit</find>
+      <find>ko</find>
+      <find>login</find>
+      <find>logi</find>
+      <find>damage-add</find>
+      <find>bmp</find>
+      <find>guest</find>
+      <find>index</find>
+      <find>frontpage</find>
+      <find>demo-settings-options</find>
+      <find>g</find>
+      <find>todayv</find>
+      <find>DamageListView</find>
+      <find>ContactDetailsListView</find>
+      <find>Cr</find>
+      <find>pkind</find>
+      <find>listcri</find>
+      <find>damagelist</find>
+      <find>damagelistc</find>
+      <find>pkind == 1</find>
+      <find>tus10</find>
+      <find>ΒΛΑΒΕΣ ΧΩΡΙΣ ΕΠΙΚΟΙΝΩΝΙΑ</find>
+      <find>entry_date</find>
+      <find>EntryV</find>
+      <find>contact</find>
+      <find>&lt;form</find>
+      <find>for</find>
+      <find>stringi</find>
+      <find>StringI</find>
+      <find>app</find>
+      <find>excel</find>
     </findStrings>
     <replaceStrings>
       <replace>col-auto</replace>
@@ -377,10 +253,14 @@
       <replace>table.</replace>
       <replace>myChartBarDamageStatus</replace>
       <replace>defaultData2</replace>
+      <replace>categoris</replace>
+      <replace>categories</replace>
+      <replace>items</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\projects\PRACTICE\Django\deya</dir>
       <dir>C:\projects\Django\deya\damage\templates</dir>
+      <dir>C:\projects\Django\deya</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -392,16 +272,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/damage/templates/damage/menus/admintemplate/templates/index.html" />
-        <option value="$PROJECT_DIR$/damage/static/js/criteria_dates.js" />
-        <option value="$PROJECT_DIR$/damage/static/damage/gijgo-combined-1.9.6/css/gijgo.css" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/menus/navmenu.html" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/test/test.css" />
-        <option value="$PROJECT_DIR$/damage/static/css/stisla_temporary.css" />
-        <option value="$PROJECT_DIR$/damage/templates/stisla-admin/templates/index.html" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/base.html" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/styles.css" />
-        <option value="$PROJECT_DIR$/damage/static/damage/style.css" />
         <option value="$PROJECT_DIR$/damage/static/css/stisla_test.css" />
         <option value="$PROJECT_DIR$/damage/templates/damage/test/test.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/entry/damagelist_table.html" />
@@ -413,7 +283,6 @@
         <option value="$PROJECT_DIR$/damage/processor.py" />
         <option value="$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html" />
         <option value="$PROJECT_DIR$/damage/static/stisla-admin/dist/modules/nicescroll/jquery.nicescroll.js" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/test/test_carousel.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/charts/chartbase.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/charts/charts.html" />
@@ -422,26 +291,37 @@
         <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagetype.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_test.html" />
-        <option value="$PROJECT_DIR$/deya/settings.py" />
         <option value="$PROJECT_DIR$/damage/templates/damage/contact/contactdetails.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_jquery_script.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel/jquery_carousel.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/charts/carousel/carousel_various.html" />
         <option value="$PROJECT_DIR$/damage/static/stisla-admin/dist/css/style.css" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage-deya.html" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/entry/damageadd.html" />
         <option value="$PROJECT_DIR$/damage/appfunctions/appfunctions.py" />
         <option value="$PROJECT_DIR$/damage/templates/damage/menus/404.html" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" />
         <option value="$PROJECT_DIR$/damage/templates/damage/entry/damagelist_history_table.html" />
-        <option value="$PROJECT_DIR$/damage/urls.py" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html" />
         <option value="$PROJECT_DIR$/damage/admin.py" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/messages/messages.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/files/areas.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/files/damagecategory.html" />
         <option value="$PROJECT_DIR$/damage/forms.py" />
         <option value="$PROJECT_DIR$/damage/models.py" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/messages/messages.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/frontpage/ok.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/entry/damageadd.html" />
         <option value="$PROJECT_DIR$/damage/static/damage/mystyle.css" />
-        <option value="$PROJECT_DIR$/damage/templates/damage/files/areas.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/menus/menu.html" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage-deya.html" />
+        <option value="$PROJECT_DIR$/damage/api/urls.py" />
+        <option value="$PROJECT_DIR$/damage/api/serializers.py" />
+        <option value="$PROJECT_DIR$/deya/settings.py" />
+        <option value="$PROJECT_DIR$/damage/api/views.py" />
+        <option value="$PROJECT_DIR$/damage/api/tests.py" />
+        <option value="$PROJECT_DIR$/deya/urls.py" />
+        <option value="$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html" />
+        <option value="$PROJECT_DIR$/damage/appfunctions/exportexcel.py" />
+        <option value="$PROJECT_DIR$/damage/urls.py" />
         <option value="$PROJECT_DIR$/damage/views.py" />
       </list>
     </option>
@@ -496,65 +376,25 @@
               <item name="deya" type="b2602c69:ProjectViewProjectNode" />
               <item name="deya" type="462c0819:PsiDirectoryNode" />
               <item name="damage" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
+              <item name="deya" type="462c0819:PsiDirectoryNode" />
+              <item name="damage" type="462c0819:PsiDirectoryNode" />
               <item name="appfunctions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="deya" type="b2602c69:ProjectViewProjectNode" />
               <item name="deya" type="462c0819:PsiDirectoryNode" />
               <item name="damage" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deya" type="462c0819:PsiDirectoryNode" />
-              <item name="damage" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="damage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deya" type="462c0819:PsiDirectoryNode" />
-              <item name="damage" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="stisla-admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deya" type="462c0819:PsiDirectoryNode" />
-              <item name="damage" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="stisla-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deya" type="462c0819:PsiDirectoryNode" />
-              <item name="damage" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="stisla-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="deya" type="b2602c69:ProjectViewProjectNode" />
               <item name="deya" type="462c0819:PsiDirectoryNode" />
               <item name="damage" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deya" type="462c0819:PsiDirectoryNode" />
-              <item name="damage" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="damage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="deya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="deya" type="462c0819:PsiDirectoryNode" />
-              <item name="damage" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="damage" type="462c0819:PsiDirectoryNode" />
-              <item name="entry" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="deya" type="b2602c69:ProjectViewProjectNode" />
@@ -586,11 +426,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\Django\deya\damage\templates\damage\frontpage" />
+      <recent name="C:\projects\Django\deya\damage\templates\damage\menus" />
       <recent name="C:\projects\Django\deya\damage\templates\damage\files" />
       <recent name="C:\projects\Django\deya\damage\templates\damage\entry" />
-      <recent name="C:\projects\Django\deya\damage\templates\damage\menus" />
       <recent name="C:\projects\Django\deya\damage\templates\damage\charts\carousel" />
-      <recent name="C:\projects\Django\deya\damage\templates\damage\criteria" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\projects\Django\deya\damage\templates\damage\entry" />
@@ -730,9 +570,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30108696" sideWeight="0.50852877" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28695652" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31086957" sideWeight="0.4914712" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28369564" sideWeight="0.4914712" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34891304" sideWeight="0.4936034" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28731343" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3304904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -744,7 +584,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -795,33 +635,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/damage/views.py</url>
-          <line>1042</line>
+          <line>1110</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/damage/views.py</url>
-          <line>113</line>
+          <line>118</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/damage/views.py</url>
-          <line>543</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/damage/views.py</url>
-          <line>1216</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/damage/views.py</url>
-          <line>1210</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/damage/views.py</url>
-          <line>1252</line>
+          <line>1326</line>
           <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/damage/views.py</url>
+          <line>442</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/damage/views.py</url>
+          <line>385</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/damage/views.py</url>
+          <line>506</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/damage/views.py</url>
+          <line>991</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/damage/views.py</url>
+          <line>944</line>
+          <option name="timeStamp" value="92" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -834,139 +684,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="60" />
+      <option name="time" value="93" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/damage/static/js/moment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7458">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/processor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="66" lean-forward="false" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/modules/scroll-up-bar/dist/scroll-up-bar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2888">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/js/demo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-293">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/utils/datastructures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2530">
-          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/modules/nicescroll/jquery.nicescroll.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="876" column="8" lean-forward="false" selection-start-line="876" selection-start-column="8" selection-end-line="876" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/test/test_carousel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="20" column="22" lean-forward="false" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rest_framework/response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/models/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/charts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="49" lean-forward="false" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deya/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/chartbase.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-175">
-          <caret line="0" column="45" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_jquery_script.html" />
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3344">
-          <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="160" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/bar_damagetype.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="72" column="85" lean-forward="false" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/js/jquery.jcarousel.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/static/js/jquery.jcarousel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1861">
-          <caret line="138" column="43" lean-forward="false" selection-start-line="138" selection-start-column="37" selection-end-line="138" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/jquery_carousel.html" />
     <entry file="file://$PROJECT_DIR$/damage/templates/damage/charts/carousel/carousel_various.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1003,25 +725,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="85" column="62" lean-forward="false" selection-start-line="85" selection-start-column="62" selection-end-line="85" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contactdetails.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1093">
           <caret line="60" column="87" lean-forward="false" selection-start-line="60" selection-start-column="87" selection-end-line="60" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage-deya.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2904">
-          <caret line="132" column="51" lean-forward="false" selection-start-line="132" selection-start-column="51" selection-end-line="132" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,25 +746,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deya/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="7" column="61" lean-forward="false" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/contactlist_criteria.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="95" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1089,30 +782,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/damage/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1716">
-          <caret line="79" column="64" lean-forward="false" selection-start-line="79" selection-start-column="64" selection-end-line="79" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/damage/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/damage/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1123,11 +796,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/core-scripting.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4488">
-          <caret line="204" column="46" lean-forward="false" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="46" />
-          <folding />
+        <state relative-caret-position="203">
+          <caret line="211" column="18" lean-forward="false" selection-start-line="211" selection-start-column="18" selection-end-line="211" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damagelist_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/migrations/0018_auto_20181105_1447.py" />
+    <entry file="file://$PROJECT_DIR$/damage/migrations/0020_damage_areas.py" />
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/files/damagecategory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1980">
+          <caret line="90" column="35" lean-forward="false" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/menus/navmenu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/files/areas.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1980">
+          <caret line="90" column="35" lean-forward="false" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/criteria/damagelist_criteria.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1139,261 +848,208 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/damage/models.py">
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/index/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2266">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1546">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damagelist_table.html">
+    <entry file="file://$PROJECT_DIR$/damage/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2948">
-          <caret line="134" column="81" lean-forward="false" selection-start-line="134" selection-start-column="69" selection-end-line="134" selection-end-column="81" />
-          <folding />
+        <state relative-caret-position="502">
+          <caret line="61" column="9" lean-forward="false" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damageadd.html">
+    <entry file="file://$PROJECT_DIR$/damage/static/styles/frontpage.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="770">
+          <caret line="35" column="67" lean-forward="false" selection-start-line="35" selection-start-column="2" selection-end-line="35" selection-end-column="67" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/core-scripting.rnc">
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="211" column="18" lean-forward="false" selection-start-line="211" selection-start-column="18" selection-end-line="211" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="440">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/frontpage/ok.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/damage/static/damage/mystyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1166">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="374">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5095">
-          <caret line="693" column="20" lean-forward="true" selection-start-line="693" selection-start-column="20" selection-end-line="693" selection-end-column="20" />
+        <state relative-caret-position="172">
+          <caret line="702" column="15" lean-forward="false" selection-start-line="702" selection-start-column="14" selection-end-line="702" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/damage/templates/damage/files/areas.html">
+    <entry file="file://$PROJECT_DIR$/damage/static/stisla-admin/dist/js/demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="125" column="18" lean-forward="false" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="605" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="605" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/menus/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/entry/damageadd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/frontpage/frontpage-deya.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1386">
+          <caret line="63" column="18" lean-forward="false" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/registration/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="5" column="50" lean-forward="false" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/api/viewsets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/api/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deya/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="181" column="61" lean-forward="false" selection-start-line="181" selection-start-column="61" selection-end-line="181" selection-end-column="61" />
           <folding>
-            <element signature="e#3213#3239#0#HTML" expanded="true" />
-            <element signature="e#3298#3317#0#HTML" expanded="true" />
-            <element signature="e#3816#3835#0#HTML" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1276">
+          <caret line="60" column="14" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="62" lean-forward="false" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deya/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/migrations/0003_auto_20181105_2235.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/migrations/0002_auto_20181105_2235.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/menus/sidebarmenu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1298">
+          <caret line="59" column="12" lean-forward="false" selection-start-line="58" selection-start-column="70" selection-end-line="59" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/templates/damage/contact/contactlist_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/damage/appfunctions/exportexcel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/damage/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-118">
-          <caret line="1228" column="8" lean-forward="false" selection-start-line="1228" selection-start-column="8" selection-end-line="1228" selection-end-column="8" />
+        <state relative-caret-position="-748">
+          <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="25" />
           <folding>
-            <element signature="e#1346#1457#0" expanded="false" />
-            <element signature="e#1614#1818#0" expanded="false" />
-            <element signature="e#1663#1818#0" expanded="false" />
-            <element signature="e#1714#1752#0" expanded="false" />
-            <element signature="e#1865#1956#0" expanded="false" />
-            <element signature="e#1872#1926#0" expanded="false" />
-            <element signature="e#1958#2005#0" expanded="false" />
-            <element signature="e#2093#3889#0" expanded="false" />
-            <element signature="e#2199#3889#0" expanded="false" />
-            <element signature="e#2522#3563#0" expanded="false" />
-            <element signature="e#2620#2724#0" expanded="false" />
-            <element signature="e#2766#2875#0" expanded="false" />
-            <element signature="e#2917#3026#0" expanded="false" />
-            <element signature="e#3068#3177#0" expanded="false" />
-            <element signature="e#3219#3330#0" expanded="false" />
-            <element signature="e#3372#3477#0" expanded="false" />
-            <element signature="e#3573#3637#0" expanded="false" />
-            <element signature="e#3699#3859#0" expanded="false" />
-            <element signature="e#3892#3939#0" expanded="false" />
-            <element signature="e#4078#5882#0" expanded="false" />
-            <element signature="e#4184#5882#0" expanded="false" />
-            <element signature="e#4515#5556#0" expanded="false" />
-            <element signature="e#4613#4717#0" expanded="false" />
-            <element signature="e#4759#4868#0" expanded="false" />
-            <element signature="e#4910#5019#0" expanded="false" />
-            <element signature="e#5061#5170#0" expanded="false" />
-            <element signature="e#5212#5323#0" expanded="false" />
-            <element signature="e#5365#5470#0" expanded="false" />
-            <element signature="e#5566#5630#0" expanded="false" />
-            <element signature="e#5692#5852#0" expanded="false" />
-            <element signature="e#5884#5995#0" expanded="false" />
-            <element signature="e#6058#6372#0" expanded="false" />
-            <element signature="e#6141#6372#0" expanded="false" />
-            <element signature="e#6271#6314#0" expanded="false" />
-            <element signature="e#6374#6485#0" expanded="false" />
-            <element signature="e#6560#6891#0" expanded="false" />
-            <element signature="e#6660#6891#0" expanded="false" />
-            <element signature="e#6712#6755#0" expanded="false" />
-            <element signature="e#6894#7005#0" expanded="false" />
-            <element signature="e#7279#7569#0" expanded="false" />
-            <element signature="e#7416#7569#0" expanded="false" />
-            <element signature="e#7468#7511#0" expanded="false" />
-            <element signature="e#7607#7711#0" expanded="false" />
-            <element signature="e#7741#8138#0" expanded="false" />
-            <element signature="e#8181#8589#0" expanded="false" />
-            <element signature="e#8263#8395#0" expanded="false" />
-            <element signature="e#8302#8338#0" expanded="false" />
-            <element signature="e#8434#8589#0" expanded="false" />
-            <element signature="e#8626#8916#0" expanded="false" />
-            <element signature="e#8702#8916#0" expanded="false" />
-            <element signature="e#8917#9028#0" expanded="false" />
-            <element signature="e#9306#9837#0" expanded="false" />
-            <element signature="e#9425#9560#0" expanded="false" />
-            <element signature="e#9435#9500#0" expanded="false" />
-            <element signature="e#9599#9837#0" expanded="false" />
-            <element signature="e#9839#9951#0" expanded="false" />
-            <element signature="e#10011#11518#0" expanded="false" />
-            <element signature="e#10103#11518#0" expanded="false" />
-            <element signature="e#10984#11381#0" expanded="false" />
-            <element signature="e#11560#12035#0" expanded="false" />
-            <element signature="e#11687#11822#0" expanded="false" />
-            <element signature="e#11697#11762#0" expanded="false" />
-            <element signature="e#11861#12035#0" expanded="false" />
-            <element signature="e#12078#12254#0" expanded="false" />
-            <element signature="e#12101#12173#0" expanded="false" />
-            <element signature="e#12290#12516#0" expanded="false" />
-            <element signature="e#12405#12457#0" expanded="false" />
-            <element signature="e#12548#12661#0" expanded="false" />
-            <element signature="e#12619#12661#0" expanded="false" />
-            <element signature="e#12663#12774#0" expanded="false" />
-            <element signature="e#12967#14765#0" expanded="false" />
-            <element signature="e#13051#13340#0" expanded="false" />
-            <element signature="e#13135#13203#0" expanded="false" />
-            <element signature="e#13379#14765#0" expanded="false" />
-            <element signature="e#13533#14433#0" expanded="false" />
-            <element signature="e#14117#14192#0" expanded="false" />
-            <element signature="e#14267#14363#0" expanded="false" />
-            <element signature="e#14461#14765#0" expanded="false" />
-            <element signature="e#14579#14654#0" expanded="false" />
-            <element signature="e#14816#15727#0" expanded="false" />
-            <element signature="e#14951#14980#0" expanded="false" />
-            <element signature="e#15147#15727#0" expanded="false" />
-            <element signature="e#15729#15840#0" expanded="false" />
-            <element signature="e#16003#16299#0" expanded="false" />
-            <element signature="e#16095#16163#0" expanded="false" />
-            <element signature="e#17302#17335#0" expanded="false" />
-            <element signature="e#17523#17555#0" expanded="false" />
-            <element signature="e#18099#18351#0" expanded="false" />
-            <element signature="e#18215#18290#0" expanded="false" />
-            <element signature="e#18353#18464#0" expanded="false" />
-            <element signature="e#18522#18850#0" expanded="false" />
-            <element signature="e#18589#18850#0" expanded="false" />
-            <element signature="e#18852#18963#0" expanded="false" />
-            <element signature="e#19027#19457#0" expanded="false" />
-            <element signature="e#19094#19457#0" expanded="false" />
-            <element signature="e#19459#19570#0" expanded="false" />
-            <element signature="e#19634#20064#0" expanded="false" />
-            <element signature="e#19701#20064#0" expanded="false" />
-            <element signature="e#20066#20177#0" expanded="false" />
-            <element signature="e#20248#23292#0" expanded="false" />
-            <element signature="e#20376#23292#0" expanded="false" />
-            <element signature="e#21125#21215#0" expanded="false" />
-            <element signature="e#21242#21409#0" expanded="false" />
-            <element signature="e#21477#21561#0" expanded="false" />
-            <element signature="e#21588#21741#0" expanded="false" />
-            <element signature="e#22121#22477#0" expanded="false" />
-            <element signature="e#22488#22505#0" expanded="false" />
-            <element signature="e#22920#22935#0" expanded="false" />
-            <element signature="e#23005#23155#0" expanded="false" />
-            <element signature="e#23294#23405#0" expanded="false" />
-            <element signature="e#23469#26545#0" expanded="false" />
-            <element signature="e#23607#26545#0" expanded="false" />
-            <element signature="e#24344#24434#0" expanded="false" />
-            <element signature="e#24461#24628#0" expanded="false" />
-            <element signature="e#24696#24780#0" expanded="false" />
-            <element signature="e#24807#24960#0" expanded="false" />
-            <element signature="e#25700#25792#0" expanded="false" />
-            <element signature="e#25831#25961#0" expanded="false" />
-            <element signature="e#26122#26409#0" expanded="false" />
-            <element signature="e#26547#26649#0" expanded="false" />
-            <element signature="e#26736#30249#0" expanded="false" />
-            <element signature="e#26882#30249#0" expanded="false" />
-            <element signature="e#27619#27709#0" expanded="false" />
-            <element signature="e#27736#27903#0" expanded="false" />
-            <element signature="e#27971#28055#0" expanded="false" />
-            <element signature="e#28082#28235#0" expanded="false" />
-            <element signature="e#29358#29450#0" expanded="false" />
-            <element signature="e#29489#29619#0" expanded="false" />
-            <element signature="e#29780#30113#0" expanded="false" />
-            <element signature="e#30250#30361#0" expanded="false" />
-            <element signature="e#30429#31650#0" expanded="false" />
-            <element signature="e#30519#30655#0" expanded="false" />
-            <element signature="e#30562#30598#0" expanded="false" />
-            <element signature="e#30694#31650#0" expanded="false" />
-            <element signature="e#30853#31410#0" expanded="false" />
-            <element signature="e#31092#31114#0" expanded="false" />
-            <element signature="e#31242#31350#0" expanded="false" />
-            <element signature="e#31438#31650#0" expanded="false" />
-            <element signature="e#31554#31589#0" expanded="false" />
-            <element signature="e#31652#31763#0" expanded="false" />
-            <element signature="e#31838#34508#0" expanded="false" />
-            <element signature="e#32035#34477#0" expanded="false" />
-            <element signature="e#32981#33156#0" expanded="false" />
-            <element signature="e#33275#33465#0" expanded="false" />
-            <element signature="e#33700#33793#0" expanded="false" />
-            <element signature="e#33832#33963#0" expanded="false" />
-            <element signature="e#34123#34341#0" expanded="false" />
-            <element signature="e#34510#34621#0" expanded="false" />
-            <element signature="e#34689#34985#0" expanded="false" />
-            <element signature="e#34757#34985#0" expanded="false" />
-            <element signature="e#34987#35098#0" expanded="false" />
-            <element signature="e#35177#35499#0" expanded="false" />
-            <element signature="e#35245#35499#0" expanded="false" />
-            <element signature="e#35501#35612#0" expanded="false" />
-            <element signature="e#35691#37661#0" expanded="false" />
-            <element signature="e#35788#36085#0" expanded="false" />
-            <element signature="e#35881#35949#0" expanded="false" />
-            <element signature="e#36124#37661#0" expanded="false" />
-            <element signature="e#36287#37381#0" expanded="false" />
-            <element signature="e#37051#37175#0" expanded="false" />
-            <element signature="e#37258#37381#0" expanded="false" />
-            <element signature="e#37409#37661#0" expanded="false" />
-            <element signature="e#37525#37600#0" expanded="false" />
-            <element signature="e#37706#39585#0" expanded="false" />
-            <element signature="e#37796#38261#0" expanded="false" />
-            <element signature="e#38066#38204#0" expanded="false" />
-            <element signature="e#38304#39585#0" expanded="false" />
-            <element signature="e#38468#39345#0" expanded="false" />
-            <element signature="e#39124#39282#0" expanded="false" />
-            <element signature="e#39373#39585#0" expanded="false" />
-            <element signature="e#39489#39524#0" expanded="false" />
-            <element signature="e#39587#39698#0" expanded="false" />
-            <element signature="e#39780#41698#0" expanded="false" />
-            <element signature="e#39877#40396#0" expanded="false" />
-            <element signature="e#40118#40260#0" expanded="false" />
-            <element signature="e#40439#41698#0" expanded="false" />
-            <element signature="e#40601#41458#0" expanded="false" />
-            <element signature="e#41233#41395#0" expanded="false" />
-            <element signature="e#41486#41698#0" expanded="false" />
-            <element signature="e#41602#41637#0" expanded="false" />
-            <element signature="e#41700#41811#0" expanded="false" />
-            <element signature="e#41898#44215#0" expanded="false" />
-            <element signature="e#42158#44215#0" expanded="false" />
-            <element signature="e#43391#43484#0" expanded="false" />
-            <element signature="e#43523#43654#0" expanded="false" />
-            <element signature="e#43814#44079#0" expanded="false" />
-            <element signature="e#44946#45075#0" expanded="false" />
-            <element signature="e#45093#45233#0" expanded="false" />
-            <marker date="1541410566985" expanded="true" signature="45702:45716" ph="..." />
+            <element signature="e#37003#37325#0" expanded="false" />
           </folding>
         </state>
       </provider>

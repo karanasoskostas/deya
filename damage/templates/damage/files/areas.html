@@ -72,8 +72,18 @@
         <table class="table table-striped table-bordered table-hover " id="detailtable" >
             <thead class="thead-light">
                 <tr class="d-flex">
-                    <th scope="col" class="col-sm-1" ><a>ΚΩΔΙΚΟΣ</a></th>
-                    <th scope="col" class="col-sm-10"><a>ΠΕΡΙΓΡΑΦΗ</a></th>
+                    <th scope="col" class="col-sm-1" ><a>ΚΩΔΙΚΟΣ</a>
+                        <div class="btn-group-vertical">
+                            <a class="fa fa-fw fa-sort-down align-right" href="?order_by=code&direction=ASC" ></a>
+                            <a class="fa fa-fw fa-sort-up align-right" href="?order_by=code&direction=DESC" ></a>
+                        </div>
+                    </th>
+                    <th scope="col" class="col-sm-10"><a>ΠΕΡΙΓΡΑΦΗ</a>
+                        <div class="btn-group-vertical">
+                            <a class="fa fa-fw fa-sort-down align-right" href="?order_by=desc&direction=ASC" ></a>
+                            <a class="fa fa-fw fa-sort-up align-right" href="?order_by=desc&direction=DESC" ></a>
+                        </div>
+                    </th>
                     <th scope="col" class="col-sm-1"></th>
                 </tr>
             </thead>

@@ -1,0 +1,157 @@
+{% extends 'damage/menus/sidebarmenu.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+{% load cool_paginate %}
+
+
+
+{% block title %} {{ general.deya_name }} - ΠΕΡΙΟΧΕΣ{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container-fluid">
+    <h3 class="header-criteria" > ΔΙΑΧΕΙΡΙΣΗ ΚΑΤΗΓΟΡΙΩΝ  </h3>
+
+    <div class="container-fluid" >
+
+        <h6 class="header-table" >ΚΑΤΑΧΩΡΗΣΗ ΚΑΤΗΓΟΡΙΑΣ</h6>
+        <form method="post"  enctype="multipart/form-data" onsubmit="return validateForm()" name="areasform">
+        {% csrf_token %}
+            <div class="form-row container">
+
+                <input type="text" id="edit_flag" name="edit_flag" hidden>
+
+                <div class="col-sm-2 form-group"  >
+                     <label for="label" >ΚΩΔΙΚΟΣ</label>
+                     {% render_field form.code class="form-control" name="areascode" %}
+
+                </div>
+
+                <div class="col-sm-6 form-group" >
+                     <label>ΠΕΡΙΓΡΑΦΗ </label>
+                     {% render_field form.desc class="form-control"  maxlength="100" id="areasdescr" name="areasdescr" %}
+                </div>
+
+              <div class="col-sm-2 form-group" >
+
+                </div>
+
+
+
+            </div>
+
+            <div class="form-group row"  >
+
+                <div class="p-1 mt-1 mb-1 col-sm-2" align="center">
+                    <button type="submit" class="btn btn-outline-success btn-shadow btn-round has-icon has-icon-nofloat btn-block"
+                            name="save" >
+                        <i class="fa fa-save" aria-hidden="true"></i><div>Αποθήκευση</div>
+                    </button>
+                </div>
+                <div class = "col-sm-1"></div>
+                <div class="p-1 mt-1 mb-4 col-sm-2">
+                    <button type="button" class="btn btn-outline-danger btn-shadow btn-round has-icon has-icon-nofloat btn-block"
+                            onClick="javascript:history.go(-1);">
+                        <i class="ion ion-arrow-return-left"></i><div>Επιστροφή</div>
+                    </button>
+
+                </div>
+
+            </div>
+
+       {% include 'damage/messages/messages.html' %}
+
+         </form>
+
+
+
+        <h6 class="header-table" >ΚΑΤΗΓΟΡΙΕΣ</h6>
+        <table class="table table-striped table-bordered table-hover " id="detailtable" >
+            <thead class="thead-light">
+                <tr class="d-flex">
+                    <th scope="col" class="col-sm-1" ><a>ΚΩΔΙΚΟΣ</a>
+                        <div class="btn-group-vertical">
+                            <a class="fa fa-fw fa-sort-down align-right" href="?order_by=code&direction=ASC" ></a>
+                            <a class="fa fa-fw fa-sort-up align-right" href="?order_by=code&direction=DESC" ></a>
+                        </div>
+                    </th>
+                    <th scope="col" class="col-sm-10"><a>ΠΕΡΙΓΡΑΦΗ</a>
+                        <div class="btn-group-vertical">
+                            <a class="fa fa-fw fa-sort-down align-right" href="?order_by=desc&direction=ASC" ></a>
+                            <a class="fa fa-fw fa-sort-up align-right" href="?order_by=desc&direction=DESC" ></a>
+                        </div>
+                    </th>
+                    <th scope="col" class="col-sm-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items_list %}
+
+                    <tr class="datarow d-flex" >
+                        <td class="col-sm-1">
+                            <a>{{ item.code }} </a>
+                        </td>
+                        <td class="col-sm-10">
+                             <a >{{ item.desc }} </a>
+                        </td>
+
+                        <td class="col-sm-1">
+                            <form action="#" method="post">
+                            {% csrf_token %}
+                                <div class="row" style="text-align: center">
+                                    <div  align="center" style="width: 50px">
+                                        <button type="submit" class="btn btn-sm m-0 btn-outline-danger btn-shadow btn-round has-icon has-icon-nofloat"
+                                            name="delete" onclick="return confirm('Είστε Σίγουροι για τη Διαγραφή?');" >
+                                            <i class="ion ion-trash-a"></i>
+                                        </button>
+                                    </div>
+                                    <div align="center" style="width: 40px">
+                                        <button  type="button" class="btn btn-sm m-0 btn-outline-success btn-shadow btn-round has-icon has-icon-nofloat"
+                                            name="edit" id="edit" onclick="editAreas( '{{ item.code }}' , '{{ item.desc }}' );">
+                                            <i class="ion ion-edit"></i>
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="pk" value="{{item.pk}}" />
+                                </div>
+                            </form>
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+
+        </table>
+        {% if page_obj %}
+            {% cool_paginate page_obj=page_obj %}
+        {% endif %}
+
+        <script>
+            function editAreas( code , desc ){
+                //alert(desc);
+                $('input[name="code"]').val(code);
+                $('input[name="desc"]').val(desc);
+                $('input[name="edit_flag"]').val('1');
+                $('input[name="code"]').prop('readonly', true);
+
+            };
+
+
+
+
+
+
+
+    </script>
+    </div>
+
+
+
+</div>
+
+{% endblock %}

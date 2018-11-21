@@ -9,6 +9,17 @@
 
     /*text-shadow: 1px 2px dimgray;*/
 }
+.header-deya {
+    color: #2c3860;
+    font-family: Calibri;
+    font-weight: bold ;
+    letter-spacing: 2px;
+    align-content: left;
+    text-align: left;
+
+    /*text-shadow: 1px 2px dimgray;*/
+}
+
 
 
 .input-readonly {

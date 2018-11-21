@@ -47,8 +47,8 @@ def damage_mail(pk):
 
 
 def contactdetails_mail(pk):
-
-    contactdetails = ContactDetails.objects.get(pk=pk)
+    contactmanagement = ContactManagement.objects.get(pk=pk)
+    contactdetails = ContactDetails.objects.get(pk=contactmanagement.contact.pk)
     general = General.objects.get(pk=1)
 
 

@@ -12,6 +12,16 @@ class DamageStatusChoiceField(forms.ModelChoiceField):
         return obj.desc
 
 
+class AreaChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return obj.desc
+
+
+class DamageCategoryChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return obj.desc
+
+
 class HomeTestForm(forms.ModelForm):
     code = forms.IntegerField()
     desc = forms.CharField(max_length=100)
@@ -33,7 +43,6 @@ class DamageEntryForm(forms.ModelForm):
                              )
     zipcode = forms.CharField(max_length=6, required=False)
     town = forms.CharField(max_length=50, required=False)
-    area = forms.CharField(max_length=50, required=False)
     email = forms.EmailField(max_length=100, required=False)
     thl = forms.CharField(max_length=100, required=False)
     mobile = forms.CharField(max_length=50, required=False)
@@ -50,12 +59,17 @@ class DamageEntryForm(forms.ModelForm):
     selected = "selected"
     lat = forms.CharField(max_length=100, required=False)
     formatted_address = forms.CharField(max_length=100, required=False)
+    areas = AreaChoiceField(queryset=Areas.objects.all(),
+                                  widget=forms.Select(attrs={'class': 'select2_single form-control', 'blank': 'True'}))
+    category = DamageCategoryChoiceField(queryset=DamageCategory.objects.all(),
+                                  widget=forms.Select(attrs={'class': 'select2_single form-control', 'blank': 'True'}))
 
 
     class Meta:
       model = Damage
       fields = ('firstname', 'lastname', 'address', 'zipcode', 'town', 'area', 'email', 'thl', 'mobile', 'damagetype',
-                'damageaddress', 'damagezipcode', 'damagetown', 'damagearea', 'damagecom', 'formatted_address', 'lat', 'lng')
+                'damageaddress', 'damagezipcode', 'damagetown', 'damagearea', 'damagecom', 'formatted_address',
+                'lat', 'lng', 'areas', 'category')
 
     # def __init__(self, *args, **kwargs):
     #     super(DamageEntryForm, self).__init__(*args, **kwargs)
@@ -206,4 +220,13 @@ class AreasForm(forms.ModelForm):
 
     class Meta:
         model = Areas
+        fields = ('code', 'desc',)
+
+
+class DamageCategoryForm(forms.ModelForm):
+    code = forms.IntegerField()
+    desc = forms.CharField(max_length=100)
+
+    class Meta:
+        model = DamageCategory
         fields = ('code', 'desc',)

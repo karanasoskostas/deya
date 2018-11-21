@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+    <title>{% block title %}{{ general.deya_name }} &mdash; Dashboard{% endblock %}</title>
+
+
+
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}" type="text/javascript"></script>
+
+
+
+    <script src="{% static 'damage\gijgo-combined-1.9.6\js\gijgo.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js\moment.js' %}" type="text/javascript"></script>
+    <link href="{% static 'damage\gijgo-combined-1.9.6\css\gijgo.min.css' %}" rel="stylesheet" type="text/css" />
+    <script src="{% static 'damage\gijgo-combined-1.9.6\js\messages\messages.el-el.js' %}" type="text/javascript"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
+
+    <script src="{% static 'damage/bootstrap-4.1.1-dist/js/bootstrap.min.js' %}"></script>
+
+
+    <link rel="stylesheet" href="{% static 'damage/bootstrap-4.1.1-dist/css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'damage/font-awesome-4.7.0/css/font-awesome.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'stisla-admin/dist/modules/ionicons/css/ionicons.min.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'stisla-admin/dist/modules/summernote/summernote-lite.css' %}">
+    <link rel="stylesheet" href="{% static 'stisla-admin/dist/modules/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'stisla-admin/dist/css/demo.css' %}">
+    <link rel="stylesheet" href="{% static 'stisla-admin/dist/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stisla-admin/dist/modules/toastr/build/toastr.min.css' %}">
+    <link rel="stylesheet" href="{% static 'damage/mystyle.css' %}">
+</head>
+
+<body>
+
+
+
+        {% block body %}
+        {% endblock %}
+
+
+
+
+
+
+<script src="{% static 'stisla-admin/dist/modules/tooltip.js' %}"></script>
+
+<script src="{% static 'stisla-admin/dist/modules/nicescroll/jquery.nicescroll.min.js' %}"></script>
+<script src="{% static 'stisla-admin/dist/modules/scroll-up-bar/stisla-admin/dist/scroll-up-bar.min.js' %}"></script>
+<script src="{% static 'stisla-admin/dist/js/sa-functions.js' %}"></script>
+
+
+<script src="{% static 'stisla-admin/dist/js/scripts.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+<script src="{% static 'stisla-admin/dist/modules/summernote/summernote-lite.js' %}"></script>
+
+
+<script src="{% static 'stisla-admin/dist/modules/toastr/build/toastr.min.js' %}"></script>
+
+<script src="{% static 'stisla-admin/dist/js/custom.js' %}"></script>
+
+
+
+
+
+</body>
+
+</html>

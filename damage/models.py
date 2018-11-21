@@ -71,6 +71,8 @@ class Damage(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, default=None, on_delete=models.DO_NOTHING)
     userip = models.CharField(max_length=100, null=True, default=None)
     location = models.ForeignKey(LocationDetails, blank=True, null=True , default=None, on_delete=models.CASCADE)
+    areas = models.ForeignKey(Areas, on_delete=models.DO_NOTHING, null=True, default=None)
+    category = models.ForeignKey(DamageCategory, on_delete=models.DO_NOTHING, null=True, default=None)
 
     def __str__(self):
         return str("{:%d/%m/%Y  %H:%M:%S}".format(self.entry_date)) + '    -    ' + self.lastname + ' ' + self.firstname

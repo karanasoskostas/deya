@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 from . import views
 
+
 urlpatterns = [
 # /damage/test/
 
@@ -23,7 +24,7 @@ urlpatterns = [
 
 
 
-    url(r'^damagetype_add/$', views.damagetype_add, name='damagetype_add'),
+   # url(r'^testfile/$', views.your_view, name='test'),
 
     # /damage/hometest/
     url(r'^hometest/$', views.HomeTest.as_view(), name="hometest"),
@@ -42,11 +43,14 @@ urlpatterns = [
     url(r'contact/management/(?P<pk>[0-9]+)/$', views.ContactManagementView.as_view(), name="contact-management"),
 
     # /damage/damage/list/15_08_2018/15_08_2018/1   το .* παιζει οταν θελω η παραμετρος να ειναι None
-    url(r'damage/list_dates/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/$',
+    url(r'damage/list_dates/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/(?P<pkind>[0-9]+)/$',
         views.DamageListView.as_view(), name="damage-list-dates"),
 
-    url(r'damage/list_history_dates/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/$',
+    url(r'damage/list_history_dates/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/(?P<pkind>[0-9]+)/$',
         views.DamageListHistoryView.as_view(), name="damage-list-history-dates"),
+
+    url(r'damage/markers/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/(?P<pkind>[0-9]+)/$',
+        views.DamageMarkersView.as_view(), name="damage-list-markers"),
 
     # /damage/damage/list/1
     url(r'damage/list/(?P<pk>[0-9]+)/$', views.DamageUpdateView.as_view(), name="damage-by-id"),
@@ -56,11 +60,10 @@ urlpatterns = [
 
     url(r'damage/list/today/$', views.DamageTodayView.as_view(), name="today-damage-list"),
     url(r'damage/list/status10/$', views.DamageStatus10View.as_view(), name="damage-status10"),
+    url(r'damage/list/statuslt2/$', views.DamageStatusLt2View.as_view(), name="damage-status-lt-2"),
     url(r'damage/list/status50/$', views.DamageStatus50View.as_view(), name="damage-status50"),
 
-    # /damage/damage/list/15_08_2018/15_08_2018/1   το .* παιζει οταν θελω η παραμετρος να ειναι None
-    url(r'damage/markers/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pdamagestatus>.*)/(?P<pdamagetype>.*)/$',
-        views.DamageMarkersView.as_view(), name="damage-list-markers"),
+
 
     # /damage/contact/
     url(r'damage/contact/(?P<pfromdate>[-\w]+)/(?P<ptodate>[-\w]+)/(?P<pkind>[0-9]+)/$',
@@ -78,4 +81,5 @@ urlpatterns = [
 
     #----------------  ΠΑΡΑΜΕΤΡΙΚΑ
     url(r'damage/areas/$',views.AreasView.as_view(), name="areas"),
+    url(r'damage/categories/$',views.DamageCategoryView.as_view(), name="categories"),
 ]

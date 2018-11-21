@@ -12,11 +12,18 @@
 
     <div class="container-fluid" >
 
-
         <form  >
-
-            <h1 class="header-criteria" > ΛΙΣΤΑ ΜΥΝΗΜΑΤΩΝ  </h1>
-
+            <div class="row">
+                <div class="p-1 mt-1 mb-1 col-11">
+                        <h1 class="header-criteria" > ΛΙΣΤΑ ΜΥΝΗΜΑΤΩΝ  </h1>
+                </div>
+                <div class="p-1 mt-1 mb-1 col-1">
+                    <a class="btn btn-outline-info btn-shadow btn-round has-icon has-icon-nofloat btn-block" name="back"
+                              href="{{ request.path }}?excel_input=1" target="_blank"  >
+                            <i class="fa fa-file-excel-o"></i><div>Excel</div>
+                    </a>
+                </div>
+            </div>
                 <form class="form-inline " >
                     <div class="container-fluid text-center row"   >
                         <div class="col-sm" style="alignment: right">

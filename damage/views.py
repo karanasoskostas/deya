@@ -1,12 +1,14 @@
-from .models import General, DamageType, Damage, DamageStatus, DamageHistoryStatus , ContactDetails, \
-    ContactManagement , Areas, DamageCategory
-from django.shortcuts import get_object_or_404 ,render
+import os
+
+from damage.appfunctions.exportexcel import export_list_xls
+from .models import DamageType, DamageStatus, DamageHistoryStatus , Areas, DamageCategory
+from django.shortcuts import render
 from django.views import generic
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView
 from django.views.generic import TemplateView, View
-from damage.forms import HomeTestForm, DamageEntryForm, DamageTypeForm, DamageListForm, DamageListCriteriaForm, \
+from damage.forms import DamageEntryForm, DamageTypeForm, DamageListForm, DamageListCriteriaForm, \
     ContactDetailsForm, ContactListForm, ContactListCriteriaForm, DamageStatusHistoryForm, \
-    ContactManagementForm, AreasForm
+    ContactManagementForm, AreasForm , DamageCategoryForm
 from django.utils import timezone
 import datetime
 import pytz
@@ -20,12 +22,15 @@ from django.db.models import Count, Exists, OuterRef, Q
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from io import BytesIO
-
+import xlsxwriter
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import authentication, permissions
-from django.contrib.auth.models import User
+
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+
+
+
 
 #--------------------------------------------------------------------------------------------------------------
 #   CHART Views
@@ -268,6 +273,12 @@ class IndexView(TemplateView):
     template_name = 'damage/index/index.html'
 
     def get(self, request):
+
+        if not self.request.user.is_authenticated:
+            user = authenticate(username='guest', password='deya1234')
+            if user is not None:
+                login(request, user)
+
         context = {
                     'general': self.general
                   }
@@ -368,15 +379,26 @@ class Map(TemplateView):
 class DamageEntryView(TemplateView):
     template_name = "damage/entry/damageadd.html"
 
-
     def get(self, request):
         general = General.objects.get(pk=1)
         form = DamageEntryForm()
+
+        if not self.request.user.is_authenticated:
+            user = 'guest'
+        else:
+            user = self.request.user.username
+
+        if user == 'guest':
+            load_template= 'damage/menus/menu.html'
+        else:
+            load_template = 'damage/menus/sidebarmenu.html'
+
         args = {'form': form,
                 'general': general,
+                'load_template': load_template
                 }
 
-        self.template_name = check_authentication(request, self.template_name)
+        #self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
     def post(self, request):
@@ -390,14 +412,12 @@ class DamageEntryView(TemplateView):
             if self.request.user.is_authenticated:  # κάποια στιγμή το is_authenticated() χτύπησε !!!!
                 post.user = request.user
 
-
             post.userip = get_client_ip(request)  # το IP του χρήστη
 
             location = get_cocation(post.lat, post.lng)
 
             post.location = location
             post.formatted_address= location.formatted_address
-
 
             post.entry_date = datetime.now(tz=timezone.utc)
             post.save()
@@ -410,7 +430,12 @@ class DamageEntryView(TemplateView):
             args = {'form': form,
                     'general': general
                     }
-            return redirect(request.META.get('HTTP_REFERER'))
+            user = self.request.user.username
+            if user == 'guest':
+                template_name = "damage/frontpage/ok.html"
+                return render(request, template_name, args)
+            else:
+                return redirect(request.META.get('HTTP_REFERER'))
             # οχι reverse γιατί διαβάζει ολο το urls.py απο την αρχη και καθυστερεί σε μεγαλα projects !!!!!
             #return HttpResponseRedirect(reverse('damage-add'), args)
         else:
@@ -465,12 +490,17 @@ class DamageListCriteriaView(TemplateView):
     def get(self, request):
         form = DamageListCriteriaForm()
         general = General.objects.get(pk=1)
+        if self.request.user.is_authenticated:
+            load_template='damage/menus/sidebarmenu.html'
+        else:
+            load_template = 'damage/menus/menu.html'
 
         args = {
             'form': form,
-            'general': general
+            'general': general,
+            'load_template': load_template
         }
-        self.template_name = check_authentication(request, self.template_name)
+        #self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
     def post(self, request):
@@ -511,7 +541,8 @@ class DamageListCriteriaView(TemplateView):
                 viewurl = 'damage-list-markers'
 
             return redirect(viewurl, pfromdate=fromdatetext, ptodate=todatetext,
-                            pdamagestatus=damagestatus, pdamagetype=damagetype)
+                            pdamagestatus=damagestatus, pdamagetype=damagetype,
+                            pkind=0)
 
         else:
             print('form is not valid')
@@ -532,8 +563,7 @@ class DamageTodayView(TemplateView):
         todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
         return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus="None", pdamagetype="None")
 
-#--------------------------------------------------------------------------------------------------------------
-# Damage STATUS 10
+# MH ΕΠΙΒΕΒΑΙΩΜΕΝΕΣ ΒΛΑΒΕΣ Damage STATUS < 10
 class DamageStatus10View(TemplateView):
     viewurl = 'damage-list-dates'
 
@@ -541,10 +571,21 @@ class DamageStatus10View(TemplateView):
         fromdatetext = (datetime.now(tz=timezone.utc) - timedelta(days=36500)).strftime('%d_%m_%Y')
         todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
         status = DamageStatus.objects.filter(code=10).values('id')[0]['id']
-        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=status, pdamagetype="None")
+        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=None, pdamagetype="None", pkind=1)
 
-#--------------------------------------------------------------------------------------------------------------
-# Damage STATUS 50
+# ΧΩΡΙΣ ΕΠΙΚΟΙΝΩΝΙΑ Damage STATUS < 2
+class DamageStatusLt2View(TemplateView):
+    viewurl = 'damage-list-dates'
+
+    def get(self, request):
+        fromdatetext = (datetime.now(tz=timezone.utc) - timedelta(days=36500)).strftime('%d_%m_%Y')
+        todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
+        status = DamageStatus.objects.filter(code=2).values('id')[0]['id']
+        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=None, pdamagetype="None", pkind=2)
+
+
+
+# ΣΕ ΕΠΙΣΚΕΥΗ Damage STATUS 50
 class DamageStatus50View(TemplateView):
     viewurl = 'damage-list-dates'
 
@@ -552,15 +593,18 @@ class DamageStatus50View(TemplateView):
         fromdatetext = (datetime.now(tz=timezone.utc) - timedelta(days=36500)).strftime('%d_%m_%Y')
         todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
         status = DamageStatus.objects.filter(code=50).values('id')[0]['id']
-        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=status, pdamagetype="None")
+        return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pdamagestatus=status, pdamagetype="None", pkind=0)
 
 #--------------------------------------------------------------------------------------------------------------
 # ΠΡΟΒΟΛΗ ΒΛΑΒΩΝ ΣΤΟ ΧΑΡΤΗ
 class DamageMarkersView(TemplateView):
     template_name = "damage/maps/markers.html"
 
-    def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
+    def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype , pkind):
         general = General.objects.get(pk=1)
+
+        if pkind is None:
+            pkind = 0
 
         if pfromdate is None:      # παντα is None oxi == None
             pfromdate = '01_01_2000'
@@ -641,8 +685,11 @@ class DamageMarkersView(TemplateView):
 class DamageListView(TemplateView):
     template_name = "damage/entry/damagelist_table.html"
 
-    def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
+    def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype, pkind):
         form = DamageListForm()
+
+        if pkind is None:
+            pkind = 0
 
         if pfromdate is None:      # παντα is None oxi == None
             pfromdate = '01_01_2000'
@@ -684,6 +731,10 @@ class DamageListView(TemplateView):
                                        damagestatus__pk__range =(fromdamagestatuspk, todamagestatuspk),
                                        damagetype__pk__range=(fromdamagetypepk, todamagetypepk)).order_by(order_by)
 
+        if pkind == "1": # MH ΕΠΙΒΕΒΑΙΩΜΕΝΕΣ ΒΛΑΒΕΣ
+            d_list = d_list.filter(damagestatus__code__lt=10)
+        elif pkind == "2": # ΒΛΑΒΕΣ ΧΩΡΙΣ ΕΠΙΚΟΙΝΩΝΙΑ
+            d_list = d_list.filter(damagestatus__code__lt=2)
 
         paginator = Paginator(d_list, 12)
 
@@ -723,8 +774,11 @@ class DamageListView(TemplateView):
 class DamageListHistoryView(TemplateView):
     template_name = "damage/entry/damagelist_history_table.html"
 
-    def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype):
+    def get(self, request, pfromdate, ptodate, pdamagestatus, pdamagetype, pkind):
         form = DamageListForm()
+
+        if pkind is None:
+            pkind = 0
 
         if pfromdate is None:      # παντα is None oxi == None
             pfromdate = '01_01_2000'
@@ -849,8 +903,7 @@ class ContactDetailsView(TemplateView):
                     }
             return render(request, self.template_name, args)
 
-#--------------------------------------------------------------------------------------------------------------
-# ΠΡΟΒΟΛΗ ΜΥΝΗΜΑΤΩΝ table
+# ΠΡΟΒΟΛΗ ΜΥΝΗΜΑΤΩΝ table contactlist_table.html
 class ContactDetailsListView(TemplateView):
     template_name = "damage/contact/contactlist_table.html"
 
@@ -888,6 +941,15 @@ class ContactDetailsListView(TemplateView):
             d_list = d_list.filter(Q(name__contains=search_string) | Q(email__contains=search_string)|
                                    Q(thl__contains=search_string) | Q(com__contains=search_string))
 
+        #excel export
+        excel_string = request.GET.get('excel_input', None)
+        #if request.GET.get('excelbutton'):
+        if excel_string not in ['0', None]:
+            response = export_list_xls(request, d_list, 'contactlist.xlsx')
+            return response
+            #return your_view(request)
+
+
         paginator = Paginator(d_list, 8)
 
         page = request.GET.get('page')
@@ -912,15 +974,21 @@ class ContactDetailsListView(TemplateView):
             'page_obj': page_obj,
             'general': general,
             'fromdate': fromdatetext,
-            'todate': todatetext,
+            'todate': todatetext
 
         }
         self.template_name = check_authentication(request, self.template_name)
         return render(request, self.template_name, args)
 
-    #def post(self, request):
+    # def post(self, request, **kwargs):
+    #
+    #     print(kwargs['fromdate'])
+    #
+    #     return render(request, self.template_name)
 
-#--------------------------------------------------------------------------------------------------------------
+
+
+
 # ΜΥΝΗΜΑΤΑ ΗΜΕΡΑΣ
 class ContactDetailsTodayView(TemplateView):
     viewurl = 'contact-list-dates'
@@ -930,7 +998,7 @@ class ContactDetailsTodayView(TemplateView):
         todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
         return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pkind=0)
 
-#--------------------------------------------------------------------------------------------------------------
+
 # ΜΥΝΗΜΑΤΑ ΧΩΡΙΣ ΑΠΑΝΤΗΣΗ
 class ContactDetailsNoReplayView(TemplateView):
     viewurl = 'contact-list-dates'
@@ -940,7 +1008,7 @@ class ContactDetailsNoReplayView(TemplateView):
         todatetext = datetime.now(tz=timezone.utc).strftime('%d_%m_%Y')
         return redirect(self.viewurl, pfromdate=fromdatetext, ptodate=todatetext, pkind=1)
 
-#--------------------------------------------------------------------------------------------------------------
+
 # ΕΠΙΛΟΓΗ ΜΥΝΗΜΑΤΩΝ ΚΡΙΤΗΡΙΑ
 class ContactListCriteriaView(TemplateView):
     template_name = "damage/criteria/contactlist_criteria.html"
@@ -1174,11 +1242,17 @@ class ContactDetailsHistoryListView(TemplateView):
 
 class AreasView(TemplateView):
     template_name = "damage/files/areas.html"
-    pagerows = 4
+    pagerows = 6
 
     def get(self, request):
         general = General.objects.get(pk=1)
-        areas_list = Areas.objects.all().order_by('desc')
+
+        order_by = request.GET.get('order_by', 'desc')
+        direction = request.GET.get('direction', 'ASC')
+        if Lower(direction) == Lower('DESC'):
+            order_by = '-{}'.format(order_by)
+
+        areas_list = Areas.objects.all().order_by(order_by)
         form = AreasForm()
 
         #contact_list = ContactManagement.objects.filter(contact=contact).order_by('-entry_date')
@@ -1276,3 +1350,115 @@ class AreasView(TemplateView):
         }
 
         return redirect(request.META.get('HTTP_REFERER'))
+
+
+class DamageCategoryView(TemplateView):
+    template_name = "damage/files/damagecategory.html"
+    pagerows = 6
+
+    def get(self, request):
+        general = General.objects.get(pk=1)
+
+        order_by = request.GET.get('order_by', 'desc')
+        direction = request.GET.get('direction', 'ASC')
+        if Lower(direction) == Lower('DESC'):
+            order_by = '-{}'.format(order_by)
+
+        items_list = DamageCategory.objects.all().order_by(order_by)
+        form = DamageCategoryForm()
+
+        paginator = Paginator(items_list, self.pagerows)
+
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
+
+        try:
+            items_list = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            items_list = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            items_list = paginator.page(paginator.num_pages)
+
+
+        args = {
+            'general': general,
+            'form': form,
+            'items_list': items_list,
+            'page_obj': page_obj
+        }
+        self.template_name = check_authentication(request, self.template_name)
+        return render(request, self.template_name, args)
+
+    def post(self, request):
+        general = General.objects.get(pk=1)
+        form = DamageCategoryForm(request.POST)
+        form.non_field_errors()
+
+        if 'delete' in request.POST:
+            pk = request.POST.get("pk", "")
+            item = DamageCategory.objects.get(id=pk)
+            item.delete()
+
+        if 'save' in request.POST:
+
+            edit_flag = request.POST.get("edit_flag", "")
+            if edit_flag == "1":  #  UPDATE
+                code = request.POST.get("code", "")
+                desc = request.POST.get("desc", "")
+                area = DamageCategory.objects.get(code=code)
+                area.desc = desc
+                area.save()
+            else:                 # ΝΕΑ ΕΓΓΡΑΦΗ
+
+                if form.is_valid():
+                    post = form.save(commit=False)
+                    #post.userip = get_client_ip(request)  # το IP του χρήστη
+                    # if self.request.user.is_authenticated:  # κάποια στιγμή το is_authenticated() χτύπησε !!!!
+                    #     post.user = request.user
+                    #post.entry_date = datetime.now(tz=timezone.utc)
+                    #damage = request.POST.get('damage')
+
+                    code = request.POST.get("code", "")
+                    area = DamageCategory.objects.filter(code=code)
+                    if area:
+                        messages.error(request, 'Ο Κωδικός '+ code +' Υπάρχει ήδη !!')
+                    else:
+                        post.save()
+                else:
+                    print('form is not valid')
+                    print(form.errors)
+                    # form = DamageEntryForm()
+                    args = {'form': form
+                            }
+                    return render(request, self.template_name, args)
+
+
+        items_list = DamageCategory.objects.all().order_by('desc')
+
+        paginator = Paginator(items_list, self.pagerows)
+
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
+
+        try:
+            items_list = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            items_list = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            items_list = paginator.page(paginator.num_pages)
+
+        args = {
+            'general': general,
+            'form': form,
+            'items_list': items_list,
+            'page_obj': page_obj,
+
+        }
+
+        return redirect(request.META.get('HTTP_REFERER'))
+
+

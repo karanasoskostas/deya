@@ -35,8 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-
-
     #external apps
     'crispy_forms',
     'widget_tweaks',
@@ -179,3 +177,8 @@ EMAIL_USE_TLS = True
 
 DJANGO_SETTINGS_MODULE = 'deya.settings'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    )
+}

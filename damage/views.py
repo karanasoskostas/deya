@@ -1,5 +1,7 @@
 import os
 
+from django.template import context
+
 from damage.appfunctions.exportexcel import export_list_xls
 from .models import DamageType, DamageStatus, DamageHistoryStatus , Areas, DamageCategory
 from django.shortcuts import render
@@ -32,9 +34,9 @@ from django.contrib.auth import authenticate, login
 
 
 
-#--------------------------------------------------------------------------------------------------------------
+
 #   CHART Views
-#--------------------------------------------------------------------------------------------------------------
+
 class ChartsView(View):
     def get(self, request, *args, **kwargs):
         general = General.objects.get(pk=1)
@@ -50,7 +52,7 @@ def get_data(request, *args, **kwargs):
     }
     return JsonResponse(data)
 
-#..............................................
+
 #     ANA ΕΙΔΟΣ ΒΛΑΒΗΣ - ΟΛΕΣ ΟΙ ΒΛΑΒΕΣ
 class ApiChartDataViewDamageType(APIView):
     authentication_classes = []
@@ -104,9 +106,7 @@ class ApiChartDataViewDamageType(APIView):
         return Response(data)
 
 
-#..............................................
 #     ANA STATUS ΒΛΑΒΗΣ - ΟΛΕΣ ΟΙ ΒΛΑΒΕΣ
-#..............................................
 class ApiChartDataViewDamageStatus(APIView):
     authentication_classes = []
     permission_classes = []
@@ -158,7 +158,7 @@ class ApiChartDataViewDamageStatus(APIView):
         }
         return Response(data)
 
-#--------------------------------------------------------------------------------------------------------------
+
 # Carousel 1 chart
 class ChartCarouselView(TemplateView):
     template_name = "damage/charts/carousel.html"
@@ -172,7 +172,7 @@ class ChartCarouselView(TemplateView):
 
         return render(request, self.template_name, args)
 
-#--------------------------------------------------------------------------------------------------------------
+
 # Carousel many charts
 class ChartCarouselVariousView(TemplateView):
 
@@ -188,10 +188,7 @@ class ChartCarouselVariousView(TemplateView):
         return render(request, self.template_name, args)
 
 
-#--------------------------------------------------------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------------------
 #   TEST Views
-#--------------------------------------------------------------------------------------------------------------
 class TestView(TemplateView):
     template_name = "damage/test/test_carousel.html"
     #template_name = "damage/charts/carousel.html"
@@ -262,10 +259,8 @@ class HomeTest(TemplateView):
             print('not authonticated')
 
         return render(request, self.template_name)
-#--------------------------------------------------------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------------------
 #   INDEX Views
-#--------------------------------------------------------------------------------------------------------------
+
 
 class IndexView(TemplateView):
 
@@ -293,7 +288,7 @@ class IndexView(TemplateView):
         print(viewurl)
         return redirect(viewurl)
 
-#---------------------------------------------------------------------------------------------------------------
+
 #   ΚENTΡIKH ΣΕΛΙΔΑ
 class IndexDeyaView(TemplateView):
     template_name = 'damage/frontpage/frontpage-deya.html'
@@ -424,11 +419,20 @@ class DamageEntryView(TemplateView):
 
             damage_mail(post.id)
 
+            if not self.request.user.is_authenticated:
+                user = 'guest'
+            else:
+                user = self.request.user.username
 
+            if user == 'guest':
+                load_template = 'damage/menus/menu.html'
+            else:
+                load_template = 'damage/menus/sidebarmenu.html'
 
             form = DamageEntryForm()
             args = {'form': form,
-                    'general': general
+                    'general': general,
+                    'load_template': load_template
                     }
             user = self.request.user.username
             if user == 'guest':
@@ -454,11 +458,19 @@ class DamageUpdateView(generic.UpdateView):
     template_name = "damage/entry/damageadd.html"
     form_class = DamageEntryForm
     success_url = 'damage/list/'
-    # def form_valid(self, form):
-    #     response = super().form_valid(form)
-    #     print(form.cleaned_data['lastname'])
-    #
-    #     return response
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if  self.request.user == 'guest':
+            load_template = 'damage/menus/menu.html'
+        else:
+            load_template = 'damage/menus/sidebarmenu.html'
+        context['load_template'] = load_template
+
+        general = General.objects.get(pk=1) # για να διαβασει τις συντεταγμενες κτλ.
+        context['general'] = general
+
+        return context
 
     def form_valid(self, form):
         redirect_url = super(DamageUpdateView, self).form_valid(form)
@@ -482,7 +494,7 @@ class DamageUpdateView(generic.UpdateView):
         return HttpResponseRedirect(next)
         #return redirect_url
 
-#--------------------------------------------------------------------------------------------------------------
+
 # Damage Criteria
 class DamageListCriteriaView(TemplateView):
     template_name = "damage/criteria/damagelist_criteria.html"
@@ -553,7 +565,7 @@ class DamageListCriteriaView(TemplateView):
                     }
             return render(request, self.template_name, args)
 
-#--------------------------------------------------------------------------------------------------------------
+
 # ΒΛΑΒΕΣ ΗΜΕΡΑΣ
 class DamageTodayView(TemplateView):
     viewurl = 'damage-list-dates'
@@ -1118,7 +1130,7 @@ class DamageStatusView(TemplateView):
                     }
             return render(request, self.template_name, args)
 
-#--------------------------------------------------------------------------------------------------------------
+
 # ΚΑΤΑΧΩΡΗΣΗ ΑΠΑΝΤΗΣΕΩΝ ΜΥΝΗΜΑΤΩΝ
 class ContactManagementView(TemplateView):
     template_name = "damage/contact/contactmanagement.html"
@@ -1178,7 +1190,7 @@ class ContactManagementView(TemplateView):
                     }
             return render(request, self.template_name, args)
 
-#--------------------------------------------------------------------------------------------------------------
+
 # ΜΥΝΗΜΑΤΑ ΜΕ ΑΠΑΝΤΗΣΕΙΣ table
 class ContactDetailsHistoryListView(TemplateView):
     #template_name = "damage/contact/contactlist_table.html"

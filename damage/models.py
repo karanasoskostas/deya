@@ -99,8 +99,8 @@ class DamageHistoryStatus(models.Model):
 class General(models.Model):
     deya_aa = models.IntegerField()
     deya_name = models.CharField(max_length=100)
-    deya_longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True , default=0)
-    deya_latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, default=0)
+    deya_longitude = models.DecimalField(max_digits=13, decimal_places=10, null=True , default=0)
+    deya_latitude = models.DecimalField(max_digits=13, decimal_places=10, null=True, default=0)
     deya_mapaddress = models.CharField(max_length=150,null=True, default=None)
     google_api_key = models.CharField(max_length=150,null=True, default=None)
 

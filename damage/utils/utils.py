@@ -19,8 +19,7 @@ def get_client_ip(request):
 
 
 def get_cocation(lat, lng):
-    api_key = "AIzaSyDmdCbjHSXuma43DN3X8ihHuyU-rI3KKZY"
-
+    api_key = "AIzaSyBpnNZf4X6aStKjUq9O2UFZtkYB2PCkJC8"
     # print(lat + ',' + lng)
     api_response = requests.get(
         'https://maps.googleapis.com/maps/api/geocode/json?latlng={0}&key={1}&language={2}'.format(lat + ',' + lng, api_key, 'el'))

@@ -146,7 +146,9 @@ STATIC_URL = '/static/'
 #################################################################################
 # GOOGLE
 ################################################################################
-GOOGLE_API_KEY = "AIzaSyDmdCbjHSXuma43DN3X8ihHuyU-rI3KKZY"
+# GOOGLE_API_KEY = "AIzaSyDmdCbjHSXuma43DN3X8ihHuyU-rI3KKZY"
+GOOGLE_API_KEY = "AIzaSyBpnNZf4X6aStKjUq9O2UFZtkYB2PCkJC8"
+
 
 #################################################################################
 # PAGINATION

@@ -1,11 +1,13 @@
 
 <!--  Google Maps Script , χωρις αυτό δεν παίζει ο χάρτης -->
-<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<!--<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script> -->
 
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpnNZf4X6aStKjUq9O2UFZtkYB2PCkJC8&callback=initMap"></script> -->
 {% extends 'damage/menus/sidebarmenu.html' %}
 {% load static %}
 
 {% block body %}
+<script src="http://maps.googleapis.com/maps/api/js?key={{ general.google_api_key }}&sensor=false&language=el&region=EL" type="text/javascript"></script
     <body>
 
 
